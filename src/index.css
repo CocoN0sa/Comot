@@ -2,8 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap");
+
 html,
 body,
 #root {
   height: 100%;
+}
+
+:root {
+  --primary: #263b5b;
+  --accent: #c1735c;
+  --bg: #fbfcfe;
+}
+
+/* Typography */
+body {
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+  color: #111827;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", Inter, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Bottom nav safe area */
+.bottom-safe {
+  padding-bottom: 80px;
+}
+/* ensure main content isn't hidden behind bottom nav */
+.bottom-safe {
+  padding-bottom: 92px;
+}
+
+/* Floating action button styles */
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 88px;
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  color: white;
+  border: none;
+  box-shadow: 0 12px 36px rgba(38, 59, 91, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10000;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.fab:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 48px rgba(38, 59, 91, 0.22);
+}
+
+.fab:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+.fab svg {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+}
+
+/* Bottom nav label styles */
+.nav-label {
+  font-family: "Poppins", Inter, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bottom-nav-button {
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
 }
