@@ -22,7 +22,7 @@ export default function App() {
       style={{ background: "#f7f2e8" }}
     >
       <main className="flex-1 bottom-safe">
-        <div className="max-w-xl mx-auto w-full px-4 py-6">{renderPage()}</div>
+        <div className="mx-auto w-full">{renderPage()}</div>
       </main>
 
       <Fab onClick={() => console.log("FAB clicked")} />
