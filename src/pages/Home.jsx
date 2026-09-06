@@ -7,7 +7,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#f7f2e8] text-slate-900">
-      <header className="flex items-center justify-between px-4 py-3">
+      <header
+        className="flex items-center px-4 py-3 bg-[#f7f2e8]"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          backdropFilter: "blur(4px)",
+          WebkitBackdropFilter: "blur(4px)",
+        }}
+      >
         <div className="flex h-10 items-center overflow-hidden">
           <img
             src={Logo}
@@ -16,27 +27,35 @@ export default function Home() {
           />
         </div>
 
-        <button
-          className="rounded-full text-sm font-semibold text-white transition-colors duration-200"
-          style={{
-            backgroundColor: isHovered ? "#c1735c" : "var(--primary)",
-            color: "#ffffff",
-            border: "none",
-            outline: "none",
-            paddingLeft: "18px",
-            paddingRight: "18px",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-          }}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          Sign Up
-        </button>
+        <div className="ml-auto">
+          <button
+            className="rounded-full text-sm font-semibold text-white transition-colors duration-200"
+            style={{
+              backgroundColor: isHovered ? "#c1735c" : "var(--primary)",
+              color: "#ffffff",
+              border: "none",
+              outline: "none",
+              paddingLeft: "15px",
+              paddingRight: "15px",
+              paddingTop: "8px",
+              paddingBottom: "8px",
+              fontSize: "0.8rem",
+              position: "relative",
+              left: "-12px",
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            Sign Up
+          </button>
+        </div>
       </header>
 
-      <main className="px-3 py-4">
-        <section className="relative mx-auto w-[95%] overflow-hidden rounded-[30px] bg-gradient-to-br from-[#263b5b] via-[#2a446e] to-[#d39b82] px-6 py-9 text-white shadow-[0_24px_60px_rgba(38,59,91,0.22)] min-h-[380px] flex items-center">
+      <main className="px-3 py-4" style={{ paddingTop: "70px" }}>
+        <section
+          className="relative mx-auto w-[95%] overflow-hidden rounded-[30px] bg-gradient-to-br from-[#263b5b] via-[#2a446e] to-[#d39b82] px-6 py-9 text-white shadow-[0_24px_60px_rgba(38,59,91,0.22)] min-h-[380px] flex items-center"
+          style={{ marginTop: "0px" }}
+        >
           <div className="mx-auto max-w-[300px] text-center">
             <div className="flex justify-center">
               <div className="inline-flex items-center gap-2.5">
