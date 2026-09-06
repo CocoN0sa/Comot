@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../assets/images/comot logo.png";
 import ImageOne from "../assets/images/comotimg1.jpg";
+import ImageTwo from "../assets/images/comotimg2.webp";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
@@ -51,7 +52,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="px-3 py-4" style={{ paddingTop: "70px" }}>
+      <main className="px-3 py-4" style={{ paddingTop: "64px" }}>
         <section
           className="relative mx-auto w-[95%] overflow-hidden rounded-[30px] bg-gradient-to-br from-[#263b5b] via-[#2a446e] to-[#d39b82] px-6 py-9 text-white shadow-[0_24px_60px_rgba(38,59,91,0.22)] min-h-[380px] flex items-center"
           style={{ marginTop: "0px" }}
@@ -201,7 +202,7 @@ export default function Home() {
         </section>
 
         <section className="relative mx-auto mt-[5%] w-[95%] overflow-hidden rounded-[30px] bg-white shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
-          <div className="relative h-[220px] w-full overflow-hidden rounded-[30px]">
+          <div className="relative h-[220px] w-full overflow-hidden rounded-t-[30px]">
             <img
               src={ImageOne}
               alt="Featured experience"
@@ -218,13 +219,117 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="px-[5%] pb-5 pt-4 text-left">
+          <div
+            className="bg-[#f7f2e8] px-[5%] pb-5 pt-4 text-left"
+            style={{ backgroundColor: "#f7f2e8" }}
+          >
             <p className="text-[1.15rem] font-semibold leading-[1.3] tracking-[-0.04em] text-[#263b5b]">
               Meet strangers.
               <span className="mt-1 block text-[#263b5b]">
                 One table. Zero awkwardness.
               </span>
             </p>
+          </div>
+        </section>
+
+        <section className="relative mx-auto mt-[5%] w-[95%] overflow-hidden rounded-[30px] bg-[var(--accent)] shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
+          <div className="relative h-[220px] w-full overflow-hidden rounded-t-[30px]">
+            <img
+              src={ImageTwo}
+              alt="People sharing an experience"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#263b5b]/80 via-[#263b5b]/15 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-5 text-left text-white">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f8e8df]">
+                Make it social
+              </p>
+              <h2 className="mt-2 text-[1.7rem] font-bold leading-[1.1] tracking-[-0.05em]">
+                Bring your people.
+              </h2>
+            </div>
+          </div>
+
+          <div
+            className="px-[5%] pb-10 pt-4 text-left"
+            style={{ paddingBottom: "40px" }}
+          >
+            <p
+              className="text-[1.5rem] font-extrabold leading-[1.25] tracking-[-0.04em] text-white"
+              style={{ fontSize: "1.5rem", fontWeight: 800, color: "#ffffff" }}
+            >
+              The going out plan that never happens.
+            </p>
+            <div
+              className="relative mt-5 overflow-hidden rounded-[28px_12px_28px_12px] border-0 bg-gradient-to-br from-[#fffaf7] to-[#f7f2e8] px-6 py-5 text-left text-[#263b5b] shadow-[0_10px_28px_rgba(38,59,91,0.16)] transition-transform duration-200 hover:-translate-y-0.5"
+              style={{
+                fontSize: "1.35rem",
+                fontWeight: 600,
+                padding: "0 12px",
+                backgroundColor: "#f7f2e8",
+                marginTop: "20px",
+              }}
+            >
+              <p
+                className="text-[1.35rem] font-semibold leading-[1.25] tracking-[-0.04em]"
+                style={{ fontSize: "1.35rem", fontWeight: 600 }}
+              >
+                Don&apos;t know where to go?
+              </p>
+              <p
+                className="mt-2 text-[1.15rem] font-normal leading-[1.4] tracking-normal"
+                style={{ fontSize: "1.15rem", fontWeight: 400 }}
+              >
+                Venue disovery in Nigerian cities is broken. People still rely
+                on whatsapp forwards, outdated instagram pages, word of mouth
+                and guesswork to find places to eat, hang out, work date, party
+                and explore.
+              </p>
+            </div>
+            <div
+              className="relative mt-5 overflow-hidden rounded-[28px_12px_28px_12px] border-0 bg-gradient-to-br from-[#fffaf7] to-[#f7f2e8] px-6 py-5 text-left text-[#263b5b] shadow-[0_10px_28px_rgba(38,59,91,0.16)] transition-transform duration-200 hover:-translate-y-0.5"
+              style={{
+                backgroundColor: "#f7f2e8",
+                padding: "0 12px",
+                marginTop: "20px",
+              }}
+            >
+              <p
+                className="text-[1.35rem] font-semibold leading-[1.25] tracking-[-0.04em]"
+                style={{ fontSize: "1.35rem", fontWeight: 600 }}
+              >
+                Nobody to go with?
+              </p>
+              <p
+                className="mt-0 text-[1.15rem] font-normal leading-[1.4] tracking-normal"
+                style={{ fontSize: "1.15rem", fontWeight: 400 }}
+              >
+                Coordinating an outing is harder than it should be. Several
+                people, one group chat, no decision
+              </p>
+            </div>
+            <div
+              className="relative mt-5 overflow-hidden rounded-[28px_12px_28px_12px] border-0 bg-gradient-to-br from-[#fffaf7] to-[#f7f2e8] px-6 py-5 text-left text-[#263b5b] shadow-[0_10px_28px_rgba(38,59,91,0.16)] transition-transform duration-200 hover:-translate-y-0.5"
+              style={{
+                backgroundColor: "#f7f2e8",
+                padding: "0 12px 24px",
+                marginTop: "20px",
+              }}
+            >
+              <p
+                className="text-[1.35rem] font-semibold leading-[1.25] tracking-[-0.04em]"
+                style={{ fontSize: "1.35rem", fontWeight: 600 }}
+              >
+                Staying home again?
+              </p>
+              <p
+                className="mt-0 text-[1.15rem] font-normal leading-[1.4] tracking-normal"
+                style={{ fontSize: "1.15rem", fontWeight: 400 }}
+              >
+                The intention was there. The plan wasn&apos;t. Another weekend
+                gone to with no motion.
+              </p>
+            </div>
           </div>
         </section>
       </main>
