@@ -8,7 +8,7 @@ export default function Home() {
   const [selectedCard, setSelectedCard] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#f7f2e8] text-slate-900">
+    <div className="min-h-screen overflow-x-hidden bg-[#f7f2e8] text-slate-900">
       <header
         className="flex items-center px-4 py-3 bg-[#f7f2e8]"
         style={{
@@ -487,6 +487,69 @@ export default function Home() {
             Meet people, experience your city, leave with new friends and a
             story.
           </p>
+        </section>
+
+        <section
+          className="relative mx-auto mt-4 w-[95%] bg-white px-[8%] pb-8 pt-12 text-left"
+          style={{
+            backgroundColor: "#ffffff",
+            boxSizing: "border-box",
+            overflow: "hidden",
+            paddingTop: "64px",
+          }}
+        >
+          <p
+            className="text-2xl font-bold text-black"
+            style={{ fontSize: "1.5rem", fontWeight: 700 }}
+          >
+            What you get
+          </p>
+          <div
+            className="mt-6 flex min-h-[180px] flex-col items-start justify-start rounded-[24px] bg-[#263b5b] p-6"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              boxSizing: "border-box",
+              padding: "24px",
+            }}
+          >
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 54 54"
+              fill="none"
+              aria-hidden="true"
+              style={{ display: "block" }}
+            >
+              <circle cx="27" cy="27" r="20" stroke="#f6d7c5" strokeWidth="2.2" />
+              <path
+                d="m34 20-5 10-10 5 5-10 10-5Z"
+                fill="#c1735c"
+                stroke="#f6d7c5"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+              <circle cx="27" cy="27" r="2" fill="#f6d7c5" />
+            </svg>
+            <p
+              className="text-2xl font-extrabold text-[#c1735c]"
+              style={{
+                margin: 0,
+                fontSize: "1.5rem",
+                fontWeight: 800,
+                color: "#c1735c",
+              }}
+            >
+              Explore
+            </p>
+            <p
+              className="max-w-[280px] text-sm font-light leading-5 text-[#f8e8df]"
+              style={{ margin: 0 }}
+            >
+              Browse restaurants, parks, bars, and hidden gems in Abuja.
+              Filter by vibe, budget, and occasion.
+            </p>
+          </div>
         </section>
       </main>
     </div>
