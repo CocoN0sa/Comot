@@ -5,6 +5,7 @@ import ImageTwo from "../assets/images/comotimg2.webp";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(0);
 
   return (
     <div className="min-h-screen bg-[#f7f2e8] text-slate-900">
@@ -124,11 +125,12 @@ export default function Home() {
             >
               <button
                 type="button"
-                className="flex items-center justify-center rounded-full py-3.5 text-[0.92rem] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
+                className="bg-transparent flex items-center justify-center rounded-full py-3.5 text-[0.92rem] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
                 style={{
-                  background: "rgba(255,255,255,0.08)",
+                  background: "none",
+                  backgroundColor: "transparent",
                   border: "1px solid rgba(255,255,255,0.18)",
-                  color: "#fffaf7",
+                  color: "#ffffff",
                   minWidth: "138px",
                   paddingLeft: "20%",
                   paddingRight: "20%",
@@ -142,15 +144,15 @@ export default function Home() {
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "var(--accent)";
                   e.currentTarget.style.borderColor = "rgba(255,255,255,0.28)";
-                  e.currentTarget.style.color = "#fffaf7";
+                  e.currentTarget.style.color = "#ffffff";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                  e.currentTarget.style.background = "transparent";
                   e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)";
-                  e.currentTarget.style.color = "#fffaf7";
+                  e.currentTarget.style.color = "#ffffff";
                 }}
                 onMouseDown={(e) => {
-                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.background = "transparent";
                   e.currentTarget.style.transform = "scale(0.98)";
                 }}
                 onMouseUp={(e) => {
@@ -162,11 +164,12 @@ export default function Home() {
 
               <button
                 type="button"
-                className="flex items-center justify-center rounded-full border py-3.5 text-[0.92rem] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
+                className="bg-transparent flex items-center justify-center rounded-full border py-3.5 text-[0.92rem] font-semibold text-white transition-all duration-200 active:scale-[0.98]"
                 style={{
-                  background: "rgba(255,255,255,0.08)",
+                  background: "none",
+                  backgroundColor: "transparent",
                   borderColor: "rgba(255,255,255,0.18)",
-                  color: "#fffaf7",
+                  color: "#ffffff",
                   minWidth: "100px",
                   paddingLeft: "20%",
                   paddingRight: "20%",
@@ -180,15 +183,15 @@ export default function Home() {
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "var(--accent)";
                   e.currentTarget.style.borderColor = "rgba(255,255,255,0.28)";
-                  e.currentTarget.style.color = "#fffaf7";
+                  e.currentTarget.style.color = "#ffffff";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                  e.currentTarget.style.background = "transparent";
                   e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)";
-                  e.currentTarget.style.color = "#fffaf7";
+                  e.currentTarget.style.color = "#ffffff";
                 }}
                 onMouseDown={(e) => {
-                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.background = "transparent";
                   e.currentTarget.style.transform = "scale(0.98)";
                 }}
                 onMouseUp={(e) => {
@@ -201,7 +204,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative mx-auto mt-[5%] w-[95%] overflow-hidden rounded-[30px] bg-white shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
+        <section className="relative mx-auto mt-[5%] w-[95%] overflow-hidden rounded-[30px_30px_0_0] bg-white shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
           <div className="relative h-[220px] w-full overflow-hidden rounded-t-[30px]">
             <img
               src={ImageOne}
@@ -232,7 +235,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative mx-auto mt-[5%] w-[95%] overflow-hidden rounded-[30px] bg-[var(--accent)] shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
+        <section className="relative mx-auto mt-0 w-[95%] overflow-hidden rounded-[0_0_30px_30px] bg-[var(--accent)] shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
           <div className="relative h-[220px] w-full overflow-hidden rounded-t-[30px]">
             <img
               src={ImageTwo}
@@ -260,8 +263,11 @@ export default function Home() {
             >
               The going out plan that never happens.
             </p>
-            <div
-              className="relative mr-[8%] mt-5 overflow-hidden rounded-[20px_20px_20px_6px] border border-[#eadfce] bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-transform duration-200 hover:-translate-y-0.5"
+            <button
+              type="button"
+              aria-pressed={selectedCard === 0}
+              onClick={() => setSelectedCard(0)}
+              className={`relative mr-[8%] mt-5 block w-[92%] overflow-hidden rounded-[20px_20px_20px_6px] border bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-all duration-300 hover:-translate-y-0.5 ${selectedCard === 0 ? "translate-x-[3%] scale-[1.02] border-[#c1735c] ring-2 ring-[#c1735c]/30" : "border-[#eadfce] opacity-80"}`}
               style={{
                 fontSize: "1.1rem",
                 fontWeight: 600,
@@ -283,9 +289,12 @@ export default function Home() {
                 Finding places in Nigerian cities still means relying on
                 forwards, guesswork, and outdated pages.
               </p>
-            </div>
-            <div
-              className="relative ml-[8%] mt-5 overflow-hidden rounded-[20px_20px_6px_20px] border border-[#eadfce] bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-transform duration-200 hover:-translate-y-0.5"
+            </button>
+            <button
+              type="button"
+              aria-pressed={selectedCard === 1}
+              onClick={() => setSelectedCard(1)}
+              className={`relative ml-[8%] mt-5 block w-[92%] overflow-hidden rounded-[20px_20px_6px_20px] border bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-all duration-300 hover:-translate-y-0.5 ${selectedCard === 1 ? "-translate-x-[3%] scale-[1.02] border-[#c1735c] ring-2 ring-[#c1735c]/30" : "border-[#eadfce] opacity-80"}`}
               style={{
                 backgroundColor: "#f7f2e8",
                 padding: "0 12px",
@@ -305,9 +314,12 @@ export default function Home() {
                 Coordinating an outing is harder than it should be. Several
                 people, one group chat, no decision
               </p>
-            </div>
-            <div
-              className="relative mr-[8%] mt-5 overflow-hidden rounded-[20px_20px_20px_6px] border border-[#eadfce] bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-transform duration-200 hover:-translate-y-0.5"
+            </button>
+            <button
+              type="button"
+              aria-pressed={selectedCard === 2}
+              onClick={() => setSelectedCard(2)}
+              className={`relative mr-[8%] mt-5 block w-[92%] overflow-hidden rounded-[20px_20px_20px_6px] border bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-all duration-300 hover:-translate-y-0.5 ${selectedCard === 2 ? "translate-x-[3%] scale-[1.02] border-[#c1735c] ring-2 ring-[#c1735c]/30" : "border-[#eadfce] opacity-80"}`}
               style={{
                 backgroundColor: "#f7f2e8",
                 padding: "0 12px 24px",
@@ -327,7 +339,7 @@ export default function Home() {
                 The intention was there. The plan wasn&apos;t. Another weekend
                 gone to with no motion.
               </p>
-            </div>
+            </button>
           </div>
         </section>
       </main>
