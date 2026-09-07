@@ -241,10 +241,10 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#263b5b]/80 via-[#263b5b]/15 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-5 text-left text-white">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f8e8df]">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#f8e8df]">
                 Make it social
               </p>
-              <h2 className="mt-2 text-[1.7rem] font-bold leading-[1.1] tracking-[-0.05em]">
+              <h2 className="mt-2 text-[1.4rem] font-bold leading-[1.1] tracking-[-0.05em]">
                 Bring your people.
               </h2>
             </div>
@@ -255,15 +255,15 @@ export default function Home() {
             style={{ paddingBottom: "40px" }}
           >
             <p
-              className="text-[1.5rem] font-extrabold leading-[1.25] tracking-[-0.04em] text-white"
-              style={{ fontSize: "1.5rem", fontWeight: 800, color: "#ffffff" }}
+              className="text-[1.2rem] font-extrabold leading-[1.25] tracking-[-0.04em] text-white"
+              style={{ fontSize: "1.2rem", fontWeight: 800, color: "#ffffff" }}
             >
               The going out plan that never happens.
             </p>
             <div
-              className="relative mt-5 overflow-hidden rounded-[28px_12px_28px_12px] border-0 bg-gradient-to-br from-[#fffaf7] to-[#f7f2e8] px-6 py-5 text-left text-[#263b5b] shadow-[0_10px_28px_rgba(38,59,91,0.16)] transition-transform duration-200 hover:-translate-y-0.5"
+              className="relative mr-[8%] mt-5 overflow-hidden rounded-[20px_20px_20px_6px] border border-[#eadfce] bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-transform duration-200 hover:-translate-y-0.5"
               style={{
-                fontSize: "1.35rem",
+                fontSize: "1.1rem",
                 fontWeight: 600,
                 padding: "0 12px",
                 backgroundColor: "#f7f2e8",
@@ -271,23 +271,21 @@ export default function Home() {
               }}
             >
               <p
-                className="text-[1.35rem] font-semibold leading-[1.25] tracking-[-0.04em]"
-                style={{ fontSize: "1.35rem", fontWeight: 600 }}
+                className="text-[1rem] font-semibold leading-[1.25] tracking-[-0.04em]"
+                style={{ fontSize: "1rem", fontWeight: 600 }}
               >
                 Don&apos;t know where to go?
               </p>
               <p
-                className="mt-2 text-[1.15rem] font-normal leading-[1.4] tracking-normal"
-                style={{ fontSize: "1.15rem", fontWeight: 400 }}
+                className="mt-2 text-[0.85rem] font-normal leading-[1.4] tracking-normal"
+                style={{ fontSize: "0.85rem", fontWeight: 400 }}
               >
-                Venue disovery in Nigerian cities is broken. People still rely
-                on whatsapp forwards, outdated instagram pages, word of mouth
-                and guesswork to find places to eat, hang out, work date, party
-                and explore.
+                Finding places in Nigerian cities still means relying on
+                forwards, guesswork, and outdated pages.
               </p>
             </div>
             <div
-              className="relative mt-5 overflow-hidden rounded-[28px_12px_28px_12px] border-0 bg-gradient-to-br from-[#fffaf7] to-[#f7f2e8] px-6 py-5 text-left text-[#263b5b] shadow-[0_10px_28px_rgba(38,59,91,0.16)] transition-transform duration-200 hover:-translate-y-0.5"
+              className="relative ml-[8%] mt-5 overflow-hidden rounded-[20px_20px_6px_20px] border border-[#eadfce] bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-transform duration-200 hover:-translate-y-0.5"
               style={{
                 backgroundColor: "#f7f2e8",
                 padding: "0 12px",
@@ -295,21 +293,21 @@ export default function Home() {
               }}
             >
               <p
-                className="text-[1.35rem] font-semibold leading-[1.25] tracking-[-0.04em]"
-                style={{ fontSize: "1.35rem", fontWeight: 600 }}
+                className="text-[1rem] font-semibold leading-[1.25] tracking-[-0.04em]"
+                style={{ fontSize: "1rem", fontWeight: 600 }}
               >
                 Nobody to go with?
               </p>
               <p
-                className="mt-0 text-[1.15rem] font-normal leading-[1.4] tracking-normal"
-                style={{ fontSize: "1.15rem", fontWeight: 400 }}
+                className="mt-0 text-[0.85rem] font-normal leading-[1.4] tracking-normal"
+                style={{ fontSize: "0.85rem", fontWeight: 400 }}
               >
                 Coordinating an outing is harder than it should be. Several
                 people, one group chat, no decision
               </p>
             </div>
             <div
-              className="relative mt-5 overflow-hidden rounded-[28px_12px_28px_12px] border-0 bg-gradient-to-br from-[#fffaf7] to-[#f7f2e8] px-6 py-5 text-left text-[#263b5b] shadow-[0_10px_28px_rgba(38,59,91,0.16)] transition-transform duration-200 hover:-translate-y-0.5"
+              className="relative mr-[8%] mt-5 overflow-hidden rounded-[20px_20px_20px_6px] border border-[#eadfce] bg-[#fffaf7] px-6 py-5 text-left text-[#263b5b] shadow-[0_8px_20px_rgba(38,59,91,0.12)] transition-transform duration-200 hover:-translate-y-0.5"
               style={{
                 backgroundColor: "#f7f2e8",
                 padding: "0 12px 24px",
@@ -317,14 +315,14 @@ export default function Home() {
               }}
             >
               <p
-                className="text-[1.35rem] font-semibold leading-[1.25] tracking-[-0.04em]"
-                style={{ fontSize: "1.35rem", fontWeight: 600 }}
+                className="text-[1rem] font-semibold leading-[1.25] tracking-[-0.04em]"
+                style={{ fontSize: "1rem", fontWeight: 600 }}
               >
                 Staying home again?
               </p>
               <p
-                className="mt-0 text-[1.15rem] font-normal leading-[1.4] tracking-normal"
-                style={{ fontSize: "1.15rem", fontWeight: 400 }}
+                className="mt-0 text-[0.85rem] font-normal leading-[1.4] tracking-normal"
+                style={{ fontSize: "0.85rem", fontWeight: 400 }}
               >
                 The intention was there. The plan wasn&apos;t. Another weekend
                 gone to with no motion.
