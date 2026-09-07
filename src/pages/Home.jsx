@@ -228,7 +228,7 @@ export default function Home() {
               background: "#263b5b",
               boxShadow:
                 "inset 0 10px 16px -20px rgba(38,59,91,0.2), inset 0 -10px 16px -20px rgba(38,59,91,0.2)",
-              padding: "8px 5%",
+              padding: "14px 5%",
               marginTop: "-4px",
               marginBottom: "-4px",
               position: "relative",
