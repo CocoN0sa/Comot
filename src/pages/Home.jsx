@@ -345,7 +345,7 @@ export default function Home() {
                 style={{ fontSize: "0.85rem", fontWeight: 400 }}
               >
                 Coordinating an outing is harder than it should be. Several
-                people, one group chat, no decision
+                people, one group chat, no decision.
               </p>
             </button>
             <button
@@ -374,6 +374,119 @@ export default function Home() {
               </p>
             </button>
           </div>
+        </section>
+
+        <section className="relative mx-auto mt-10 w-[95%] px-[8%] py-8 text-left">
+          <p
+            className="text-xl font-bold text-[#263b5b]"
+            style={{ fontSize: "1.25rem", fontWeight: 700 }}
+          >
+            How it works
+          </p>
+          <div className="mt-4 text-[#c1735c]" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path
+                d="M15 27s9-7.2 9-14A9 9 0 1 0 6 13c0 6.8 9 14 9 14Z"
+                fill="currentColor"
+              />
+              <circle cx="15" cy="13" r="3.2" fill="#f7f2e8" />
+            </svg>
+          </div>
+          <p className="mt-2 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#c1735c]">
+            Step 01
+          </p>
+          <p
+            className="mt-2 text-base font-semibold text-black"
+            style={{ fontWeight: 600 }}
+          >
+            Browse
+          </p>
+          <p className="mt-2 max-w-[280px] text-sm font-light leading-5 text-[#6b7280]">
+            Venues and experiences in your city, sorted by vibes needed.
+          </p>
+          <div className="mt-7 text-[#c1735c]" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <rect x="4" y="6" width="22" height="20" rx="4" fill="currentColor" />
+              <path d="M4 11h22" stroke="#f7f2e8" strokeWidth="2" />
+              <path
+                d="M9 4v5M21 4v5"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+              />
+              <path
+                d="m9 18 3 3 8-8"
+                stroke="#f7f2e8"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <p className="mt-2 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#c1735c]">
+            STEP 02
+          </p>
+          <p
+            className="mt-2 text-base font-semibold text-black"
+            style={{ fontWeight: 600 }}
+          >
+            Register or save
+          </p>
+          <p className="mt-2 max-w-[280px] text-sm font-light leading-5 text-[#6b7280]">
+            Book a curated group outing, or save the spots you&apos;re keeping
+            for later.
+          </p>
+          <div className="mt-7 text-[#c1735c]" aria-hidden="true">
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 40 40"
+              fill="none"
+              style={{ transform: "rotate(20deg)", transformOrigin: "center" }}
+            >
+              <path
+                d="M9 13h22L20 34h-2L9 13Z"
+                fill="currentColor"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M8 12.5h24"
+                stroke="#f7f2e8"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+              />
+              <path
+                d="M17 8V3M10 9 7 5M24 9l3-4M7 14H3M27 14h5"
+                stroke="#263b5b"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+              <circle cx="17" cy="3" r="1.6" fill="#c1735c" />
+              <circle cx="7" cy="5" r="1.6" fill="#263b5b" />
+              <circle cx="27" cy="5" r="1.6" fill="#c1735c" />
+              <path
+                d="m14 17 7 13"
+                stroke="#f7f2e8"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <p className="mt-2 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#c1735c]">
+            STEP 03
+          </p>
+          <p
+            className="mt-2 text-base font-semibold text-black"
+            style={{ fontWeight: 600 }}
+          >
+            Show up
+          </p>
+          <p className="mt-2 max-w-[280px] text-sm font-light leading-5 text-[#6b7280]">
+            Meet people, experience your city, leave with new friends and a
+            story.
+          </p>
         </section>
       </main>
     </div>
