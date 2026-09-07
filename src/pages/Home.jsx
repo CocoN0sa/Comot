@@ -223,24 +223,57 @@ export default function Home() {
           </div>
 
           <div
-            className="bg-[#f7f2e8] px-[5%] pb-5 pt-4 text-left"
-            style={{ backgroundColor: "#f7f2e8" }}
+            className="flow-root bg-[#c1735c] px-[5%] pb-5 pt-4 text-left"
+            style={{
+              background: "#263b5b",
+              boxShadow:
+                "inset 0 10px 16px -20px rgba(38,59,91,0.2), inset 0 -10px 16px -20px rgba(38,59,91,0.2)",
+              padding: "8px 5%",
+              marginTop: "-4px",
+              marginBottom: "-4px",
+              position: "relative",
+              zIndex: 1,
+            }}
           >
-            <p className="text-[1.15rem] font-semibold leading-[1.3] tracking-[-0.04em] text-[#263b5b]">
+            <p
+              className="text-[0.95rem] font-semibold leading-[1.2] tracking-[-0.04em] text-white"
+              style={{ margin: 0, lineHeight: 1.2, color: "#ffffff" }}
+            >
               Meet strangers.
-              <span className="mt-1 block text-[#263b5b]">
+              <span className="mt-1 block text-white">
                 One table. Zero awkwardness.
               </span>
             </p>
           </div>
         </section>
 
-        <section className="relative mx-auto mt-0 w-[95%] overflow-hidden rounded-[0_0_30px_30px] bg-[var(--accent)] shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
-          <div className="relative h-[220px] w-full overflow-hidden rounded-t-[30px]">
+        <section
+          className="relative mx-auto mt-0 w-[95%] overflow-hidden rounded-[0_0_30px_30px] bg-[#c1735c] shadow-[0_24px_60px_rgba(38,59,91,0.12)]"
+          style={{ backgroundColor: "#c1735c" }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 220,
+              backgroundColor: "#263b5b",
+            }}
+          />
+          <div
+            className="relative h-[220px] w-full overflow-hidden rounded-t-[44px]"
+            style={{
+              borderTopLeftRadius: "44px",
+              borderTopRightRadius: "44px",
+              backgroundColor: "#263b5b",
+            }}
+          >
             <img
               src={ImageTwo}
               alt="People sharing an experience"
-              className="h-full w-full object-cover"
+              className="h-full w-full rounded-t-[44px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#263b5b]/80 via-[#263b5b]/15 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-5 text-left text-white">
@@ -254,8 +287,8 @@ export default function Home() {
           </div>
 
           <div
-            className="px-[5%] pb-10 pt-4 text-left"
-            style={{ paddingBottom: "40px" }}
+            className="bg-[#c1735c] px-[5%] pb-10 pt-4 text-left"
+            style={{ backgroundColor: "#c1735c", paddingBottom: "40px" }}
           >
             <p
               className="text-[1.2rem] font-extrabold leading-[1.25] tracking-[-0.04em] text-white"
