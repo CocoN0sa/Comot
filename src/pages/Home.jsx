@@ -228,7 +228,7 @@ export default function Home() {
               background: "#263b5b",
               boxShadow:
                 "inset 0 10px 16px -20px rgba(38,59,91,0.2), inset 0 -10px 16px -20px rgba(38,59,91,0.2)",
-              padding: "14px 5%",
+              padding: "30px 5%",
               marginTop: "-4px",
               marginBottom: "-4px",
               position: "relative",
@@ -292,7 +292,12 @@ export default function Home() {
           >
             <p
               className="text-[1.2rem] font-extrabold leading-[1.25] tracking-[-0.04em] text-white"
-              style={{ fontSize: "1.2rem", fontWeight: 800, color: "#ffffff" }}
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: 800,
+                color: "#ffffff",
+                marginTop: "40px",
+              }}
             >
               The going out plan that never happens.
             </p>
@@ -306,7 +311,7 @@ export default function Home() {
                 fontWeight: 600,
                 padding: "0 12px",
                 backgroundColor: "#f7f2e8",
-                marginTop: "20px",
+                marginTop: "40px",
               }}
             >
               <p
@@ -331,7 +336,7 @@ export default function Home() {
               style={{
                 backgroundColor: "#f7f2e8",
                 padding: "0 12px",
-                marginTop: "20px",
+                marginTop: "40px",
               }}
             >
               <p
@@ -356,7 +361,7 @@ export default function Home() {
               style={{
                 backgroundColor: "#f7f2e8",
                 padding: "0 12px 24px",
-                marginTop: "20px",
+                marginTop: "40px",
               }}
             >
               <p
@@ -376,14 +381,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative mx-auto mt-10 w-[95%] px-[8%] py-8 text-left">
+        <section
+          className="relative mx-auto mt-10 w-[95%] px-[8%] py-8 text-left"
+          style={{ marginTop: "60px" }}
+        >
           <p
             className="text-xl font-bold text-[#263b5b]"
             style={{ fontSize: "1.25rem", fontWeight: 700 }}
           >
             How it works
           </p>
-          <div className="mt-4 text-[#c1735c]" aria-hidden="true">
+          <div
+            className="mt-4 text-[#c1735c]"
+            aria-hidden="true"
+            style={{ marginTop: "40px" }}
+          >
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
               <path
                 d="M15 27s9-7.2 9-14A9 9 0 1 0 6 13c0 6.8 9 14 9 14Z"
@@ -404,9 +416,20 @@ export default function Home() {
           <p className="mt-2 max-w-[280px] text-sm font-light leading-5 text-[#6b7280]">
             Venues and experiences in your city, sorted by vibes needed.
           </p>
-          <div className="mt-7 text-[#c1735c]" aria-hidden="true">
+          <div
+            className="mt-7 text-[#c1735c]"
+            aria-hidden="true"
+            style={{ marginTop: "40px" }}
+          >
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <rect x="4" y="6" width="22" height="20" rx="4" fill="currentColor" />
+              <rect
+                x="4"
+                y="6"
+                width="22"
+                height="20"
+                rx="4"
+                fill="currentColor"
+              />
               <path d="M4 11h22" stroke="#f7f2e8" strokeWidth="2" />
               <path
                 d="M9 4v5M21 4v5"
@@ -436,7 +459,11 @@ export default function Home() {
             Book a curated group outing, or save the spots you&apos;re keeping
             for later.
           </p>
-          <div className="mt-7 text-[#c1735c]" aria-hidden="true">
+          <div
+            className="mt-7 text-[#c1735c]"
+            aria-hidden="true"
+            style={{ marginTop: "40px" }}
+          >
             <svg
               width="30"
               height="30"
@@ -511,6 +538,7 @@ export default function Home() {
               maxWidth: "100%",
               boxSizing: "border-box",
               padding: "24px",
+              marginTop: "40px",
             }}
           >
             <svg
@@ -521,7 +549,13 @@ export default function Home() {
               aria-hidden="true"
               style={{ display: "block" }}
             >
-              <circle cx="27" cy="27" r="20" stroke="#f6d7c5" strokeWidth="2.2" />
+              <circle
+                cx="27"
+                cy="27"
+                r="20"
+                stroke="#f6d7c5"
+                strokeWidth="2.2"
+              />
               <path
                 d="m34 20-5 10-10 5 5-10 10-5Z"
                 fill="#c1735c"
@@ -535,6 +569,7 @@ export default function Home() {
               className="text-2xl font-extrabold text-[#c1735c]"
               style={{
                 margin: 0,
+                marginTop: "16px",
                 fontSize: "1.5rem",
                 fontWeight: 800,
                 color: "#c1735c",
@@ -544,10 +579,178 @@ export default function Home() {
             </p>
             <p
               className="max-w-[280px] text-sm font-light leading-5 text-[#f8e8df]"
-              style={{ margin: 0 }}
+              style={{ margin: 0, marginTop: "12px", marginBottom: "12px" }}
             >
-              Browse restaurants, parks, bars, and hidden gems in Abuja.
-              Filter by vibe, budget, and occasion.
+              Browse restaurants, parks, bars, and hidden gems in Abuja. Filter
+              by vibe, budget, and occasion.
+            </p>
+          </div>
+          <div
+            className="mt-6 flex min-h-[180px] flex-col items-start justify-start rounded-[24px] bg-[#c1735c] p-6"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              boxSizing: "border-box",
+              padding: "24px",
+              marginTop: "24px",
+            }}
+          >
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 54 54"
+              fill="none"
+              aria-hidden="true"
+              style={{ display: "block" }}
+            >
+              <circle cx="19" cy="15" r="4" fill="#f6d7c5" />
+              <circle cx="35" cy="15" r="4" fill="#f6d7c5" />
+              <path
+                d="M13 24c0-3.3 2.7-6 6-6s6 2.7 6 6v10h-12V24Z"
+                fill="#f6d7c5"
+                opacity="0.8"
+              />
+              <path
+                d="M29 24c0-3.3 2.7-6 6-6s6 2.7 6 6v10h-12V24Z"
+                fill="#f6d7c5"
+              />
+            </svg>
+            <p
+              className="text-2xl font-extrabold text-white"
+              style={{
+                margin: 0,
+                marginTop: "16px",
+                fontSize: "1.5rem",
+                fontWeight: 800,
+                color: "#ffffff",
+              }}
+            >
+              Experience
+            </p>
+            <p
+              className="max-w-[280px] text-sm font-light leading-5 text-[#f8e8df]"
+              style={{ margin: 0, marginTop: "12px", marginBottom: "12px" }}
+            >
+              Join curated group outings with strangers who become friends.
+              Female only, Male only or mixed.
+            </p>
+          </div>
+          <div
+            className="mt-6 flex min-h-[180px] flex-col items-start justify-start rounded-[24px] bg-white p-6"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              boxSizing: "border-box",
+              padding: "24px",
+              marginTop: "24px",
+              border: "1px solid #c1735c",
+              position: "relative",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                width: "100%",
+              }}
+            >
+              <svg
+                width="44"
+                height="44"
+                viewBox="0 0 54 54"
+                fill="none"
+                aria-hidden="true"
+                style={{ display: "block" }}
+              >
+                <path
+                  d="M27 45C13.2 38.4 8 30.6 8 22c0-7.7 6.3-14 14-14 4.2 0 8.1 1.8 10.9 4.7 2.8-2.9 6.7-4.7 10.9-4.7 7.7 0 14 6.3 14 14 0 8.6-5.2 16.4-19 23Z"
+                  fill="#c1735c"
+                />
+              </svg>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "4px",
+                  padding: "6px 10px",
+                  backgroundColor: "#fff5f2",
+                  borderRadius: "8px",
+                  border: "1px solid #c1735c",
+                }}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                    fill="#c1735c"
+                  />
+                </svg>
+                <p
+                  style={{
+                    fontSize: "0.65rem",
+                    fontWeight: 600,
+                    color: "#c1735c",
+                    margin: "0",
+                    textAlign: "center",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Coming soon
+                </p>
+              </div>
+            </div>
+            <p
+              className="text-2xl font-extrabold text-[#c1735c]"
+              style={{
+                margin: 0,
+                marginTop: "16px",
+                fontSize: "1.5rem",
+                fontWeight: 800,
+                color: "#c1735c",
+              }}
+            >
+              Match
+            </p>
+            <p
+              className="max-w-[280px] text-sm font-light leading-5 text-gray-600"
+              style={{ margin: 0, marginTop: "12px", marginBottom: "12px" }}
+            >
+              Tell us your mood and budget. Our recommendation engine finds your
+              perfect spot.
+            </p>
+          </div>
+        </section>
+
+        <section
+          className="relative mx-auto w-full py-24 text-center"
+          style={{
+            backgroundColor: "#c1735c",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div className="mx-auto w-[95%] max-w-[600px]">
+            <p
+              className="text-3xl font-bold text-white"
+              style={{
+                fontSize: "2rem",
+                fontWeight: 700,
+                color: "#ffffff",
+                lineHeight: 1.4,
+                margin: 0,
+              }}
+            >
+              Built for the Nigerian who wants more from their city.
             </p>
           </div>
         </section>
