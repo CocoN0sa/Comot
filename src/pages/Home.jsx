@@ -97,7 +97,7 @@ export default function Home() {
                 </div>
                 <p
                   className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f8e8df]"
-                  style={{ fontFamily: '"Inter", "Segoe UI", sans-serif' }}
+                  style={{ fontFamily: '"Manrope", sans-serif' }}
                 >
                   NOW LIVE IN ABUJA
                 </p>
@@ -106,7 +106,7 @@ export default function Home() {
 
             <h1
               className="mt-4 text-[2.1rem] font-bold leading-[0.96] tracking-[-0.06em] text-[#fffaf7]"
-              style={{ fontFamily: '"Inter", "Segoe UI", sans-serif' }}
+              style={{ fontFamily: '"Manrope", sans-serif' }}
             >
               Find Places,
               <span className="block text-[#fffaf7]">Find People.</span>
@@ -114,7 +114,7 @@ export default function Home() {
 
             <p
               className="mt-4 text-sm leading-6 text-[#f8e8df]"
-              style={{ fontFamily: '"Inter", "Segoe UI", sans-serif' }}
+              style={{ fontFamily: '"Manrope", sans-serif' }}
             >
               Discover the best spot in your city and find people to go with.
             </p>
@@ -204,8 +204,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative mx-auto mt-[5%] w-[95%] overflow-hidden rounded-[30px_30px_0_0] bg-white shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
-          <div className="relative h-[220px] w-full overflow-hidden rounded-t-[30px]">
+        <section className="relative mx-auto mt-[10%] w-[95%] overflow-hidden rounded-[30px_30px_0_0] bg-white shadow-[0_24px_60px_rgba(38,59,91,0.12)]">
+          <div className="relative h-[280px] w-full overflow-hidden rounded-t-[30px]">
             <img
               src={ImageOne}
               alt="Featured experience"
@@ -228,7 +228,7 @@ export default function Home() {
               background: "#263b5b",
               boxShadow:
                 "inset 0 10px 16px -20px rgba(38,59,91,0.2), inset 0 -10px 16px -20px rgba(38,59,91,0.2)",
-              padding: "30px 5%",
+              padding: "48px 5%",
               marginTop: "-4px",
               marginBottom: "-4px",
               position: "relative",
@@ -517,12 +517,13 @@ export default function Home() {
         </section>
 
         <section
-          className="relative mx-auto mt-4 w-[95%] bg-white px-[8%] pb-8 pt-12 text-left"
+          className="relative mx-auto mt-4 w-full bg-white px-[8%] pb-8 pt-12 text-left"
           style={{
             backgroundColor: "#ffffff",
             boxSizing: "border-box",
             overflow: "hidden",
             paddingTop: "64px",
+            paddingBottom: "96px",
           }}
         >
           <p
@@ -549,28 +550,28 @@ export default function Home() {
               aria-hidden="true"
               style={{ display: "block" }}
             >
-              <circle
-                cx="27"
-                cy="27"
-                r="20"
-                stroke="#f6d7c5"
-                strokeWidth="2.2"
-              />
               <path
-                d="m34 20-5 10-10 5 5-10 10-5Z"
+                d="m10 15 12-5 11 5 11-5v28l-11 5-11-5-12 5V15Z"
+                stroke="#f6d7c5"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path d="M22 10v28M33 15v28" stroke="#f6d7c5" strokeWidth="2.5" />
+              <path
+                d="M27.5 20.5c-4.1 0-7 2.8-7 6.5 0 5.3 7 10.5 7 10.5s7-5.2 7-10.5c0-3.7-2.9-6.5-7-6.5Z"
                 fill="#c1735c"
                 stroke="#f6d7c5"
                 strokeWidth="2"
-                strokeLinejoin="round"
               />
-              <circle cx="27" cy="27" r="2" fill="#f6d7c5" />
+              <circle cx="27.5" cy="27" r="2.2" fill="#f6d7c5" />
             </svg>
             <p
               className="text-2xl font-extrabold text-[#c1735c]"
               style={{
                 margin: 0,
                 marginTop: "16px",
-                fontSize: "1.5rem",
+                fontSize: "1.25rem",
                 fontWeight: 800,
                 color: "#c1735c",
               }}
@@ -579,7 +580,7 @@ export default function Home() {
             </p>
             <p
               className="max-w-[280px] text-sm font-light leading-5 text-[#f8e8df]"
-              style={{ margin: 0, marginTop: "12px", marginBottom: "12px" }}
+              style={{ fontSize: "0.8rem", margin: 0, marginTop: "12px", marginBottom: "12px" }}
             >
               Browse restaurants, parks, bars, and hidden gems in Abuja. Filter
               by vibe, budget, and occasion.
@@ -603,16 +604,22 @@ export default function Home() {
               aria-hidden="true"
               style={{ display: "block" }}
             >
-              <circle cx="19" cy="15" r="4" fill="#f6d7c5" />
-              <circle cx="35" cy="15" r="4" fill="#f6d7c5" />
+              <circle cx="27" cy="15" r="5" fill="#f6d7c5" />
+              <circle cx="13.5" cy="21" r="4" fill="#f6d7c5" opacity="0.8" />
+              <circle cx="40.5" cy="21" r="4" fill="#f6d7c5" opacity="0.8" />
               <path
-                d="M13 24c0-3.3 2.7-6 6-6s6 2.7 6 6v10h-12V24Z"
+                d="M18 38v-8c0-5 4-9 9-9s9 4 9 9v8"
                 fill="#f6d7c5"
-                opacity="0.8"
+                stroke="#f6d7c5"
+                strokeWidth="2.5"
+                strokeLinecap="round"
               />
               <path
-                d="M29 24c0-3.3 2.7-6 6-6s6 2.7 6 6v10h-12V24Z"
-                fill="#f6d7c5"
+                d="M5 40v-6c0-4.5 3.7-8 8.5-8M49 40v-6c0-4.5-3.7-8-8.5-8"
+                stroke="#f6d7c5"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                opacity="0.8"
               />
             </svg>
             <p
@@ -620,7 +627,7 @@ export default function Home() {
               style={{
                 margin: 0,
                 marginTop: "16px",
-                fontSize: "1.5rem",
+                fontSize: "1.25rem",
                 fontWeight: 800,
                 color: "#ffffff",
               }}
@@ -629,7 +636,7 @@ export default function Home() {
             </p>
             <p
               className="max-w-[280px] text-sm font-light leading-5 text-[#f8e8df]"
-              style={{ margin: 0, marginTop: "12px", marginBottom: "12px" }}
+              style={{ fontSize: "0.8rem", margin: 0, marginTop: "12px", marginBottom: "12px" }}
             >
               Join curated group outings with strangers who become friends.
               Female only, Male only or mixed.
@@ -664,9 +671,13 @@ export default function Home() {
                 style={{ display: "block" }}
               >
                 <path
-                  d="M27 45C13.2 38.4 8 30.6 8 22c0-7.7 6.3-14 14-14 4.2 0 8.1 1.8 10.9 4.7 2.8-2.9 6.7-4.7 10.9-4.7 7.7 0 14 6.3 14 14 0 8.6-5.2 16.4-19 23Z"
-                  fill="#c1735c"
+                  d="M27 44s-15-8.4-15-20.2C12 17.3 16.7 13 22.4 13c2.1 0 3.7.7 4.6 1.8.9-1.1 2.5-1.8 4.6-1.8 5.7 0 10.4 4.3 10.4 10.8C42 35.6 27 44 27 44Z"
+                  fill="#fff5f2"
+                  stroke="#c1735c"
+                  strokeWidth="2.5"
+                  strokeLinejoin="round"
                 />
+                <path d="m19 27 5 5 11-12" stroke="#c1735c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <div
                 style={{
@@ -695,7 +706,7 @@ export default function Home() {
                 </svg>
                 <p
                   style={{
-                    fontSize: "0.65rem",
+                    fontSize: "0.6rem",
                     fontWeight: 600,
                     color: "#c1735c",
                     margin: "0",
@@ -712,7 +723,7 @@ export default function Home() {
               style={{
                 margin: 0,
                 marginTop: "16px",
-                fontSize: "1.5rem",
+                fontSize: "1.25rem",
                 fontWeight: 800,
                 color: "#c1735c",
               }}
@@ -721,7 +732,7 @@ export default function Home() {
             </p>
             <p
               className="max-w-[280px] text-sm font-light leading-5 text-gray-600"
-              style={{ margin: 0, marginTop: "12px", marginBottom: "12px" }}
+              style={{ fontSize: "0.8rem", margin: 0, marginTop: "12px", marginBottom: "12px" }}
             >
               Tell us your mood and budget. Our recommendation engine finds your
               perfect spot.
@@ -737,20 +748,26 @@ export default function Home() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            minHeight: "250px",
+            paddingTop: "55px",
+            paddingBottom: "55px",
+            marginTop: "0",
           }}
         >
           <div className="mx-auto w-[95%] max-w-[600px]">
             <p
               className="text-3xl font-bold text-white"
               style={{
-                fontSize: "2rem",
+                fontSize: "1.55rem",
                 fontWeight: 700,
                 color: "#ffffff",
                 lineHeight: 1.4,
                 margin: 0,
               }}
             >
-              Built for the Nigerian who wants more from their city.
+              Built for the Nigerian
+              <span className="block">who wants more from</span>
+              <span className="block">their city.</span>
             </p>
           </div>
         </section>
