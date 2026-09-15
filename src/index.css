@@ -42,6 +42,16 @@ body,
   }
 }
 
+@keyframes ctaImageFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-4deg) scale(1);
+  }
+  50% {
+    transform: translate3d(-12px, 10px, 0) rotate(-1deg) scale(1.04);
+  }
+}
+
 /* Typography */
 * {
   font-family:

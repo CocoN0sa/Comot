@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Logo from "../assets/images/comot logo.png";
 import ImageOne from "../assets/images/comotimg1.jpg";
 import ImageTwo from "../assets/images/comotimg2.webp";
+import ImageThree from "../assets/images/comotimg3.jpg";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
@@ -55,7 +56,7 @@ export default function Home() {
 
       <main className="px-3 py-4" style={{ paddingTop: "64px" }}>
         <section
-          className="relative mx-auto w-[95%] overflow-hidden rounded-[30px] bg-gradient-to-br from-[#263b5b] via-[#2a446e] to-[#d39b82] px-6 py-9 text-white shadow-[0_24px_60px_rgba(38,59,91,0.22)] min-h-[380px] flex items-center"
+          className="relative mx-auto w-[95%] overflow-hidden rounded-[30px] bg-gradient-to-br from-[#263b5b] via-[#2a446e] to-[#d39b82] px-6 py-9 text-white shadow-[0_24px_60px_rgba(38,59,91,0.22)] min-h-[440px] flex items-center"
           style={{ marginTop: "0px" }}
         >
           <div className="mx-auto max-w-[300px] text-center">
@@ -392,16 +393,19 @@ export default function Home() {
             How it works
           </p>
           <div
-            className="mt-4 text-[#c1735c]"
+            className="mt-4 flex items-center justify-center text-[#c1735c]"
             aria-hidden="true"
-            style={{ marginTop: "40px" }}
+            style={{ marginTop: "40px", width: "48px", height: "48px", borderRadius: "14px", backgroundColor: "#fff5f2" }}
           >
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <path
-                d="M15 27s9-7.2 9-14A9 9 0 1 0 6 13c0 6.8 9 14 9 14Z"
-                fill="currentColor"
+                d="M15.5 15.5 21 21"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
               />
-              <circle cx="15" cy="13" r="3.2" fill="#f7f2e8" />
+              <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" strokeWidth="2.2" />
+              <path d="M8 10.5h5M10.5 8v5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
             </svg>
           </div>
           <p className="mt-2 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#c1735c]">
@@ -417,30 +421,22 @@ export default function Home() {
             Venues and experiences in your city, sorted by vibes needed.
           </p>
           <div
-            className="mt-7 text-[#c1735c]"
+            className="mt-7 flex items-center justify-center text-[#c1735c]"
             aria-hidden="true"
-            style={{ marginTop: "40px" }}
+            style={{ marginTop: "40px", width: "48px", height: "48px", borderRadius: "14px", backgroundColor: "#fff5f2" }}
           >
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <rect
-                x="4"
-                y="6"
-                width="22"
-                height="20"
-                rx="4"
-                fill="currentColor"
-              />
-              <path d="M4 11h22" stroke="#f7f2e8" strokeWidth="2" />
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <path
-                d="M9 4v5M21 4v5"
+                d="M4 8.5V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2.5M4 8.5h16M4 8.5V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.5"
                 stroke="currentColor"
-                strokeWidth="2.4"
+                strokeWidth="1.8"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
-                d="m9 18 3 3 8-8"
-                stroke="#f7f2e8"
-                strokeWidth="2.4"
+                d="m8 14 2.5 2.5L16 11"
+                stroke="currentColor"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -460,44 +456,17 @@ export default function Home() {
             for later.
           </p>
           <div
-            className="mt-7 text-[#c1735c]"
+            className="mt-7 flex items-center justify-center text-[#c1735c]"
             aria-hidden="true"
-            style={{ marginTop: "40px" }}
+            style={{ marginTop: "40px", width: "48px", height: "48px", borderRadius: "14px", backgroundColor: "#fff5f2" }}
           >
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 40 40"
-              fill="none"
-              style={{ transform: "rotate(20deg)", transformOrigin: "center" }}
-            >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <path
-                d="M9 13h22L20 34h-2L9 13Z"
-                fill="currentColor"
+                d="M8.5 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM15.5 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.5 20v-1.5A3.5 3.5 0 0 1 7 15h3a3.5 3.5 0 0 1 3.5 3.5V20M10.5 20v-1.5A3.5 3.5 0 0 1 14 15h3a3.5 3.5 0 0 1 3.5 3.5V20"
                 stroke="currentColor"
-                strokeWidth="1.4"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8 12.5h24"
-                stroke="#f7f2e8"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-              />
-              <path
-                d="M17 8V3M10 9 7 5M24 9l3-4M7 14H3M27 14h5"
-                stroke="#263b5b"
                 strokeWidth="1.8"
                 strokeLinecap="round"
-              />
-              <circle cx="17" cy="3" r="1.6" fill="#c1735c" />
-              <circle cx="7" cy="5" r="1.6" fill="#263b5b" />
-              <circle cx="27" cy="5" r="1.6" fill="#c1735c" />
-              <path
-                d="m14 17 7 13"
-                stroke="#f7f2e8"
-                strokeWidth="2"
-                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
@@ -743,7 +712,7 @@ export default function Home() {
         <section
           className="relative mx-auto w-full py-24 text-center"
           style={{
-            backgroundColor: "#c1735c",
+            backgroundColor: "#263b5b",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -771,6 +740,127 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        <section
+          className="relative mx-auto w-full overflow-hidden bg-white py-12 text-center"
+          style={{
+            backgroundColor: "#ffffff",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: "60px",
+            paddingBottom: "60px",
+            borderBottom: "1px solid #eadfce",
+          }}
+        >
+          <img
+            src={ImageThree}
+            alt=""
+            aria-hidden="true"
+            className="absolute -right-16 -top-6 w-[72%] max-w-[380px] rounded-[28px] object-cover opacity-[0.14]"
+            style={{ animation: "ctaImageFloat 7s ease-in-out infinite" }}
+          />
+          <div className="relative z-10 mx-auto w-[95%] max-w-[600px]" style={{ textAlign: "center" }}>
+            <p
+              className="text-[1.85rem] font-black leading-[1.08] tracking-[-0.05em] text-black"
+              style={{ margin: 0, textAlign: "center", fontWeight: 900 }}
+            >
+              Ready to leave the
+              <span className="block">house?</span>
+            </p>
+            <div className="mt-8 flex items-center justify-center" style={{ marginTop: "48px", gap: "3%", transform: "translateY(10px)" }}>
+              <button
+                type="button"
+                className="flex items-center justify-center rounded-full bg-transparent py-3.5 text-[0.92rem] font-semibold transition-all duration-200 active:scale-[0.98]"
+                style={{
+                  background: "none",
+                  backgroundColor: "transparent",
+                  border: "1px solid #263b5b",
+                  color: "#263b5b",
+                  width: "124px",
+                  paddingLeft: "16px",
+                  paddingRight: "16px",
+                  paddingTop: "0.875rem",
+                  paddingBottom: "0.875rem",
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                  boxShadow: "inset 0 1px 0 rgba(38,59,91,0.12)",
+                  transition: "all 200ms ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.borderColor = "rgba(193,115,92,0.9)";
+                  e.currentTarget.style.color = "#ffffff";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "#263b5b";
+                  e.currentTarget.style.color = "#263b5b";
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.transform = "scale(0.98)";
+                }}
+                onMouseUp={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
+              >
+                Get Started
+              </button>
+              <button
+                type="button"
+                className="flex items-center justify-center rounded-full bg-transparent py-3.5 text-[0.92rem] font-semibold transition-all duration-200 active:scale-[0.98]"
+                style={{
+                  background: "none",
+                  backgroundColor: "transparent",
+                  border: "1px solid #263b5b",
+                  color: "#263b5b",
+                  width: "92px",
+                  paddingLeft: "16px",
+                  paddingRight: "16px",
+                  paddingTop: "0.875rem",
+                  paddingBottom: "0.875rem",
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                  boxShadow: "inset 0 1px 0 rgba(38,59,91,0.12)",
+                  transition: "all 200ms ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--accent)";
+                  e.currentTarget.style.borderColor = "rgba(193,115,92,0.9)";
+                  e.currentTarget.style.color = "#ffffff";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "#263b5b";
+                  e.currentTarget.style.color = "#263b5b";
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.transform = "scale(0.98)";
+                }}
+                onMouseUp={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
+              >
+                Log in
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <footer className="w-full bg-[#f7f2e8] px-[8%] pb-10 pt-16" style={{ backgroundColor: "#f7f2e8" }}>
+          <img
+            src={Logo}
+            alt="COMOT"
+            className="block h-6 w-auto max-w-[105px] object-contain"
+            style={{ display: "block" }}
+          />
+          <p className="mt-4 text-sm font-semibold text-[#6b7280]">
+            Find Places, Find People.
+          </p>
+        </footer>
       </main>
     </div>
   );
