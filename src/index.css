@@ -52,6 +52,42 @@ body,
   }
 }
 
+@keyframes ctaZoomPan {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.12) translate(-3%, 2%) rotate(1.5deg);
+  }
+}
+
+@keyframes ctaFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ctaButtonIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Typography */
 * {
   font-family:

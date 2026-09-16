@@ -737,14 +737,79 @@ export default function Home() {
               Built for the Nigerian
               <span className="block">who wants more from</span>
               <span className="block">their city.</span>
-            </p>
+</p>
           </div>
         </section>
 
         <section
-          className="relative mx-auto w-full overflow-hidden bg-white py-12 text-center"
+          className="relative mx-auto w-full py-24 text-center"
           style={{
-            backgroundColor: "#ffffff",
+            backgroundColor: "#f7f2e8",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: "60px",
+            paddingBottom: "60px",
+          }}
+        >
+          <div className="mx-auto w-[95%] max-w-[640px] text-center">
+            <p
+              className="text-[0.7rem] font-bold uppercase tracking-[0.16em]"
+              style={{ margin: 0, color: "#c1735c" }}
+            >
+              FOR VENUE OWNERS
+            </p>
+            <h3
+              className="mt-12 text-2xl font-bold leading-[1.1] tracking-[-0.04em] text-black"
+              style={{ margin: 0, marginTop: "24px", fontSize: "1.5rem", fontWeight: 700 }}
+            >
+              Own a spot in
+              <span className="block">Abuja? Get</span>
+              <span className="block">discovered.</span>
+            </h3>
+            <p
+              className="mt-12 text-xs font-light leading-5 text-[#6b7280]"
+              style={{ margin: 0, marginTop: "24px", fontSize: "0.7rem" }}
+            >
+              List your venue on Comot and reach thousands of young Nigerians
+              looking for somewhere to go.
+            </p>
+            <button
+              type="button"
+              className="mt-12 inline-flex items-center justify-center rounded-full py-3 text-[0.9rem] font-semibold transition-all duration-200 active:scale-[0.98]"
+              style={{
+                background: "#263b5b",
+                color: "#ffffff",
+                border: "none",
+                paddingLeft: "24px",
+                paddingRight: "24px",
+                paddingTop: "0.8rem",
+                paddingBottom: "0.8rem",
+                marginTop: "32px",
+                transition: "all 200ms ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#c1735c";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#263b5b";
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = "scale(0.98)";
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              List your venue
+            </button>
+          </div>
+        </section>
+
+        <section
+          className="relative mx-auto w-full overflow-hidden py-12 text-center"
+          style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -758,8 +823,8 @@ export default function Home() {
             src={ImageThree}
             alt=""
             aria-hidden="true"
-            className="absolute -right-16 -top-6 w-[72%] max-w-[380px] rounded-[28px] object-cover opacity-[0.14]"
-            style={{ animation: "ctaImageFloat 7s ease-in-out infinite" }}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ opacity: 0.3, animation: "ctaZoomPan 12s ease-in-out infinite" }}
           />
           <div className="relative z-10 mx-auto w-[95%] max-w-[600px]" style={{ textAlign: "center" }}>
             <p
