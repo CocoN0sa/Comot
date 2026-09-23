@@ -913,17 +913,49 @@ export default function Home() {
               </button>
             </div>
           </div>
-        </section>
+          </section>
 
-        <footer className="w-full bg-[#f7f2e8] px-[8%] pb-10 pt-16" style={{ backgroundColor: "#f7f2e8" }}>
+        <footer
+          className="w-full bg-[#f7f2e8] px-4 pb-10"
+          style={{ backgroundColor: "#f7f2e8", overflow: "visible", paddingTop: "64px" }}
+        >
           <img
             src={Logo}
             alt="COMOT"
-            className="block h-6 w-auto max-w-[105px] object-contain"
-            style={{ display: "block" }}
+            className="block h-4 w-auto max-w-[80px] object-contain"
+            style={{ display: "block", marginTop: "4px" }}
           />
-          <p className="mt-4 text-sm font-semibold text-[#6b7280]">
+          <p className="text-xs font-medium text-[#6b7280]" style={{ marginLeft: "20px", marginTop: "16px" }}>
             Find Places, Find People.
+          </p>
+          <div className="flex w-full justify-center" style={{ marginTop: "48px" }}>
+            <div className="flex items-center justify-center">
+              <a href="#" style={{ textDecoration: "none", marginRight: "40px", color: "#000000" }} className="group flex w-10 flex-col items-center gap-2 transition-colors">
+                <span className="text-xs font-medium" style={{ color: "#000000" }}>About</span>
+              </a>
+              <a href="#" style={{ textDecoration: "none", marginRight: "40px", color: "#000000" }} className="group flex w-10 flex-col items-center gap-2 transition-colors">
+                <span className="text-xs font-medium" style={{ color: "#000000" }}>Contact</span>
+              </a>
+              <a href="#" style={{ textDecoration: "none", marginRight: "40px", color: "#000000" }} className="group flex w-10 flex-row items-center gap-2 transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden style={{ color: "#000000", marginRight: "6px" }}>
+                  <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" strokeWidth="1.8" />
+                  <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.8" />
+                  <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+                </svg>
+                <span className="text-xs font-medium" style={{ color: "#000000" }}>Instagram</span>
+              </a>
+              <a href="#" aria-label="X" style={{ textDecoration: "none", color: "#000000" }} className="group flex items-center justify-center transition-colors">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white shadow-sm transition-all group-hover:scale-105 group-hover:shadow-md" style={{ color: "#000000" }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.16 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+          <p className="flex items-center font-medium text-[#6b7280]" style={{ marginTop: "32px", marginBottom: "0", fontSize: "12px", whiteSpace: "nowrap", alignItems: "center", paddingLeft: "35px" }}>
+            <span aria-hidden style={{ fontSize: "16px", verticalAlign: "middle", marginRight: "8px" }}>©</span>
+            Comot Platforms Limited 2026
           </p>
         </footer>
       </main>
