@@ -3,18 +3,6 @@ import React from "react";
 export default function BottomNav({ active, onChange }) {
   const items = [
     {
-      key: "home",
-      label: "HOME",
-      icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path
-            d="M4 10.5L12 4l8 6.5V19a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-8.5z"
-            fill="currentColor"
-          />
-        </svg>
-      ),
-    },
-    {
       key: "explore",
       label: "EXPLORE",
       icon: (
@@ -67,28 +55,29 @@ export default function BottomNav({ active, onChange }) {
           borderTop: "1px solid rgba(0,0,0,0.12)",
         }}
       >
-        <div className="max-w-xl mx-auto flex">
+        <div className="max-w-xl mx-auto flex" style={{ overflow: "hidden" }}>
           {items.map((it) => {
             const isActive = active === it.key;
-            return (
+return (
               <button
                 key={it.key}
                 onClick={() => onChange(it.key)}
                 className={`flex-1 py-3 flex flex-col items-center justify-center gap-1 text-sm font-semibold transition-all duration-200 bottom-nav-button`}
                 aria-label={it.label}
-                style={
-                  isActive
-                    ? {
-                        color: "white",
-                        background:
-                          "linear-gradient(90deg, var(--primary), var(--accent))",
-                        boxShadow: "0 8px 24px rgba(193,115,92,0.18)",
-                        transform: "translateY(-4px) scale(1.02)",
-                      }
-                    : {
-                        color: "rgba(255,255,255,0.9)",
-                        background: "transparent",
-                      }
+                style={isActive
+                  ? {
+                      minWidth: 0,
+                      color: "white",
+                      background:
+                        "linear-gradient(90deg, var(--primary), var(--accent))",
+                      boxShadow: "0 8px 24px rgba(193,115,92,0.18)",
+                      transform: "translateY(-4px) scale(1.02)",
+                    }
+                  : {
+                      minWidth: 0,
+                      color: "rgba(255,255,255,0.9)",
+                      background: "transparent",
+                    }
                 }
               >
                 <div

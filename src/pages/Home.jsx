@@ -4,9 +4,21 @@ import ImageOne from "../assets/images/comotimg1.jpg";
 import ImageTwo from "../assets/images/comotimg2.webp";
 import ImageThree from "../assets/images/comotimg3.jpg";
 
-export default function Home() {
+export default function Home({ onNavigate }) {
   const [isHovered, setIsHovered] = useState(false);
   const [selectedCard, setSelectedCard] = useState(0);
+
+  const navigateToGetStarted = () => {
+    if (onNavigate) {
+      onNavigate("getstarted");
+    }
+  };
+
+  const navigateToLogin = () => {
+    if (onNavigate) {
+      onNavigate("login");
+    }
+  };
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f7f2e8] text-slate-900">
@@ -48,6 +60,7 @@ export default function Home() {
             }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onClick={navigateToGetStarted}
           >
             Sign Up
           </button>
@@ -159,6 +172,7 @@ export default function Home() {
                 onMouseUp={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
                 }}
+                onClick={navigateToGetStarted}
               >
                 Get Started
               </button>
@@ -195,9 +209,10 @@ export default function Home() {
                   e.currentTarget.style.background = "transparent";
                   e.currentTarget.style.transform = "scale(0.98)";
                 }}
-                onMouseUp={(e) => {
+onMouseUp={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
                 }}
+                onClick={navigateToLogin}
               >
                 Log in
               </button>
@@ -798,12 +813,12 @@ export default function Home() {
               onMouseDown={(e) => {
                 e.currentTarget.style.transform = "scale(0.98)";
               }}
-              onMouseUp={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-              }}
-            >
-              List your venue
-            </button>
+onMouseUp={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
+              >
+                List Your Venue
+              </button>
           </div>
         </section>
 
@@ -870,6 +885,7 @@ export default function Home() {
                 onMouseUp={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
                 }}
+                onClick={navigateToGetStarted}
               >
                 Get Started
               </button>
@@ -908,6 +924,7 @@ export default function Home() {
                 onMouseUp={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
                 }}
+                onClick={navigateToGetStarted}
               >
                 Log in
               </button>
