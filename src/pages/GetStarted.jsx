@@ -111,8 +111,8 @@ export default function GetStarted({ onNavigate }) {
   const selectedLocation = locations.find((l) => l.value === formData.location);
 
   return (
-    <div style={{ height: "100vh", width: "100%", background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 16px", boxSizing: "border-box" }}>
-      <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, background: "#f7f2e8", height: "40px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", boxSizing: "border-box" }}>
+    <div style={{ height: "100vh", width: "100%", background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", boxSizing: "border-box" }}>
+      <header style={{ width: "100%", position: "relative", top: 0, left: 0, right: 0, zIndex: 50, background: "#f7f2e8", height: "40px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", boxSizing: "border-box" }}>
         <img src={Logo} alt="COMOT logo" style={{ height: "44px", width: "auto", maxWidth: "170px" }} />
         <button onClick={() => onNavigate && onNavigate("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#263b5b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -120,9 +120,9 @@ export default function GetStarted({ onNavigate }) {
           </svg>
         </button>
       </header>
-      <div style={{ maxWidth: "300px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "50px" }}>
+      <div style={{ maxWidth: "300px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px" }}>
         {step !== 4 && (
-        <div style={{ textAlign: "center", marginTop: "-100px", marginBottom: "24px" }}>
+        <div style={{ textAlign: "center", marginTop: "0", marginBottom: "24px" }}>
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ margin: "0 auto 8px", color: "#c1735c" }}>
             <circle cx="12" cy="12" r="10" stroke="#c1735c" strokeWidth="2" />
             <path d="M8 12l3 3 5-5" stroke="#c1735c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
