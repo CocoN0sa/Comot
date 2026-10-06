@@ -120,7 +120,7 @@ export default function GetStarted({ onNavigate }) {
           </svg>
         </button>
       </header>
-      <div style={{ maxWidth: "380px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "50px" }}>
+      <div style={{ maxWidth: "300px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "50px" }}>
         {step !== 4 && (
         <div style={{ textAlign: "center", marginTop: "-100px", marginBottom: "24px" }}>
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ margin: "0 auto 8px", color: "#c1735c" }}>
@@ -136,9 +136,9 @@ export default function GetStarted({ onNavigate }) {
         </div>
         )}
 
-        <div style={{ background: "#fff", borderRadius: "20px", padding: "12px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
+        <div style={{ background: "#fff", borderRadius: "20px", padding: "8px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
           {step !== 4 && (
-          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "12px" }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "8px" }}>
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 1 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 2 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 3 ? "#c1735c" : "#eadfce" }} />
@@ -148,13 +148,13 @@ export default function GetStarted({ onNavigate }) {
 
           <form onSubmit={handleNext}>
             {error && (
-              <div style={{ background: "#fee2e2", border: "1px solid #ef4444", color: "#b91c1c", padding: "10px 12px", borderRadius: "10px", marginBottom: "16px", fontSize: "13px", fontWeight: 500, textAlign: "center" }}>
+              <div style={{ background: "#fee2e2", border: "1px solid #ef4444", color: "#b91c1c", padding: "8px 10px", borderRadius: "10px", marginBottom: "16px", fontSize: "13px", fontWeight: 500, textAlign: "center" }}>
                 {error}
               </div>
             )}
             {step === 1 && (
               <div>
-                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "11px", fontWeight: 600, color: "#263b5b", marginBottom: "4px" }}>
                   Full Name
                 </label>
                 <input
@@ -169,7 +169,7 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Enter your full name"
                   style={{
                     width: "100%",
-                    padding: "10px 12px",
+                    padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
                     fontSize: "14px",
@@ -195,7 +195,7 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Nickname"
                   style={{
                     width: "100%",
-                    padding: "10px 12px",
+                    padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
                     fontSize: "14px",
@@ -217,7 +217,7 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="you@example.com"
                   style={{
                     width: "100%",
-                    padding: "10px 12px",
+                    padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
                     fontSize: "14px",
@@ -237,7 +237,7 @@ export default function GetStarted({ onNavigate }) {
                     onClick={() => setIsLocationOpen(!isLocationOpen)}
                     style={{
                       width: "100%",
-                      padding: "10px 12px",
+                      padding: "8px 10px",
                       borderRadius: "12px",
                       border: "1px solid #eadfce",
                       fontSize: "14px",
@@ -295,7 +295,7 @@ export default function GetStarted({ onNavigate }) {
                           onClick={() => handleLocationSelect(loc.value)}
                           style={{
                             width: "100%",
-                            padding: "10px 12px",
+                            padding: "8px 10px",
                             textAlign: "left",
                             fontSize: "14px",
                             fontFamily: "inherit",
@@ -336,7 +336,7 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="+234 8XX XXX XXXX"
                   style={{
                     width: "100%",
-                    padding: "10px 12px",
+                    padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
                     fontSize: "14px",
@@ -408,7 +408,7 @@ export default function GetStarted({ onNavigate }) {
 
             {step === 3 && (
               <div>
-                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "11px", fontWeight: 600, color: "#263b5b", marginBottom: "4px" }}>
                   Create Password
                 </label>
                 <input
@@ -419,7 +419,7 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="At least 8 characters"
                   style={{
                     width: "100%",
-                    padding: "10px 12px",
+                    padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
                     fontSize: "14px",
@@ -441,7 +441,7 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Confirm your password"
                   style={{
                     width: "100%",
-                    padding: "10px 12px",
+                    padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
                     fontSize: "14px",
