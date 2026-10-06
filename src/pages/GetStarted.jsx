@@ -138,9 +138,9 @@ export default function GetStarted({ onNavigate }) {
         </div>
         )}
 
-        <div style={{ background: "#fff", borderRadius: "20px", padding: "5px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
+        <div style={{ background: "#fff", borderRadius: "20px", padding: "4px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
           {step !== 4 && (
-          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "5px" }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "4px" }}>
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 1 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 2 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 3 ? "#c1735c" : "#eadfce" }} />
@@ -150,7 +150,7 @@ export default function GetStarted({ onNavigate }) {
 
           <form onSubmit={handleNext}>
             {error && (
-              <div style={{ background: "#fee2e2", border: "1px solid #ef4444", color: "#b91c1c", padding: "6px 8px", borderRadius: "8px", marginBottom: "10px", fontSize: "13px", fontWeight: 500, textAlign: "center" }}>
+              <div style={{ background: "#fee2e2", border: "1px solid #ef4444", color: "#b91c1c", padding: "5px 7px", borderRadius: "7px", marginBottom: "8px", fontSize: "13px", fontWeight: 500, textAlign: "center" }}>
                 {error}
               </div>
             )}
@@ -171,8 +171,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Enter your full name"
                   style={{
                     width: "100%",
-                    padding: "8px 10px",
-                    borderRadius: "12px",
+                    padding: "7px 9px",
+                    borderRadius: "10px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -182,7 +182,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="name"
                 />
-                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginTop: "12px", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
                   Username
                 </label>
                 <input
@@ -197,8 +197,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Nickname"
                   style={{
                     width: "100%",
-                    padding: "8px 10px",
-                    borderRadius: "12px",
+                    padding: "7px 9px",
+                    borderRadius: "10px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -208,7 +208,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="username"
                 />
-                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginTop: "12px", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
                   Email Address
                 </label>
                 <input
@@ -219,8 +219,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="you@example.com"
                   style={{
                     width: "100%",
-                    padding: "8px 10px",
-                    borderRadius: "12px",
+                    padding: "7px 9px",
+                    borderRadius: "10px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -230,7 +230,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="email"
                 />
-                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "12px", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
                   Location
                 </label>
                 <div ref={locationRef} style={{ position: "relative" }}>
@@ -239,8 +239,8 @@ export default function GetStarted({ onNavigate }) {
                     onClick={() => setIsLocationOpen(!isLocationOpen)}
                     style={{
                       width: "100%",
-                      padding: "8px 10px",
-                      borderRadius: "12px",
+                      padding: "7px 9px",
+                      borderRadius: "10px",
                       border: "1px solid #eadfce",
                       fontSize: "16px",
                       outline: "none",
@@ -283,7 +283,7 @@ export default function GetStarted({ onNavigate }) {
                         left: 0,
                         right: 0,
                         background: "#1a2a4a",
-                        borderRadius: "12px",
+                        borderRadius: "10px",
                         boxShadow: "0 10px 40px rgba(26, 42, 74, 0.3), 0 0 0 1px rgba(255,255,255,0.05)",
                         zIndex: 50,
                         overflow: "hidden",
@@ -297,7 +297,7 @@ export default function GetStarted({ onNavigate }) {
                           onClick={() => handleLocationSelect(loc.value)}
                           style={{
                             width: "100%",
-                            padding: "8px 10px",
+                            padding: "7px 9px",
                             textAlign: "left",
                             fontSize: "16px",
                             fontFamily: "inherit",
@@ -323,7 +323,7 @@ export default function GetStarted({ onNavigate }) {
                     </div>
                   )}
                 </div>
-                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "12px", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
                   Phone Number
                 </label>
                 <input
@@ -338,8 +338,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="+234 8XX XXX XXXX"
                   style={{
                     width: "100%",
-                    padding: "8px 10px",
-                    borderRadius: "12px",
+                    padding: "7px 9px",
+                    borderRadius: "10px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -373,8 +373,8 @@ export default function GetStarted({ onNavigate }) {
                   onClick={() => setStep(3)}
                   style={{
                     width: "100%",
-                    padding: "12px",
-                    borderRadius: "12px",
+                    padding: "10px",
+                    borderRadius: "10px",
                     border: "none",
                     background: "#c1735c",
                     color: "#fff",
@@ -392,8 +392,8 @@ export default function GetStarted({ onNavigate }) {
                   onClick={() => setStep(1)}
                   style={{
                     width: "100%",
-                    padding: "12px",
-                    borderRadius: "12px",
+                    padding: "10px",
+                    borderRadius: "10px",
                     border: "1px solid #eadfce",
                     background: "#fff",
                     color: "#263b5b",
@@ -421,8 +421,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="At least 8 characters"
                   style={{
                     width: "100%",
-                    padding: "8px 10px",
-                    borderRadius: "12px",
+                    padding: "7px 9px",
+                    borderRadius: "10px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -432,7 +432,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="new-password"
                 />
-                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "12px", marginBottom: "6px" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
                   Confirm Password
                 </label>
                 <input
@@ -443,8 +443,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Confirm your password"
                   style={{
                     width: "100%",
-                    padding: "8px 10px",
-                    borderRadius: "12px",
+                    padding: "7px 9px",
+                    borderRadius: "10px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -454,7 +454,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="new-password"
                 />
-                <label style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "10px", fontSize: "13px", color: "#263b5b", cursor: "pointer" }}>
+                <label style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "8px", fontSize: "13px", color: "#263b5b", cursor: "pointer" }}>
                   <input
                     type="checkbox"
                     name="rememberMe"
@@ -464,7 +464,7 @@ export default function GetStarted({ onNavigate }) {
                   />
                   <span style={{ fontWeight: 500 }}>Remember me</span>
                 </label>
-                <p style={{ fontSize: "12px", color: "#6b7280", marginTop: "10px", lineHeight: 1.4, textAlign: "center" }}>
+                <p style={{ fontSize: "12px", color: "#6b7280", marginTop: "8px", lineHeight: 1.4, textAlign: "center" }}>
                   By continuing, you agree to our Terms of Service and Privacy Policy
                 </p>
               </div>
@@ -506,15 +506,15 @@ export default function GetStarted({ onNavigate }) {
               </div>
             )}
 
-            <div style={{ display: "flex", gap: "10px", marginTop: "18px" }}>
+            <div style={{ display: "flex", gap: "10px", marginTop: "14px" }}>
               {step === 2 && (
                 <button
                   type="button"
                   onClick={handleBack}
                   style={{
                     flex: 1,
-                    padding: "12px",
-                    borderRadius: "12px",
+                    padding: "10px",
+                    borderRadius: "10px",
                     border: "1px solid #eadfce",
                     background: "#fff",
                     color: "#263b5b",
@@ -532,8 +532,8 @@ export default function GetStarted({ onNavigate }) {
                   type="submit"
                   style={{
                     flex: 1,
-                    padding: "12px",
-                    borderRadius: "12px",
+                    padding: "10px",
+                    borderRadius: "10px",
                     border: "none",
                     background: "#c1735c",
                     color: "#fff",
