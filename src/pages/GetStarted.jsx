@@ -136,9 +136,9 @@ export default function GetStarted({ onNavigate }) {
         </div>
         )}
 
-        <div style={{ background: "#fff", borderRadius: "20px", padding: "8px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
+        <div style={{ background: "#fff", borderRadius: "20px", padding: "6px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
           {step !== 4 && (
-          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "8px" }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "6px" }}>
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 1 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 2 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 3 ? "#c1735c" : "#eadfce" }} />
@@ -154,7 +154,7 @@ export default function GetStarted({ onNavigate }) {
             )}
             {step === 1 && (
               <div>
-                <label style={{ display: "block", fontSize: "11px", fontWeight: 600, color: "#263b5b", marginBottom: "4px" }}>
+                <label style={{ display: "block", fontSize: "11px", fontWeight: 600, color: "#263b5b", marginBottom: "3px" }}>
                   Full Name
                 </label>
                 <input
@@ -408,7 +408,7 @@ export default function GetStarted({ onNavigate }) {
 
             {step === 3 && (
               <div>
-                <label style={{ display: "block", fontSize: "11px", fontWeight: 600, color: "#263b5b", marginBottom: "4px" }}>
+                <label style={{ display: "block", fontSize: "11px", fontWeight: 600, color: "#263b5b", marginBottom: "3px" }}>
                   Create Password
                 </label>
                 <input
