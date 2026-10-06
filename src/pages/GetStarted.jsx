@@ -122,7 +122,7 @@ export default function GetStarted({ onNavigate }) {
         </button>
       )}
       </header>
-      <div style={{ maxWidth: "300px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px" }}>
+      <div style={{ maxWidth: "300px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", overflowY: "auto", maxHeight: "calc(100vh - 40px)", paddingBottom: "20px" }}>
         {step !== 4 && (
         <div style={{ textAlign: "center", marginTop: "0", marginBottom: "24px" }}>
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ margin: "0 auto 8px", color: "#c1735c" }}>
@@ -132,7 +132,7 @@ export default function GetStarted({ onNavigate }) {
           <h1 style={{ fontSize: "24px", fontWeight: 800, color: "#263b5b", margin: "0 0 6px" }}>
             Welcome to COMOT
           </h1>
-          <p style={{ fontSize: "14px", color: "#6b7280", margin: 0, lineHeight: 1.4 }}>
+          <p style={{ fontSize: "16px", color: "#6b7280", margin: 0, lineHeight: 1.4 }}>
             Create your account to discover and experience
           </p>
         </div>
@@ -174,7 +174,7 @@ export default function GetStarted({ onNavigate }) {
                     padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     outline: "none",
                     boxSizing: "border-box",
                     fontFamily: "inherit",
@@ -200,7 +200,7 @@ export default function GetStarted({ onNavigate }) {
                     padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     outline: "none",
                     boxSizing: "border-box",
                     fontFamily: "inherit",
@@ -222,7 +222,7 @@ export default function GetStarted({ onNavigate }) {
                     padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     outline: "none",
                     boxSizing: "border-box",
                     fontFamily: "inherit",
@@ -242,7 +242,7 @@ export default function GetStarted({ onNavigate }) {
                       padding: "8px 10px",
                       borderRadius: "12px",
                       border: "1px solid #eadfce",
-                      fontSize: "14px",
+                      fontSize: "16px",
                       outline: "none",
                       boxSizing: "border-box",
                       fontFamily: "inherit",
@@ -299,7 +299,7 @@ export default function GetStarted({ onNavigate }) {
                             width: "100%",
                             padding: "8px 10px",
                             textAlign: "left",
-                            fontSize: "14px",
+                            fontSize: "16px",
                             fontFamily: "inherit",
                             background: "transparent",
                             border: "none",
@@ -341,7 +341,7 @@ export default function GetStarted({ onNavigate }) {
                     padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     outline: "none",
                     boxSizing: "border-box",
                     fontFamily: "inherit",
@@ -364,7 +364,7 @@ export default function GetStarted({ onNavigate }) {
                   <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#263b5b", margin: "0 0 8px" }}>
                     Verify your email
                   </h3>
-                  <p style={{ fontSize: "14px", color: "#6b7280", margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: "16px", color: "#6b7280", margin: 0, lineHeight: 1.5 }}>
                     We've sent a verification link to <strong>{formData.email}</strong>
                   </p>
                 </div>
@@ -378,7 +378,7 @@ export default function GetStarted({ onNavigate }) {
                     border: "none",
                     background: "#c1735c",
                     color: "#fff",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     fontWeight: 700,
                     fontFamily: "inherit",
                     cursor: "pointer",
@@ -397,7 +397,7 @@ export default function GetStarted({ onNavigate }) {
                     border: "1px solid #eadfce",
                     background: "#fff",
                     color: "#263b5b",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     fontWeight: 600,
                     fontFamily: "inherit",
                     cursor: "pointer",
@@ -424,7 +424,7 @@ export default function GetStarted({ onNavigate }) {
                     padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     outline: "none",
                     boxSizing: "border-box",
                     fontFamily: "inherit",
@@ -446,7 +446,7 @@ export default function GetStarted({ onNavigate }) {
                     padding: "8px 10px",
                     borderRadius: "12px",
                     border: "1px solid #eadfce",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     outline: "none",
                     boxSizing: "border-box",
                     fontFamily: "inherit",
@@ -518,7 +518,7 @@ export default function GetStarted({ onNavigate }) {
                     border: "1px solid #eadfce",
                     background: "#fff",
                     color: "#263b5b",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     fontWeight: 600,
                     fontFamily: "inherit",
                     cursor: "pointer",
@@ -537,7 +537,7 @@ export default function GetStarted({ onNavigate }) {
                     border: "none",
                     background: "#c1735c",
                     color: "#fff",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     fontWeight: 700,
                     fontFamily: "inherit",
                     cursor: "pointer",

@@ -56,8 +56,8 @@ export default function Login({ onNavigate }) {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px 16px" }}>
-      <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, background: "#f7f2e8", height: "40px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", boxSizing: "border-box" }}>
+    <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", overflow: "hidden", boxSizing: "border-box", zIndex: 1000 }}>
+      <header style={{ width: "100%", background: "#f7f2e8", height: "40px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", boxSizing: "border-box" }}>
         <img src={Logo} alt="COMOT logo" style={{ height: "44px", width: "auto", maxWidth: "170px" }} />
         <button onClick={() => onNavigate && onNavigate("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#263b5b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -65,7 +65,7 @@ export default function Login({ onNavigate }) {
           </svg>
         </button>
       </header>
-      <div style={{ maxWidth: "380px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "70px" }}>
+      <div style={{ maxWidth: "380px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", overflowY: "auto", maxHeight: "calc(100vh - 40px)" }}>
         {step === 1 && (
           <>
             <div style={{ textAlign: "center", marginBottom: "24px" }}>
