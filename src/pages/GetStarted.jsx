@@ -138,9 +138,9 @@ return (
         </div>
         )}
 
-        <div style={{ background: "#fff", borderRadius: "20px", padding: "3px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
+        <div style={{ background: "#fff", borderRadius: "20px", padding: "10px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)", marginTop: "24px" }}>
           {step !== 4 && (
-          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "3px" }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "10px" }}>
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 1 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 2 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 3 ? "#c1735c" : "#eadfce" }} />

@@ -65,7 +65,7 @@ export default function Login({ onNavigate }) {
           </svg>
         </button>
       </header>
-      <div style={{ maxWidth: "340px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", overflowY: "auto", maxHeight: "calc(100vh - 40px)" }}>
+      <div style={{ maxWidth: "340px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", ...(step === 2 ? { display: "flex", justifyContent: "center", alignItems: "center", minHeight: "calc(100vh - 40px)", overflowY: "hidden" } : { overflowY: "auto", maxHeight: "calc(100vh - 40px)" }) }}>
         {step === 1 && (
           <>
             <div style={{ textAlign: "center", marginBottom: "20px" }}>
