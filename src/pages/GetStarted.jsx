@@ -110,7 +110,11 @@ export default function GetStarted({ onNavigate }) {
 
   const selectedLocation = locations.find((l) => l.value === formData.location);
 
-  return (
+  const contentStyle = step === 4
+  ? { display: "flex", justifyContent: "center", alignItems: "center", minHeight: "calc(100vh - 40px)", overflowY: "hidden" }
+  : { overflowY: "auto", maxHeight: "calc(100vh - 40px)" };
+
+return (
     <div style={{ height: "100vh", background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", overflow: "hidden", boxSizing: "border-box" }}>
       <header style={{ width: "100%", background: "#f7f2e8", height: "40px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", boxSizing: "border-box" }}>
         <img src={Logo} alt="COMOT logo" style={{ height: "32px", width: "auto", maxWidth: "130px" }} />
@@ -122,7 +126,7 @@ export default function GetStarted({ onNavigate }) {
         </button>
       )}
       </header>
-      <div style={{ maxWidth: "300px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", overflowY: "auto", maxHeight: "calc(100vh - 40px)" }}>
+      <div style={{ maxWidth: "300px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", ...contentStyle }}>
         {step !== 4 && (
         <div style={{ textAlign: "center", marginTop: "0", marginBottom: "20px" }}>
           <h1 style={{ fontSize: "20px", fontWeight: 800, color: "#263b5b", margin: "0 0 4px" }}>
@@ -544,6 +548,7 @@ export default function GetStarted({ onNavigate }) {
                 </button>
               )}
             </div>
+            {step === 1 && (
             <button
               type="button"
               onClick={() => alert("Google Sign Up coming soon!")}
@@ -573,6 +578,7 @@ export default function GetStarted({ onNavigate }) {
               </svg>
               Continue with Google
             </button>
+          )}
           </form>
 
           {step === 1 && (
