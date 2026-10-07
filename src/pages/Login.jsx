@@ -56,7 +56,7 @@ export default function Login({ onNavigate }) {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", boxSizing: "border-box" }}>
+    <div style={{ height: "100vh", background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", overflow: "hidden", boxSizing: "border-box" }}>
       <header style={{ width: "100%", background: "#f7f2e8", height: "40px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", boxSizing: "border-box" }}>
         <img src={Logo} alt="COMOT logo" style={{ height: "32px", width: "auto", maxWidth: "130px" }} />
         <button onClick={() => onNavigate && onNavigate("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -65,14 +65,10 @@ export default function Login({ onNavigate }) {
           </svg>
         </button>
       </header>
-      <div style={{ maxWidth: "380px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", overflowY: "auto", maxHeight: "calc(100vh - 40px)", paddingBottom: "20px" }}>
+      <div style={{ maxWidth: "340px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", overflowY: "auto", maxHeight: "calc(100vh - 40px)" }}>
         {step === 1 && (
           <>
             <div style={{ textAlign: "center", marginBottom: "20px" }}>
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{ margin: "0 auto 6px", color: "#c1735c" }}>
-                <circle cx="12" cy="12" r="10" stroke="#c1735c" strokeWidth="2" />
-                <path d="M8 12l3 3 5-5" stroke="#c1735c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
               <h1 style={{ fontSize: "20px", fontWeight: 800, color: "#263b5b", margin: "0 0 4px" }}>
                 Welcome back
               </h1>
