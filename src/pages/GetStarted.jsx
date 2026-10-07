@@ -111,9 +111,9 @@ export default function GetStarted({ onNavigate }) {
   const selectedLocation = locations.find((l) => l.value === formData.location);
 
   return (
-    <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", overflow: "hidden", boxSizing: "border-box", zIndex: 1000 }}>
+    <div style={{ minHeight: "100vh", background: "#f7f2e8", display: "flex", flexDirection: "column", alignItems: "center", boxSizing: "border-box" }}>
       <header style={{ width: "100%", background: "#f7f2e8", height: "40px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", boxSizing: "border-box" }}>
-        <img src={Logo} alt="COMOT logo" style={{ height: "44px", width: "auto", maxWidth: "170px" }} />
+        <img src={Logo} alt="COMOT logo" style={{ height: "32px", width: "auto", maxWidth: "130px" }} />
         {step !== 3 && step !== 4 && (
         <button onClick={() => onNavigate && onNavigate("home")} style={{ background: "none", border: "none", cursor: "pointer", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#263b5b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -124,23 +124,19 @@ export default function GetStarted({ onNavigate }) {
       </header>
       <div style={{ maxWidth: "300px", width: "100%", marginLeft: "auto", marginRight: "auto", boxSizing: "border-box", marginTop: "24px", overflowY: "auto", maxHeight: "calc(100vh - 40px)", paddingBottom: "20px" }}>
         {step !== 4 && (
-        <div style={{ textAlign: "center", marginTop: "0", marginBottom: "24px" }}>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ margin: "0 auto 8px", color: "#c1735c" }}>
-            <circle cx="12" cy="12" r="10" stroke="#c1735c" strokeWidth="2" />
-            <path d="M8 12l3 3 5-5" stroke="#c1735c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <h1 style={{ fontSize: "24px", fontWeight: 800, color: "#263b5b", margin: "0 0 6px" }}>
+        <div style={{ textAlign: "center", marginTop: "0", marginBottom: "20px" }}>
+          <h1 style={{ fontSize: "20px", fontWeight: 800, color: "#263b5b", margin: "0 0 4px" }}>
             Welcome to COMOT
           </h1>
-          <p style={{ fontSize: "16px", color: "#6b7280", margin: 0, lineHeight: 1.4 }}>
+          <p style={{ fontSize: "13px", color: "#6b7280", margin: 0, lineHeight: 1.4 }}>
             Create your account to discover and experience
           </p>
         </div>
         )}
 
-        <div style={{ background: "#fff", borderRadius: "20px", padding: "4px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
+        <div style={{ background: "#fff", borderRadius: "20px", padding: "3px", boxShadow: "0 4px 24px rgba(38,59,91,0.08)" }}>
           {step !== 4 && (
-          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "4px" }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "3px" }}>
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 1 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 2 ? "#c1735c" : "#eadfce" }} />
             <div style={{ width: "40px", height: "4px", borderRadius: "2px", background: step >= 3 ? "#c1735c" : "#eadfce" }} />
@@ -150,7 +146,7 @@ export default function GetStarted({ onNavigate }) {
 
           <form onSubmit={handleNext}>
             {error && (
-              <div style={{ background: "#fee2e2", border: "1px solid #ef4444", color: "#b91c1c", padding: "5px 7px", borderRadius: "7px", marginBottom: "8px", fontSize: "13px", fontWeight: 500, textAlign: "center" }}>
+              <div style={{ background: "#fee2e2", border: "1px solid #ef4444", color: "#b91c1c", padding: "4px 6px", borderRadius: "6px", marginBottom: "6px", fontSize: "13px", fontWeight: 500, textAlign: "center" }}>
                 {error}
               </div>
             )}
@@ -171,8 +167,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Enter your full name"
                   style={{
                     width: "100%",
-                    padding: "7px 9px",
-                    borderRadius: "10px",
+                    padding: "6px 8px",
+                    borderRadius: "8px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -182,7 +178,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="name"
                 />
-                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
+                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginTop: "8px", marginBottom: "4px" }}>
                   Username
                 </label>
                 <input
@@ -197,8 +193,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Nickname"
                   style={{
                     width: "100%",
-                    padding: "7px 9px",
-                    borderRadius: "10px",
+                    padding: "6px 8px",
+                    borderRadius: "8px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -208,7 +204,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="username"
                 />
-                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
+                <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#263b5b", marginTop: "8px", marginBottom: "4px" }}>
                   Email Address
                 </label>
                 <input
@@ -219,8 +215,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="you@example.com"
                   style={{
                     width: "100%",
-                    padding: "7px 9px",
-                    borderRadius: "10px",
+                    padding: "6px 8px",
+                    borderRadius: "8px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -230,7 +226,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="email"
                 />
-                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "8px", marginBottom: "4px" }}>
                   Location
                 </label>
                 <div ref={locationRef} style={{ position: "relative" }}>
@@ -239,8 +235,8 @@ export default function GetStarted({ onNavigate }) {
                     onClick={() => setIsLocationOpen(!isLocationOpen)}
                     style={{
                       width: "100%",
-                      padding: "7px 9px",
-                      borderRadius: "10px",
+                      padding: "6px 8px",
+                      borderRadius: "8px",
                       border: "1px solid #eadfce",
                       fontSize: "16px",
                       outline: "none",
@@ -283,7 +279,7 @@ export default function GetStarted({ onNavigate }) {
                         left: 0,
                         right: 0,
                         background: "#1a2a4a",
-                        borderRadius: "10px",
+                        borderRadius: "8px",
                         boxShadow: "0 10px 40px rgba(26, 42, 74, 0.3), 0 0 0 1px rgba(255,255,255,0.05)",
                         zIndex: 50,
                         overflow: "hidden",
@@ -297,7 +293,7 @@ export default function GetStarted({ onNavigate }) {
                           onClick={() => handleLocationSelect(loc.value)}
                           style={{
                             width: "100%",
-                            padding: "7px 9px",
+                            padding: "6px 8px",
                             textAlign: "left",
                             fontSize: "16px",
                             fontFamily: "inherit",
@@ -323,7 +319,7 @@ export default function GetStarted({ onNavigate }) {
                     </div>
                   )}
                 </div>
-                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "8px", marginBottom: "4px" }}>
                   Phone Number
                 </label>
                 <input
@@ -338,8 +334,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="+234 8XX XXX XXXX"
                   style={{
                     width: "100%",
-                    padding: "7px 9px",
-                    borderRadius: "10px",
+                    padding: "6px 8px",
+                    borderRadius: "8px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -354,7 +350,7 @@ export default function GetStarted({ onNavigate }) {
 
             {step === 2 && (
               <div>
-                <div style={{ textAlign: "center", marginBottom: "24px" }}>
+                <div style={{ textAlign: "center", marginBottom: "20px" }}>
                   <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "#e8f5e9", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
@@ -373,8 +369,8 @@ export default function GetStarted({ onNavigate }) {
                   onClick={() => setStep(3)}
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    borderRadius: "10px",
+                    padding: "8px",
+                    borderRadius: "8px",
                     border: "none",
                     background: "#c1735c",
                     color: "#fff",
@@ -392,8 +388,8 @@ export default function GetStarted({ onNavigate }) {
                   onClick={() => setStep(1)}
                   style={{
                     width: "100%",
-                    padding: "10px",
-                    borderRadius: "10px",
+                    padding: "8px",
+                    borderRadius: "8px",
                     border: "1px solid #eadfce",
                     background: "#fff",
                     color: "#263b5b",
@@ -421,8 +417,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="At least 8 characters"
                   style={{
                     width: "100%",
-                    padding: "7px 9px",
-                    borderRadius: "10px",
+                    padding: "6px 8px",
+                    borderRadius: "8px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -432,7 +428,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="new-password"
                 />
-                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "10px", marginBottom: "5px" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#263b5b", marginTop: "8px", marginBottom: "4px" }}>
                   Confirm Password
                 </label>
                 <input
@@ -443,8 +439,8 @@ export default function GetStarted({ onNavigate }) {
                   placeholder="Confirm your password"
                   style={{
                     width: "100%",
-                    padding: "7px 9px",
-                    borderRadius: "10px",
+                    padding: "6px 8px",
+                    borderRadius: "8px",
                     border: "1px solid #eadfce",
                     fontSize: "16px",
                     outline: "none",
@@ -454,7 +450,7 @@ export default function GetStarted({ onNavigate }) {
                   }}
                   autoComplete="new-password"
                 />
-                <label style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "8px", fontSize: "13px", color: "#263b5b", cursor: "pointer" }}>
+                <label style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "6px", fontSize: "13px", color: "#263b5b", cursor: "pointer" }}>
                   <input
                     type="checkbox"
                     name="rememberMe"
@@ -464,14 +460,14 @@ export default function GetStarted({ onNavigate }) {
                   />
                   <span style={{ fontWeight: 500 }}>Remember me</span>
                 </label>
-                <p style={{ fontSize: "12px", color: "#6b7280", marginTop: "8px", lineHeight: 1.4, textAlign: "center" }}>
+                <p style={{ fontSize: "12px", color: "#6b7280", marginTop: "6px", lineHeight: 1.4, textAlign: "center" }}>
                   By continuing, you agree to our Terms of Service and Privacy Policy
                 </p>
               </div>
             )}
 
             {step === 4 && (
-              <div style={{ textAlign: "center", padding: "20px 0" }}>
+              <div style={{ textAlign: "center", padding: "16px 0" }}>
                 <div style={{ 
                   width: "80px", 
                   height: "80px", 
@@ -480,20 +476,20 @@ export default function GetStarted({ onNavigate }) {
                   display: "flex", 
                   alignItems: "center", 
                   justifyContent: "center", 
-                  margin: "0 auto 20px",
+                  margin: "0 auto 16px",
                   animation: "scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)"
                 }}>
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#263b5b", margin: "0 0 8px", animation: "fadeInUp 0.6s ease 0.1s both" }}>
+                <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#263b5b", margin: "0 0 6px", animation: "fadeInUp 0.6s ease 0.1s both" }}>
                   Account Successfully Created!
                 </h3>
                 <p style={{ fontSize: "18px", fontWeight: 600, color: "#c1735c", margin: 0, animation: "fadeInUp 0.6s ease 0.2s both" }}>
                   Oya Start Exploring 😉
                 </p>
-                <style jsx>{`
+                <style>{`
                   @keyframes scaleIn {
                     0% { transform: scale(0); opacity: 0; }
                     100% { transform: scale(1); opacity: 1; }
@@ -506,15 +502,15 @@ export default function GetStarted({ onNavigate }) {
               </div>
             )}
 
-            <div style={{ display: "flex", gap: "10px", marginTop: "14px" }}>
+            <div style={{ display: "flex", gap: "10px", marginTop: "11px" }}>
               {step === 2 && (
                 <button
                   type="button"
                   onClick={handleBack}
                   style={{
                     flex: 1,
-                    padding: "10px",
-                    borderRadius: "10px",
+                    padding: "8px",
+                    borderRadius: "8px",
                     border: "1px solid #eadfce",
                     background: "#fff",
                     color: "#263b5b",
@@ -527,7 +523,7 @@ export default function GetStarted({ onNavigate }) {
                   Back
                 </button>
               )}
-              {step !== 2 && step !== 4 && (
+{step !== 2 && step !== 4 && (
                 <button
                   type="submit"
                   style={{
@@ -548,6 +544,35 @@ export default function GetStarted({ onNavigate }) {
                 </button>
               )}
             </div>
+            <button
+              type="button"
+              onClick={() => alert("Google Sign Up coming soon!")}
+              style={{
+                width: "100%",
+                padding: "10px",
+                borderRadius: "10px",
+                border: "1px solid #dadce0",
+                background: "#fff",
+                color: "#3c4043",
+                fontSize: "14px",
+                fontWeight: 600,
+                fontFamily: "inherit",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                marginTop: "8px",
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l2.85 2.22c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              Continue with Google
+            </button>
           </form>
 
           {step === 1 && (
