@@ -27,7 +27,7 @@ export default function App() {
       className="min-h-screen flex flex-col"
       style={{ background: "#f7f2e8" }}
     >
-      <main className="flex-1 bottom-safe overflow-y-auto" style={{ height: "100vh" }}>
+      <main className="flex-1 bottom-safe">
         <div className="mx-auto w-full">{renderPage()}</div>
       </main>
 

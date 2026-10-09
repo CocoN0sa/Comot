@@ -20,6 +20,12 @@ export default function Home({ onNavigate }) {
     }
   };
 
+  const navigateToListVenue = () => {
+    if (onNavigate) {
+      onNavigate("listvenue");
+    }
+  };
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f7f2e8] text-slate-900">
       <header
@@ -816,6 +822,7 @@ onMouseUp={(e) => {
 onMouseUp={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
                 }}
+                onClick={navigateToListVenue}
               >
                 List Your Venue
               </button>
