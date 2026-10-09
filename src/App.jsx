@@ -7,6 +7,7 @@ import Experience from "./pages/Experience";
 import Profile from "./pages/Profile";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
+import ListYourVenue from "./pages/ListYourVenue";
 
 export default function App() {
   const [active, setActive] = useState("home");
@@ -19,6 +20,7 @@ export default function App() {
     if (active === "experience") return <Experience />;
     if (active === "getstarted") return <GetStarted onNavigate={setActive} />;
     if (active === "login") return <Login onNavigate={setActive} />;
+    if (active === "listvenue") return <ListYourVenue onNavigate={setActive} />;
     return <Profile />;
   }
 
