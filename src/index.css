@@ -17,7 +17,7 @@ body,
   --primary: #263b5b;
   --accent: #c1735c;
   --bg: #f7f2e8;
-  --bottom-nav-height: 56px;
+  --bottom-nav-height: 48px;
 }
 
 @keyframes pulse {
@@ -197,7 +197,7 @@ select {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 9px 8px 7px;
+  padding: 4px 8px 3px;
   border: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.72);
