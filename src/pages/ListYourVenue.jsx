@@ -721,7 +721,14 @@ export default function ListYourVenue({ onNavigate }) {
 
   if (isSubmitted) {
     return (
-      <div style={{ ...pageWrap, justifyContent: "space-between" }}>
+      <div
+        style={{
+          ...pageWrap,
+          justifyContent: "space-between",
+          paddingBottom:
+            "calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 8px)",
+        }}
+      >
         <header style={headerStyle}>
           <img
             src={Logo}
