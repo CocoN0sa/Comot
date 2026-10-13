@@ -1,5 +1,6 @@
-﻿import React, { useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/comot logo.png";
+import BottomNav from "../components/BottomNav";
 
 const venueTypes = [
   "Restaurant",
@@ -45,7 +46,7 @@ const initialFormData = {
   venueType: "",
   neighbourhood: "",
   fullAddress: "",
-  googleMapsPin: "",
+  googleMapsLink: "",
   phoneNumber: "",
   email: "",
   website: "",
@@ -65,6 +66,18 @@ export default function ListYourVenue({ onNavigate }) {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    const bodyOverflow = document.body.style.overflow;
+    const rootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = bodyOverflow;
+      document.documentElement.style.overflow = rootOverflow;
+    };
+  }, []);
 
   const updateField = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -112,12 +125,22 @@ export default function ListYourVenue({ onNavigate }) {
       nextErrors.neighbourhood = "Neighbourhood is required.";
     if (!formData.fullAddress.trim())
       nextErrors.fullAddress = "Full address is required.";
-    if (!formData.googleMapsPin.trim()) {
-      nextErrors.googleMapsPin = "Google Maps pin is required.";
+    if (!formData.googleMapsLink.trim()) {
+      nextErrors.googleMapsLink = "Google Maps link is required.";
     } else {
-      const latLngPattern = /^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$/;
-      if (!latLngPattern.test(formData.googleMapsPin.trim())) {
-        nextErrors.googleMapsPin = "Use format: latitude, longitude";
+      try {
+        const mapsUrl = new URL(formData.googleMapsLink.trim());
+        const isGoogleMapsHost =
+          mapsUrl.hostname === "maps.app.goo.gl" ||
+          mapsUrl.hostname === "goo.gl" ||
+          mapsUrl.hostname === "google.com" ||
+          mapsUrl.hostname.endsWith(".google.com");
+
+        if (mapsUrl.protocol !== "https:" || !isGoogleMapsHost) {
+          nextErrors.googleMapsLink = "Enter a valid Google Maps link.";
+        }
+      } catch {
+        nextErrors.googleMapsLink = "Enter a valid Google Maps link.";
       }
     }
     if (!formData.phoneNumber.trim()) {
@@ -246,7 +269,11 @@ export default function ListYourVenue({ onNavigate }) {
       </div>
 
       <div
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+          gap: "12px",
+        }}
       >
         <div style={fieldGroup}>
           <label style={labelStyle}>Neighbourhood / Area</label>
@@ -286,13 +313,13 @@ export default function ListYourVenue({ onNavigate }) {
       <div style={fieldGroup}>
         <label style={labelStyle}>Full Address</label>
         <textarea
-          rows="3"
+          rows="1"
           placeholder="Enter exact address"
           value={formData.fullAddress}
           onChange={(e) => updateField("fullAddress", e.target.value)}
           style={{
             ...inputStyle,
-            resize: "vertical",
+            resize: "none",
             borderColor: errors.fullAddress ? "#ef4444" : "#eadfce",
           }}
         />
@@ -302,24 +329,28 @@ export default function ListYourVenue({ onNavigate }) {
       </div>
 
       <div style={fieldGroup}>
-        <label style={labelStyle}>Google Maps Pin (lat, lng)</label>
+        <label style={labelStyle}>Google Maps Location Link</label>
         <input
-          type="text"
-          placeholder="9.0765, 7.3986"
-          value={formData.googleMapsPin}
-          onChange={(e) => updateField("googleMapsPin", e.target.value)}
+          type="url"
+          placeholder="https://maps.app.goo.gl/..."
+          value={formData.googleMapsLink}
+          onChange={(e) => updateField("googleMapsLink", e.target.value)}
           style={{
             ...inputStyle,
-            borderColor: errors.googleMapsPin ? "#ef4444" : "#eadfce",
+            borderColor: errors.googleMapsLink ? "#ef4444" : "#eadfce",
           }}
         />
-        {errors.googleMapsPin && (
-          <span style={errorText}>{errors.googleMapsPin}</span>
+        {errors.googleMapsLink && (
+          <span style={errorText}>{errors.googleMapsLink}</span>
         )}
       </div>
 
       <div
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+          gap: "12px",
+        }}
       >
         <div style={fieldGroup}>
           <label style={labelStyle}>Email Address</label>
@@ -432,7 +463,11 @@ export default function ListYourVenue({ onNavigate }) {
       </div>
 
       <div
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+          gap: "12px",
+        }}
       >
         <div style={fieldGroup}>
           <label style={labelStyle}>Opening Hours</label>
@@ -646,7 +681,7 @@ export default function ListYourVenue({ onNavigate }) {
 
   if (isSubmitted) {
     return (
-      <div style={pageWrap}>
+      <div style={{ ...pageWrap, justifyContent: "space-between" }}>
         <header style={headerStyle}>
           <img
             src={Logo}
@@ -655,15 +690,29 @@ export default function ListYourVenue({ onNavigate }) {
           />
         </header>
 
-        <div style={cardStyle}>
-          <div style={{ textAlign: "center", padding: "24px 12px" }}>
-            <div style={{ fontSize: "42px", marginBottom: "12px" }}>✅</div>
-            <h2 style={{ margin: 0, fontSize: "28px", color: "#263b5b" }}>
+        <div style={successCardStyle}>
+          <div style={{ textAlign: "center", padding: "8px 4px" }}>
+            <div style={successIconStyle}>
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#2e7d32"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <h2 style={{ margin: 0, fontSize: "22px", color: "#263b5b" }}>
               Venue Submitted
             </h2>
             <p
               style={{
-                margin: "12px 0 24px",
+                margin: "8px 0 16px",
+                fontSize: "14px",
                 color: "#5f6b7a",
                 lineHeight: 1.6,
               }}
@@ -680,6 +729,11 @@ export default function ListYourVenue({ onNavigate }) {
             </button>
           </div>
         </div>
+        <BottomNav
+          active="venueSubmitted"
+          onChange={onNavigate}
+          visibleItems={["explore", "profile"]}
+        />
       </div>
     );
   }
@@ -737,18 +791,27 @@ export default function ListYourVenue({ onNavigate }) {
 
         <form
           onSubmit={handleSubmit}
-          style={{ display: "grid", gap: "14px", marginTop: "18px" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+            minHeight: 0,
+            marginTop: "12px",
+          }}
         >
-          {step === 1 && renderStepOne()}
-          {step === 2 && renderStepTwo()}
-          {step === 3 && renderStepThree()}
+          <div style={{ display: "grid", alignContent: "start", gap: "8px" }}>
+            {step === 1 && renderStepOne()}
+            {step === 2 && renderStepTwo()}
+            {step === 3 && renderStepThree()}
+          </div>
 
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               gap: "12px",
-              marginTop: "8px",
+              marginTop: "10px",
+              paddingTop: "8px",
             }}
           >
             {step > 1 && (
@@ -785,54 +848,79 @@ export default function ListYourVenue({ onNavigate }) {
 }
 
 const pageWrap = {
-  minHeight: "100vh",
+  height: "100dvh",
   background: "#f7f2e8",
-  padding: "18px 16px 32px",
+  padding: "8px",
   boxSizing: "border-box",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  overflow: "hidden",
 };
 
 const headerStyle = {
   width: "100%",
-  maxWidth: "420px",
+  maxWidth: "none",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  marginBottom: "18px",
+  marginBottom: "8px",
 };
 
 const cardStyle = {
   width: "100%",
   maxWidth: "420px",
+  flex: "1",
+  minHeight: 0,
   background: "#ffffff",
-  borderRadius: "24px",
-  padding: "18px 16px 20px",
+  borderRadius: "18px",
+  padding: "10px 12px",
   boxShadow: "0 10px 30px rgba(38,59,91,0.08)",
   boxSizing: "border-box",
+  display: "flex",
+  flexDirection: "column",
+  overflow: "hidden",
+};
+
+const successCardStyle = {
+  ...cardStyle,
+  flex: "0 0 auto",
+  padding: "14px 16px",
+  marginTop: "auto",
+  marginBottom: "auto",
+};
+
+const successIconStyle = {
+  width: "64px",
+  height: "64px",
+  borderRadius: "50%",
+  background: "#e8f5e9",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "0 auto 12px",
 };
 
 const eyebrow = {
   margin: 0,
   color: "#c1735c",
-  fontSize: "11px",
+  fontSize: "10px",
   letterSpacing: "0.18em",
   textTransform: "uppercase",
   fontWeight: 700,
 };
 
 const title = {
-  margin: "12px 0 8px",
-  fontSize: "30px",
+  margin: "4px 0",
+  fontSize: "22px",
   lineHeight: 1.1,
   fontWeight: 800,
   color: "#263b5b",
 };
 
 const subtitle = {
-  margin: "0 0 18px",
-  fontSize: "13px",
+  margin: "0 0 8px",
+  fontSize: "12px",
   color: "#6b7280",
   lineHeight: 1.5,
 };
@@ -844,11 +932,11 @@ const stepTracker = {
 
 const fieldGroup = {
   display: "grid",
-  gap: "6px",
+  gap: "3px",
 };
 
 const labelStyle = {
-  fontSize: "12px",
+  fontSize: "11px",
   fontWeight: 600,
   color: "#263b5b",
 };
@@ -859,8 +947,9 @@ const inputStyle = {
   border: "1px solid #eadfce",
   borderRadius: "12px",
   background: "#faf9f7",
-  padding: "10px 12px",
-  fontSize: "14px",
+  padding: "5px 8px",
+  fontSize: "16px",
+  minHeight: "36px",
   color: "#263b5b",
   outline: "none",
   fontFamily: "inherit",
@@ -870,8 +959,8 @@ const optionButton = {
   width: "100%",
   borderRadius: "12px",
   border: "1px solid #eadfce",
-  padding: "12px 14px",
-  fontSize: "13px",
+  padding: "8px 10px",
+  fontSize: "12px",
   fontWeight: 600,
   cursor: "pointer",
   textAlign: "left",
@@ -886,8 +975,8 @@ const chipGroup = {
 const chip = {
   borderRadius: "9999px",
   border: "1px solid #eadfce",
-  padding: "8px 12px",
-  fontSize: "12px",
+  padding: "6px 9px",
+  fontSize: "11px",
   cursor: "pointer",
   transition: "all 0.2s ease",
 };
@@ -908,8 +997,8 @@ const booleanButton = {
   borderRadius: "10px",
   background: "#f3efe9",
   color: "#263b5b",
-  padding: "10px 12px",
-  fontSize: "13px",
+  padding: "7px 10px",
+  fontSize: "12px",
   fontWeight: 600,
   cursor: "pointer",
 };
@@ -919,8 +1008,8 @@ const primaryButton = {
   color: "#ffffff",
   border: "none",
   borderRadius: "9999px",
-  padding: "12px 18px",
-  fontSize: "14px",
+  padding: "9px 14px",
+  fontSize: "13px",
   fontWeight: 700,
   cursor: "pointer",
 };

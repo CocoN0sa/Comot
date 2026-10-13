@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function BottomNav({ active, onChange }) {
+export default function BottomNav({ active, onChange, visibleItems }) {
   const items = [
     {
       key: "explore",
@@ -43,6 +43,9 @@ export default function BottomNav({ active, onChange }) {
       ),
     },
   ];
+  const navItems = visibleItems
+    ? items.filter((item) => visibleItems.includes(item.key))
+    : items;
 
   return (
     <nav
@@ -56,28 +59,29 @@ export default function BottomNav({ active, onChange }) {
         }}
       >
         <div className="max-w-xl mx-auto flex" style={{ overflow: "hidden" }}>
-          {items.map((it) => {
+          {navItems.map((it) => {
             const isActive = active === it.key;
-return (
+            return (
               <button
                 key={it.key}
                 onClick={() => onChange(it.key)}
                 className={`flex-1 py-3 flex flex-col items-center justify-center gap-1 text-sm font-semibold transition-all duration-200 bottom-nav-button`}
                 aria-label={it.label}
-                style={isActive
-                  ? {
-                      minWidth: 0,
-                      color: "white",
-                      background:
-                        "linear-gradient(90deg, var(--primary), var(--accent))",
-                      boxShadow: "0 8px 24px rgba(193,115,92,0.18)",
-                      transform: "translateY(-4px) scale(1.02)",
-                    }
-                  : {
-                      minWidth: 0,
-                      color: "rgba(255,255,255,0.9)",
-                      background: "transparent",
-                    }
+                style={
+                  isActive
+                    ? {
+                        minWidth: 0,
+                        color: "white",
+                        background:
+                          "linear-gradient(90deg, var(--primary), var(--accent))",
+                        boxShadow: "0 8px 24px rgba(193,115,92,0.18)",
+                        transform: "translateY(-4px) scale(1.02)",
+                      }
+                    : {
+                        minWidth: 0,
+                        color: "rgba(255,255,255,0.9)",
+                        background: "transparent",
+                      }
                 }
               >
                 <div
