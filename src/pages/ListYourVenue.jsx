@@ -397,7 +397,7 @@ export default function ListYourVenue({ onNavigate }) {
       >
         <div style={fieldGroup}>
           <label style={labelStyle}>Price Range</label>
-          <div style={{ display: "grid", gap: "8px" }}>
+          <div style={{ display: "grid", gap: "6px" }}>
             {priceRanges.map((option) => (
               <button
                 key={option}
@@ -482,8 +482,9 @@ export default function ListYourVenue({ onNavigate }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-            gap: "12px",
+            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+            gap: "6px",
+            minWidth: 0,
           }}
         >
           <div style={fieldGroup}>
@@ -496,12 +497,16 @@ export default function ListYourVenue({ onNavigate }) {
               }
               style={{
                 ...inputStyle,
+                minWidth: 0,
+                minHeight: "32px",
+                padding: "4px",
+                fontSize: "16px",
                 borderColor: errors["openingHours.opensAt"]
                   ? "#ef4444"
                   : "#eadfce",
               }}
             />
-            <span style={{ ...helperText, marginTop: "8px" }}>Opens</span>
+            <span style={{ ...helperText, marginTop: "2px" }}>Opens</span>
           </div>
 
           <div style={fieldGroup}>
@@ -514,12 +519,16 @@ export default function ListYourVenue({ onNavigate }) {
               }
               style={{
                 ...inputStyle,
+                minWidth: 0,
+                minHeight: "32px",
+                padding: "4px",
+                fontSize: "16px",
                 borderColor: errors["openingHours.opensAt"]
                   ? "#ef4444"
                   : "#eadfce",
               }}
             />
-            <span style={{ ...helperText, marginTop: "8px" }}>Closes</span>
+            <span style={{ ...helperText, marginTop: "2px" }}>Closes</span>
           </div>
         </div>
       </div>
@@ -785,7 +794,7 @@ export default function ListYourVenue({ onNavigate }) {
         </button>
       </header>
 
-      <div style={cardStyle}>
+      <div style={step === 2 ? stepTwoCardStyle : cardStyle}>
         <p style={eyebrow}>For venue owners</p>
         <h1 style={title}>List your venue</h1>
         <p style={subtitle}>
@@ -812,12 +821,18 @@ export default function ListYourVenue({ onNavigate }) {
           style={{
             display: "flex",
             flexDirection: "column",
-            flex: 1,
+            flex: step === 2 ? "0 0 auto" : 1,
             minHeight: 0,
             marginTop: "12px",
           }}
         >
-          <div style={{ display: "grid", alignContent: "start", gap: "8px" }}>
+          <div
+            style={{
+              display: "grid",
+              alignContent: "start",
+              gap: step === 2 ? "6px" : "8px",
+            }}
+          >
             {step === 1 && renderStepOne()}
             {step === 2 && renderStepTwo()}
             {step === 3 && renderStepThree()}
@@ -898,6 +913,12 @@ const cardStyle = {
   display: "flex",
   flexDirection: "column",
   overflow: "hidden",
+};
+
+const stepTwoCardStyle = {
+  ...cardStyle,
+  flex: "0 0 auto",
+  alignSelf: "center",
 };
 
 const successCardStyle = {
@@ -987,7 +1008,7 @@ const optionButton = {
 const chipGroup = {
   display: "flex",
   flexWrap: "wrap",
-  gap: "8px",
+  gap: "6px",
 };
 
 const chip = {
