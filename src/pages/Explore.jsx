@@ -121,8 +121,8 @@ export default function Explore({ onNavigate }) {
   return (
     <div className="explore-page">
       <header className="explore-header">
+        <TopNav active="explore" onNavigate={onNavigate} />
         <div className="explore-header-inner">
-          <TopNav active="explore" onNavigate={onNavigate} />
           <h1>Explore Abuja</h1>
           <div className="explore-intro-row">
             <p className="explore-intro">

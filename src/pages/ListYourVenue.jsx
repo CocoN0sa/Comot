@@ -1,6 +1,5 @@
 ﻿import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/comot logo.png";
-import BottomNav from "../components/BottomNav";
 import {
   createVenueRecord,
   readVenueSubmissions,
@@ -725,16 +724,11 @@ export default function ListYourVenue({ onNavigate }) {
         style={{
           ...pageWrap,
           justifyContent: "space-between",
-          paddingBottom:
-            "calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 8px)",
+          paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 8px)",
         }}
       >
         <header style={headerStyle}>
-          <img
-            src={Logo}
-            alt="COMOT logo"
-            style={{ height: "32px", width: "auto", maxWidth: "130px" }}
-          />
+          <img src={Logo} alt="COMOT logo" className="brand-logo" />
         </header>
 
         <div style={successCardStyle}>
@@ -776,11 +770,6 @@ export default function ListYourVenue({ onNavigate }) {
             </button>
           </div>
         </div>
-        <BottomNav
-          active="venueSubmitted"
-          onChange={onNavigate}
-          visibleItems={["explore", "profile"]}
-        />
       </div>
     );
   }
@@ -788,11 +777,7 @@ export default function ListYourVenue({ onNavigate }) {
   return (
     <div style={pageWrap}>
       <header style={headerStyle}>
-        <img
-          src={Logo}
-          alt="COMOT logo"
-          style={{ height: "32px", width: "auto", maxWidth: "130px" }}
-        />
+        <img src={Logo} alt="COMOT logo" className="brand-logo" />
         <button
           type="button"
           onClick={() => onNavigate && onNavigate("home")}
@@ -919,7 +904,7 @@ export default function ListYourVenue({ onNavigate }) {
 const pageWrap = {
   height: "100dvh",
   background: "#f7f2e8",
-  padding: "8px",
+  padding: "0 0 8px",
   boxSizing: "border-box",
   display: "flex",
   flexDirection: "column",
@@ -930,9 +915,13 @@ const pageWrap = {
 const headerStyle = {
   width: "100%",
   maxWidth: "none",
+  height: "64px",
+  flex: "0 0 64px",
+  padding: "0",
+  boxSizing: "border-box",
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
+  alignItems: "flex-start",
   marginBottom: "8px",
 };
 

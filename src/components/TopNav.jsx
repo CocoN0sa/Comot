@@ -27,7 +27,7 @@ export default function TopNav({ active, onNavigate }) {
 
   return (
     <nav className="top-nav" aria-label="Primary navigation">
-      <img className="explore-brand-logo" src={Logo} alt="COMOT logo" />
+      <img className="brand-logo" src={Logo} alt="COMOT logo" />
       <button
         type="button"
         className="top-nav-toggle"

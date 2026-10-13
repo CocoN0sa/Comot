@@ -172,7 +172,7 @@ export default function AdminDashboard({ onNavigate }) {
       <header style={headerStyle}>
         <div style={headerInnerStyle}>
           <div style={brandStyle}>
-            <img src={Logo} alt="COMOT" style={{ height: 30, width: "auto" }} />
+            <img src={Logo} alt="COMOT" className="brand-logo" />
             <span style={brandDivider} />
             <span style={brandLabel}>ADMIN</span>
           </div>
@@ -952,12 +952,12 @@ const headerStyle = {
 };
 
 const headerInnerStyle = {
-  maxWidth: 1320,
+  maxWidth: "none",
   minHeight: 64,
-  padding: "0 24px",
+  padding: "0",
   margin: "0 auto",
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-start",
   justifyContent: "space-between",
   gap: 16,
 };
