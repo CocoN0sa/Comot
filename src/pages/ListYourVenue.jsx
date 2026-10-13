@@ -395,56 +395,56 @@ export default function ListYourVenue({ onNavigate }) {
           alignItems: "start",
         }}
       >
-      <div style={fieldGroup}>
-        <label style={labelStyle}>Price Range</label>
-        <div style={{ display: "grid", gap: "8px" }}>
-          {priceRanges.map((option) => (
-            <button
-              key={option}
-              type="button"
-              onClick={() => updateField("priceRange", option)}
-              style={{
-                ...optionButton,
-                background:
-                  formData.priceRange === option ? "#263b5b" : "#f8f4ef",
-                color: formData.priceRange === option ? "#ffffff" : "#263b5b",
-                borderColor:
-                  formData.priceRange === option ? "#263b5b" : "#eadfce",
-              }}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-        {errors.priceRange && (
-          <span style={errorText}>{errors.priceRange}</span>
-        )}
-      </div>
-
-      <div style={fieldGroup}>
-        <label style={labelStyle}>Vibe Tags</label>
-        <div style={chipGroup}>
-          {vibeTags.map((tag) => {
-            const selected = formData.vibeTags.includes(tag);
-            return (
+        <div style={fieldGroup}>
+          <label style={labelStyle}>Price Range</label>
+          <div style={{ display: "grid", gap: "8px" }}>
+            {priceRanges.map((option) => (
               <button
-                key={tag}
+                key={option}
                 type="button"
-                onClick={() => toggleTag("vibeTags", tag)}
+                onClick={() => updateField("priceRange", option)}
                 style={{
-                  ...chip,
-                  background: selected ? "#c1735c" : "#f3efe9",
-                  color: selected ? "#ffffff" : "#263b5b",
-                  borderColor: selected ? "#c1735c" : "#eadfce",
+                  ...optionButton,
+                  background:
+                    formData.priceRange === option ? "#263b5b" : "#f8f4ef",
+                  color: formData.priceRange === option ? "#ffffff" : "#263b5b",
+                  borderColor:
+                    formData.priceRange === option ? "#263b5b" : "#eadfce",
                 }}
               >
-                {tag}
+                {option}
               </button>
-            );
-          })}
+            ))}
+          </div>
+          {errors.priceRange && (
+            <span style={errorText}>{errors.priceRange}</span>
+          )}
         </div>
-        {errors.vibeTags && <span style={errorText}>{errors.vibeTags}</span>}
-      </div>
+
+        <div style={fieldGroup}>
+          <label style={labelStyle}>Vibe Tags</label>
+          <div style={chipGroup}>
+            {vibeTags.map((tag) => {
+              const selected = formData.vibeTags.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => toggleTag("vibeTags", tag)}
+                  style={{
+                    ...chip,
+                    background: selected ? "#c1735c" : "#f3efe9",
+                    color: selected ? "#ffffff" : "#263b5b",
+                    borderColor: selected ? "#c1735c" : "#eadfce",
+                  }}
+                >
+                  {tag}
+                </button>
+              );
+            })}
+          </div>
+          {errors.vibeTags && <span style={errorText}>{errors.vibeTags}</span>}
+        </div>
       </div>
 
       <div
@@ -455,73 +455,73 @@ export default function ListYourVenue({ onNavigate }) {
           alignItems: "start",
         }}
       >
-      <div style={fieldGroup}>
-        <label style={labelStyle}>Occasion Tags</label>
-        <div style={chipGroup}>
-          {occasionTags.map((tag) => {
-            const selected = formData.occasionTags.includes(tag);
-            return (
-              <button
-                key={tag}
-                type="button"
-                onClick={() => toggleTag("occasionTags", tag)}
-                style={{
-                  ...chip,
-                  background: selected ? "#263b5b" : "#f3efe9",
-                  color: selected ? "#ffffff" : "#263b5b",
-                  borderColor: selected ? "#263b5b" : "#eadfce",
-                }}
-              >
-                {tag}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-          gap: "12px",
-        }}
-      >
         <div style={fieldGroup}>
-          <label style={labelStyle}>Opening Hours</label>
-          <input
-            type="time"
-            value={formData.openingHours.opensAt}
-            onChange={(e) =>
-              updateNestedField("openingHours", "opensAt", e.target.value)
-            }
-            style={{
-              ...inputStyle,
-              borderColor: errors["openingHours.opensAt"]
-                ? "#ef4444"
-                : "#eadfce",
-            }}
-          />
-          <span style={{ ...helperText, marginTop: "8px" }}>Opens</span>
+          <label style={labelStyle}>Occasion Tags</label>
+          <div style={chipGroup}>
+            {occasionTags.map((tag) => {
+              const selected = formData.occasionTags.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => toggleTag("occasionTags", tag)}
+                  style={{
+                    ...chip,
+                    background: selected ? "#263b5b" : "#f3efe9",
+                    color: selected ? "#ffffff" : "#263b5b",
+                    borderColor: selected ? "#263b5b" : "#eadfce",
+                  }}
+                >
+                  {tag}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        <div style={fieldGroup}>
-          <label style={{ ...labelStyle, opacity: 0 }}>Close</label>
-          <input
-            type="time"
-            value={formData.openingHours.closesAt}
-            onChange={(e) =>
-              updateNestedField("openingHours", "closesAt", e.target.value)
-            }
-            style={{
-              ...inputStyle,
-              borderColor: errors["openingHours.opensAt"]
-                ? "#ef4444"
-                : "#eadfce",
-            }}
-          />
-          <span style={{ ...helperText, marginTop: "8px" }}>Closes</span>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+            gap: "12px",
+          }}
+        >
+          <div style={fieldGroup}>
+            <label style={labelStyle}>Opening Hours</label>
+            <input
+              type="time"
+              value={formData.openingHours.opensAt}
+              onChange={(e) =>
+                updateNestedField("openingHours", "opensAt", e.target.value)
+              }
+              style={{
+                ...inputStyle,
+                borderColor: errors["openingHours.opensAt"]
+                  ? "#ef4444"
+                  : "#eadfce",
+              }}
+            />
+            <span style={{ ...helperText, marginTop: "8px" }}>Opens</span>
+          </div>
+
+          <div style={fieldGroup}>
+            <label style={{ ...labelStyle, opacity: 0 }}>Close</label>
+            <input
+              type="time"
+              value={formData.openingHours.closesAt}
+              onChange={(e) =>
+                updateNestedField("openingHours", "closesAt", e.target.value)
+              }
+              style={{
+                ...inputStyle,
+                borderColor: errors["openingHours.opensAt"]
+                  ? "#ef4444"
+                  : "#eadfce",
+              }}
+            />
+            <span style={{ ...helperText, marginTop: "8px" }}>Closes</span>
+          </div>
         </div>
-      </div>
       </div>
       {errors["openingHours.opensAt"] && (
         <span style={errorText}>{errors["openingHours.opensAt"]}</span>
