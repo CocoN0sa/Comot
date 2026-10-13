@@ -387,6 +387,14 @@ export default function ListYourVenue({ onNavigate }) {
 
   const renderStepTwo = () => (
     <>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+          gap: "8px",
+          alignItems: "start",
+        }}
+      >
       <div style={fieldGroup}>
         <label style={labelStyle}>Price Range</label>
         <div style={{ display: "grid", gap: "8px" }}>
@@ -437,7 +445,16 @@ export default function ListYourVenue({ onNavigate }) {
         </div>
         {errors.vibeTags && <span style={errorText}>{errors.vibeTags}</span>}
       </div>
+      </div>
 
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+          gap: "8px",
+          alignItems: "start",
+        }}
+      >
       <div style={fieldGroup}>
         <label style={labelStyle}>Occasion Tags</label>
         <div style={chipGroup}>
@@ -504,6 +521,7 @@ export default function ListYourVenue({ onNavigate }) {
           />
           <span style={{ ...helperText, marginTop: "8px" }}>Closes</span>
         </div>
+      </div>
       </div>
       {errors["openingHours.opensAt"] && (
         <span style={errorText}>{errors["openingHours.opensAt"]}</span>
