@@ -1,6 +1,11 @@
 ﻿import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/comot logo.png";
 import BottomNav from "../components/BottomNav";
+import {
+  createVenueRecord,
+  readVenueSubmissions,
+  writeVenueSubmissions,
+} from "../utils/venueSubmissions";
 
 const venueTypes = [
   "Restaurant",
@@ -218,7 +223,7 @@ export default function ListYourVenue({ onNavigate }) {
     setStep((prev) => prev + 1);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const validation = validateStepThree();
 
@@ -227,8 +232,16 @@ export default function ListYourVenue({ onNavigate }) {
       return;
     }
 
-    setIsSubmitted(true);
-    console.log("Venue submission successful", formData);
+    try {
+      const submission = createVenueRecord(formData);
+      const currentSubmissions = await readVenueSubmissions();
+      await writeVenueSubmissions([submission, ...currentSubmissions]);
+      setIsSubmitted(true);
+    } catch {
+      setErrors({
+        submission: "Submission could not be saved. Please try again.",
+      });
+    }
   };
 
   const renderStepOne = () => (
@@ -801,6 +814,22 @@ export default function ListYourVenue({ onNavigate }) {
           Register your spot and reach people looking for their next go-to
           place.
         </p>
+
+        {errors.submission && (
+          <p
+            role="alert"
+            style={{
+              margin: "0 0 10px",
+              padding: "8px 10px",
+              borderRadius: "6px",
+              background: "#fff3f1",
+              color: "#b42318",
+              fontSize: "12px",
+            }}
+          >
+            {errors.submission}
+          </p>
+        )}
 
         <div style={stepTracker}>
           {[1, 2, 3].map((item) => (

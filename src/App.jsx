@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BottomNav from "./components/BottomNav";
 import Fab from "./components/Fab";
 import Home from "./pages/Home";
@@ -8,19 +8,42 @@ import Profile from "./pages/Profile";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import ListYourVenue from "./pages/ListYourVenue";
+import AdminDashboard from "./pages/AdminDashboard";
 
 export default function App() {
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState(() =>
+    window.location.pathname.replace(/\/$/, "") === "/admin" ? "admin" : "home",
+  );
+
+  useEffect(() => {
+    const syncRoute = () =>
+      setActive(
+        window.location.pathname.replace(/\/$/, "") === "/admin"
+          ? "admin"
+          : "home",
+      );
+    window.addEventListener("popstate", syncRoute);
+    return () => window.removeEventListener("popstate", syncRoute);
+  }, []);
+
+  const navigate = (page) => {
+    const nextPath = page === "admin" ? "/admin" : "/";
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, "", nextPath);
+    }
+    setActive(page);
+  };
 
   const showBottomNav = ["explore", "experience", "profile"].includes(active);
 
   function renderPage() {
-    if (active === "home") return <Home onNavigate={setActive} />;
+    if (active === "home") return <Home onNavigate={navigate} />;
     if (active === "explore") return <Explore />;
     if (active === "experience") return <Experience />;
-    if (active === "getstarted") return <GetStarted onNavigate={setActive} />;
-    if (active === "login") return <Login onNavigate={setActive} />;
-    if (active === "listvenue") return <ListYourVenue onNavigate={setActive} />;
+    if (active === "getstarted") return <GetStarted onNavigate={navigate} />;
+    if (active === "login") return <Login onNavigate={navigate} />;
+    if (active === "listvenue") return <ListYourVenue onNavigate={navigate} />;
+    if (active === "admin") return <AdminDashboard onNavigate={navigate} />;
     return <Profile />;
   }
 
@@ -36,7 +59,7 @@ export default function App() {
       {showBottomNav && (
         <>
           <Fab onClick={() => console.log("FAB clicked")} />
-          <BottomNav active={active} onChange={setActive} />
+          <BottomNav active={active} onChange={navigate} />
         </>
       )}
     </div>

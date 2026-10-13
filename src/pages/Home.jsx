@@ -215,7 +215,7 @@ export default function Home({ onNavigate }) {
                   e.currentTarget.style.background = "transparent";
                   e.currentTarget.style.transform = "scale(0.98)";
                 }}
-onMouseUp={(e) => {
+                onMouseUp={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
                 }}
                 onClick={navigateToLogin}
@@ -416,7 +416,13 @@ onMouseUp={(e) => {
           <div
             className="mt-4 flex items-center justify-center text-[#c1735c]"
             aria-hidden="true"
-            style={{ marginTop: "40px", width: "48px", height: "48px", borderRadius: "14px", backgroundColor: "#fff5f2" }}
+            style={{
+              marginTop: "40px",
+              width: "48px",
+              height: "48px",
+              borderRadius: "14px",
+              backgroundColor: "#fff5f2",
+            }}
           >
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <path
@@ -425,8 +431,19 @@ onMouseUp={(e) => {
                 strokeWidth="2.2"
                 strokeLinecap="round"
               />
-              <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" strokeWidth="2.2" />
-              <path d="M8 10.5h5M10.5 8v5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+              <circle
+                cx="10.5"
+                cy="10.5"
+                r="6.5"
+                stroke="currentColor"
+                strokeWidth="2.2"
+              />
+              <path
+                d="M8 10.5h5M10.5 8v5"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+              />
             </svg>
           </div>
           <p className="mt-2 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#c1735c]">
@@ -444,7 +461,13 @@ onMouseUp={(e) => {
           <div
             className="mt-7 flex items-center justify-center text-[#c1735c]"
             aria-hidden="true"
-            style={{ marginTop: "40px", width: "48px", height: "48px", borderRadius: "14px", backgroundColor: "#fff5f2" }}
+            style={{
+              marginTop: "40px",
+              width: "48px",
+              height: "48px",
+              borderRadius: "14px",
+              backgroundColor: "#fff5f2",
+            }}
           >
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <path
@@ -479,7 +502,13 @@ onMouseUp={(e) => {
           <div
             className="mt-7 flex items-center justify-center text-[#c1735c]"
             aria-hidden="true"
-            style={{ marginTop: "40px", width: "48px", height: "48px", borderRadius: "14px", backgroundColor: "#fff5f2" }}
+            style={{
+              marginTop: "40px",
+              width: "48px",
+              height: "48px",
+              borderRadius: "14px",
+              backgroundColor: "#fff5f2",
+            }}
           >
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <path
@@ -570,7 +599,12 @@ onMouseUp={(e) => {
             </p>
             <p
               className="max-w-[280px] text-sm font-light leading-5 text-[#f8e8df]"
-              style={{ fontSize: "0.8rem", margin: 0, marginTop: "12px", marginBottom: "12px" }}
+              style={{
+                fontSize: "0.8rem",
+                margin: 0,
+                marginTop: "12px",
+                marginBottom: "12px",
+              }}
             >
               Browse restaurants, parks, bars, and hidden gems in Abuja. Filter
               by vibe, budget, and occasion.
@@ -626,7 +660,12 @@ onMouseUp={(e) => {
             </p>
             <p
               className="max-w-[280px] text-sm font-light leading-5 text-[#f8e8df]"
-              style={{ fontSize: "0.8rem", margin: 0, marginTop: "12px", marginBottom: "12px" }}
+              style={{
+                fontSize: "0.8rem",
+                margin: 0,
+                marginTop: "12px",
+                marginBottom: "12px",
+              }}
             >
               Join curated group outings with strangers who become friends.
               Female only, Male only or mixed.
@@ -667,7 +706,13 @@ onMouseUp={(e) => {
                   strokeWidth="2.5"
                   strokeLinejoin="round"
                 />
-                <path d="m19 27 5 5 11-12" stroke="#c1735c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="m19 27 5 5 11-12"
+                  stroke="#c1735c"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
               <div
                 style={{
@@ -722,7 +767,12 @@ onMouseUp={(e) => {
             </p>
             <p
               className="max-w-[280px] text-sm font-light leading-5 text-gray-600"
-              style={{ fontSize: "0.8rem", margin: 0, marginTop: "12px", marginBottom: "12px" }}
+              style={{
+                fontSize: "0.8rem",
+                margin: 0,
+                marginTop: "12px",
+                marginBottom: "12px",
+              }}
             >
               Tell us your mood and budget. Our recommendation engine finds your
               perfect spot.
@@ -758,7 +808,7 @@ onMouseUp={(e) => {
               Built for the Nigerian
               <span className="block">who wants more from</span>
               <span className="block">their city.</span>
-</p>
+            </p>
           </div>
         </section>
 
@@ -783,7 +833,12 @@ onMouseUp={(e) => {
             </p>
             <h3
               className="mt-12 text-2xl font-bold leading-[1.1] tracking-[-0.04em] text-black"
-              style={{ margin: 0, marginTop: "24px", fontSize: "1.5rem", fontWeight: 700 }}
+              style={{
+                margin: 0,
+                marginTop: "24px",
+                fontSize: "1.5rem",
+                fontWeight: 700,
+              }}
             >
               Own a spot in
               <span className="block">Abuja? Get</span>
@@ -819,13 +874,13 @@ onMouseUp={(e) => {
               onMouseDown={(e) => {
                 e.currentTarget.style.transform = "scale(0.98)";
               }}
-onMouseUp={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                }}
-                onClick={navigateToListVenue}
-              >
-                List Your Venue
-              </button>
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+              onClick={navigateToListVenue}
+            >
+              List Your Venue
+            </button>
           </div>
         </section>
 
@@ -846,9 +901,15 @@ onMouseUp={(e) => {
             alt=""
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover"
-            style={{ opacity: 0.3, animation: "ctaZoomPan 12s ease-in-out infinite" }}
+            style={{
+              opacity: 0.3,
+              animation: "ctaZoomPan 12s ease-in-out infinite",
+            }}
           />
-          <div className="relative z-10 mx-auto w-[95%] max-w-[600px]" style={{ textAlign: "center" }}>
+          <div
+            className="relative z-10 mx-auto w-[95%] max-w-[600px]"
+            style={{ textAlign: "center" }}
+          >
             <p
               className="text-[1.85rem] font-black leading-[1.08] tracking-[-0.05em] text-black"
               style={{ margin: 0, textAlign: "center", fontWeight: 900 }}
@@ -856,7 +917,14 @@ onMouseUp={(e) => {
               Ready to leave the
               <span className="block">house?</span>
             </p>
-            <div className="mt-8 flex items-center justify-center" style={{ marginTop: "48px", gap: "3%", transform: "translateY(10px)" }}>
+            <div
+              className="mt-8 flex items-center justify-center"
+              style={{
+                marginTop: "48px",
+                gap: "3%",
+                transform: "translateY(10px)",
+              }}
+            >
               <button
                 type="button"
                 className="flex items-center justify-center rounded-full bg-transparent py-3.5 text-[0.92rem] font-semibold transition-all duration-200 active:scale-[0.98]"
@@ -937,11 +1005,15 @@ onMouseUp={(e) => {
               </button>
             </div>
           </div>
-          </section>
+        </section>
 
         <footer
           className="w-full bg-[#f7f2e8] px-4 pb-10"
-          style={{ backgroundColor: "#f7f2e8", overflow: "visible", paddingTop: "64px" }}
+          style={{
+            backgroundColor: "#f7f2e8",
+            overflow: "visible",
+            paddingTop: "64px",
+          }}
         >
           <img
             src={Logo}
@@ -949,36 +1021,135 @@ onMouseUp={(e) => {
             className="block h-4 w-auto max-w-[80px] object-contain"
             style={{ display: "block", marginTop: "4px" }}
           />
-          <p className="text-xs font-medium text-[#6b7280]" style={{ marginLeft: "20px", marginTop: "16px" }}>
+          <p
+            className="text-xs font-medium text-[#6b7280]"
+            style={{ marginLeft: "20px", marginTop: "16px" }}
+          >
             Find Places, Find People.
           </p>
-          <div className="flex w-full justify-center" style={{ marginTop: "48px" }}>
+          <div
+            className="flex w-full justify-center"
+            style={{ marginTop: "48px" }}
+          >
             <div className="flex items-center justify-center">
-              <a href="#" style={{ textDecoration: "none", marginRight: "40px", color: "#000000" }} className="group flex w-10 flex-col items-center gap-2 transition-colors">
-                <span className="text-xs font-medium" style={{ color: "#000000" }}>About</span>
+              <a
+                href="#"
+                style={{
+                  textDecoration: "none",
+                  marginRight: "40px",
+                  color: "#000000",
+                }}
+                className="group flex w-10 flex-col items-center gap-2 transition-colors"
+              >
+                <span
+                  className="text-xs font-medium"
+                  style={{ color: "#000000" }}
+                >
+                  About
+                </span>
               </a>
-              <a href="#" style={{ textDecoration: "none", marginRight: "40px", color: "#000000" }} className="group flex w-10 flex-col items-center gap-2 transition-colors">
-                <span className="text-xs font-medium" style={{ color: "#000000" }}>Contact</span>
+              <a
+                href="#"
+                style={{
+                  textDecoration: "none",
+                  marginRight: "40px",
+                  color: "#000000",
+                }}
+                className="group flex w-10 flex-col items-center gap-2 transition-colors"
+              >
+                <span
+                  className="text-xs font-medium"
+                  style={{ color: "#000000" }}
+                >
+                  Contact
+                </span>
               </a>
-              <a href="#" style={{ textDecoration: "none", marginRight: "40px", color: "#000000" }} className="group flex w-10 flex-row items-center gap-2 transition-colors">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden style={{ color: "#000000", marginRight: "6px" }}>
-                  <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" strokeWidth="1.8" />
-                  <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.8" />
+              <a
+                href="#"
+                style={{
+                  textDecoration: "none",
+                  marginRight: "40px",
+                  color: "#000000",
+                }}
+                className="group flex w-10 flex-row items-center gap-2 transition-colors"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden
+                  style={{ color: "#000000", marginRight: "6px" }}
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="6"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4.5"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  />
                   <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
                 </svg>
-                <span className="text-xs font-medium" style={{ color: "#000000" }}>Instagram</span>
+                <span
+                  className="text-xs font-medium"
+                  style={{ color: "#000000" }}
+                >
+                  Instagram
+                </span>
               </a>
-              <a href="#" aria-label="X" style={{ textDecoration: "none", color: "#000000" }} className="group flex items-center justify-center transition-colors">
-                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white shadow-sm transition-all group-hover:scale-105 group-hover:shadow-md" style={{ color: "#000000" }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <a
+                href="#"
+                aria-label="X"
+                style={{ textDecoration: "none", color: "#000000" }}
+                className="group flex items-center justify-center transition-colors"
+              >
+                <span
+                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white shadow-sm transition-all group-hover:scale-105 group-hover:shadow-md"
+                  style={{ color: "#000000" }}
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden
+                  >
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.16 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </span>
               </a>
             </div>
           </div>
-          <p className="flex items-center font-medium text-[#6b7280]" style={{ marginTop: "32px", marginBottom: "0", fontSize: "12px", whiteSpace: "nowrap", alignItems: "center", paddingLeft: "35px" }}>
-            <span aria-hidden style={{ fontSize: "16px", verticalAlign: "middle", marginRight: "8px" }}>©</span>
+          <p
+            className="flex items-center font-medium text-[#6b7280]"
+            style={{
+              marginTop: "32px",
+              marginBottom: "0",
+              fontSize: "12px",
+              whiteSpace: "nowrap",
+              alignItems: "center",
+              paddingLeft: "35px",
+            }}
+          >
+            <span
+              aria-hidden
+              style={{
+                fontSize: "16px",
+                verticalAlign: "middle",
+                marginRight: "8px",
+              }}
+            >
+              ©
+            </span>
             Comot Platforms Limited 2026
           </p>
         </footer>
