@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import BottomNav from "./components/BottomNav";
 import Fab from "./components/Fab";
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
@@ -34,17 +33,17 @@ export default function App() {
     setActive(page);
   };
 
-  const showBottomNav = ["explore", "experience", "profile"].includes(active);
+  const showFab = ["explore", "experience", "profile"].includes(active);
 
   function renderPage() {
     if (active === "home") return <Home onNavigate={navigate} />;
-    if (active === "explore") return <Explore />;
-    if (active === "experience") return <Experience />;
+    if (active === "explore") return <Explore onNavigate={navigate} />;
+    if (active === "experience") return <Experience onNavigate={navigate} />;
     if (active === "getstarted") return <GetStarted onNavigate={navigate} />;
     if (active === "login") return <Login onNavigate={navigate} />;
     if (active === "listvenue") return <ListYourVenue onNavigate={navigate} />;
     if (active === "admin") return <AdminDashboard onNavigate={navigate} />;
-    return <Profile />;
+    return <Profile onNavigate={navigate} />;
   }
 
   return (
@@ -52,16 +51,11 @@ export default function App() {
       className="min-h-screen flex flex-col"
       style={{ background: "#f7f2e8" }}
     >
-      <main className="flex-1 bottom-safe">
+      <main className="flex-1">
         <div className="mx-auto w-full">{renderPage()}</div>
       </main>
 
-      {showBottomNav && (
-        <>
-          <Fab onClick={() => console.log("FAB clicked")} />
-          <BottomNav active={active} onChange={navigate} />
-        </>
-      )}
+      {showFab && <Fab onClick={() => console.log("FAB clicked")} />}
     </div>
   );
 }

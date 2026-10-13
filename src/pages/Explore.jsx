@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../assets/images/comot logo.png";
+import TopNav from "../components/TopNav";
 import { readVenueSubmissions } from "../utils/venueSubmissions";
 
 const vibeFilters = [
@@ -17,7 +17,7 @@ const budgetFilters = ["Budget", "Mid", "Premium"];
 const updateStorageKey = "comot_venue_submissions_updated";
 const savedStorageKey = "comot_saved_venue_ids";
 
-export default function Explore() {
+export default function Explore({ onNavigate }) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -122,20 +122,20 @@ export default function Explore() {
     <div className="explore-page">
       <header className="explore-header">
         <div className="explore-header-inner">
-          <div>
-            <img className="explore-brand-logo" src={Logo} alt="COMOT logo" />
-            <h1>Explore Abuja</h1>
+          <TopNav active="explore" onNavigate={onNavigate} />
+          <h1>Explore Abuja</h1>
+          <div className="explore-intro-row">
             <p className="explore-intro">
               Find a place for the kind of day you have in mind.
             </p>
+            <span className="explore-location">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+                <circle cx="12" cy="10" r="2.3" />
+              </svg>
+              Abuja, Nigeria
+            </span>
           </div>
-          <span className="explore-location">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
-              <circle cx="12" cy="10" r="2.3" />
-            </svg>
-            Abuja, Nigeria
-          </span>
         </div>
       </header>
 
