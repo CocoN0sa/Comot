@@ -17,7 +17,7 @@ body,
   --primary: #263b5b;
   --accent: #c1735c;
   --bg: #f7f2e8;
-  --bottom-nav-height: 64px;
+  --bottom-nav-height: 56px;
 }
 
 @keyframes pulse {
@@ -202,7 +202,9 @@ select {
   background: transparent;
   color: rgba(255, 255, 255, 0.72);
   cursor: pointer;
-  transition: color 160ms ease, background-color 160ms ease;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
 }
 
 .bottom-nav-button::before {
@@ -338,7 +340,7 @@ select {
 
 .explore-search-wrap {
   max-width: 1180px;
-  height: 48px;
+  height: 40px;
   margin: 0 auto;
   padding: 0 14px;
   display: flex;
@@ -375,7 +377,7 @@ select {
   outline: 0;
   background: transparent;
   color: #263b5b;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .explore-search-wrap input::placeholder {
@@ -400,15 +402,15 @@ select {
 }
 
 .explore-filters {
-  margin-top: 14px;
-  padding: 10px 16px;
+  margin-top: 12px;
+  padding: 6px 16px;
   border: 1px solid #efd1c6;
   border-radius: 18px;
   background: #fff1eb;
 }
 
 .explore-filter-line {
-  min-height: 39px;
+  min-height: 33px;
   display: flex;
   align-items: center;
   gap: 13px;
@@ -436,14 +438,14 @@ select {
 }
 
 .explore-chip {
-  min-height: 31px;
+  min-height: 27px;
   flex: 0 0 auto;
   padding: 0 10px;
   border: 1px solid #ebc9bc;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.72);
   color: #79564b;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   cursor: pointer;
   transition:
@@ -591,18 +593,6 @@ select {
   stroke-width: 1.4;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-.venue-type-badge {
-  position: absolute;
-  top: 11px;
-  left: 11px;
-  padding: 5px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  color: #263b5b;
-  font-size: 10px;
-  font-weight: 800;
 }
 
 .venue-expand-hint {
@@ -953,11 +943,11 @@ select {
   }
 
   .explore-search-wrap {
-    height: 46px;
+    height: 38px;
   }
 
   .explore-search-wrap input {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .explore-content {
@@ -965,20 +955,19 @@ select {
   }
 
   .explore-filters {
-    padding: 9px 10px;
+    padding: 5px 8px;
     border-radius: 15px;
   }
 
   .explore-filter-line {
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
-    padding: 5px 0;
+    padding: 3px 0;
   }
 
   .explore-filter-title {
     width: 49px;
     flex-basis: 49px;
-    padding-top: 8px;
     font-size: 10px;
   }
 
@@ -1051,13 +1040,6 @@ select {
     min-height: 33px;
     padding: 5px;
     font-size: 10px;
-  }
-
-  .venue-type-badge {
-    top: 7px;
-    left: 7px;
-    padding: 4px 5px;
-    font-size: 8px;
   }
 
   .venue-photo-dots {
