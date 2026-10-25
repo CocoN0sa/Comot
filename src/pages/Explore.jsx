@@ -364,6 +364,10 @@ export default function Explore({ onNavigate }) {
 function VenueCard({ venue, isSaved, onToggleSaved, onExpand }) {
   const [images, setImages] = useState([]);
   const [imageIndex, setImageIndex] = useState(0);
+  const [shareMessage, setShareMessage] = useState("");
+  const mapsUrl = getGoogleMapsUrl(venue.googleMapsLink);
+  const description =
+    venue.shortDescription?.trim() || venue.venueDescription?.trim();
 
   useEffect(() => {
     const urls = (venue.photos || [])
@@ -381,6 +385,38 @@ function VenueCard({ venue, isSaved, onToggleSaved, onExpand }) {
     }, 3600);
     return () => window.clearInterval(timer);
   }, [images]);
+
+  const shareVenue = async () => {
+    const shareUrl = mapsUrl || window.location.href;
+    const shareData = {
+      title: venue.venueName || "COMOT venue",
+      text:
+        description ||
+        `Explore ${venue.venueName || "this venue"} in ${venue.neighbourhood || "Abuja"}.`,
+      url: shareUrl,
+    };
+
+    if (typeof navigator.share === "function") {
+      try {
+        await navigator.share(shareData);
+        setShareMessage("Venue shared.");
+      } catch (error) {
+        if (error?.name !== "AbortError") {
+          setShareMessage("Couldn't share this venue. Please try again.");
+        }
+      }
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(
+        `${shareData.text} ${shareData.url}`,
+      );
+      setShareMessage("Venue link copied.");
+    } catch {
+      setShareMessage("Sharing isn't available in this browser.");
+    }
+  };
 
   return (
     <article className="venue-card">
@@ -452,6 +488,9 @@ function VenueCard({ venue, isSaved, onToggleSaved, onExpand }) {
               </svg>
               {venue.neighbourhood || venue.fullAddress || "Abuja"}
             </p>
+            {description && (
+              <p className="venue-short-description">{description}</p>
+            )}
           </div>
           <span
             className={`venue-budget venue-budget-${budgetTier(venue.priceRange).toLowerCase()}`}
@@ -470,28 +509,61 @@ function VenueCard({ venue, isSaved, onToggleSaved, onExpand }) {
           </div>
         )}
 
-        <button
-          type="button"
-          className={isSaved ? "visit-later is-saved" : "visit-later"}
-          aria-pressed={isSaved}
-          onClick={onToggleSaved}
-        >
-          {isSaved ? (
-            <>
+        <div className="venue-card-footer">
+          {mapsUrl && (
+            <a
+              className="venue-map-link"
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m5 12 4 4L19 6" />
+                <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+                <circle cx="12" cy="10" r="2.3" />
               </svg>
-              Saved to your list
-            </>
-          ) : (
-            <>
+              Open in Google Maps
+            </a>
+          )}
+          <div className="venue-card-actions">
+            <button
+              type="button"
+              className={
+                isSaved
+                  ? "venue-card-icon-button is-saved"
+                  : "venue-card-icon-button"
+              }
+              aria-label={
+                isSaved
+                  ? `Remove ${venue.venueName} from saved venues`
+                  : `Save ${venue.venueName} for later`
+              }
+              aria-pressed={isSaved}
+              title={isSaved ? "Saved" : "Save venue"}
+              onClick={onToggleSaved}
+            >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M6 4.8A1.8 1.8 0 0 1 7.8 3h8.4A1.8 1.8 0 0 1 18 4.8V21l-6-3.8L6 21V4.8Z" />
               </svg>
-              Visit Later
-            </>
-          )}
-        </button>
+            </button>
+            <button
+              type="button"
+              className="venue-card-icon-button"
+              aria-label={`Share ${venue.venueName}`}
+              title="Share venue"
+              onClick={shareVenue}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <path d="m8.7 10.6 6.6-4.2M8.7 13.4l6.6 4.2" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <span className="venue-share-feedback" role="status" aria-live="polite">
+          {shareMessage}
+        </span>
       </div>
     </article>
   );
@@ -562,6 +634,20 @@ function budgetTier(priceRange = "") {
   if (normalized.includes("mid")) return "Mid";
   if (normalized.includes("budget")) return "Budget";
   return "Budget";
+}
+
+function getGoogleMapsUrl(value = "") {
+  try {
+    const url = new URL(value);
+    const isGoogleMapsHost =
+      url.hostname === "maps.app.goo.gl" ||
+      url.hostname === "goo.gl" ||
+      url.hostname === "google.com" ||
+      url.hostname.endsWith(".google.com");
+    return url.protocol === "https:" && isGoogleMapsHost ? url.href : "";
+  } catch {
+    return "";
+  }
 }
 
 function readSavedIds() {

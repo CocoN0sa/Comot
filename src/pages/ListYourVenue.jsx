@@ -61,6 +61,7 @@ const initialFormData = {
   parkingAvailable: "",
   reservationRequired: "",
   photos: [],
+  shortDescription: "",
   venueDescription: "",
   hostComotExperience: "",
 };
@@ -664,6 +665,18 @@ export default function ListYourVenue({ onNavigate }) {
           </div>
         )}
         {errors.photos && <span style={errorText}>{errors.photos}</span>}
+      </div>
+
+      <div style={fieldGroup}>
+        <label style={labelStyle}>One-line description (optional)</label>
+        <input
+          type="text"
+          maxLength={120}
+          placeholder="A quick snapshot of what makes this place special"
+          value={formData.shortDescription}
+          onChange={(e) => updateField("shortDescription", e.target.value)}
+          style={inputStyle}
+        />
       </div>
 
       <div style={fieldGroup}>

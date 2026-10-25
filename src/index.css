@@ -677,6 +677,16 @@ select {
   flex: 0 0 auto;
 }
 
+.venue-short-description {
+  margin: 7px 0 0;
+  overflow: hidden;
+  color: rgba(255, 250, 247, 0.9);
+  font-size: 11px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .venue-budget {
   flex: 0 0 auto;
   padding: 5px 7px;
@@ -714,46 +724,93 @@ select {
   font-weight: 600;
 }
 
-.visit-later {
-  width: 100%;
-  min-height: 37px;
+.venue-card-footer {
+  min-height: 34px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.venue-map-link {
+  min-width: 0;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 7px 10px;
-  border: 1px solid #dcd8cf;
-  border-radius: 999px;
-  background: #fff;
-  color: #263b5b;
-  font-size: 11px;
+  gap: 5px;
+  color: #fffaf7;
+  font-size: 10px;
   font-weight: 700;
-  cursor: pointer;
-  transition:
-    border-color 150ms ease,
-    background 150ms ease,
-    color 150ms ease;
+  text-decoration: none;
 }
 
-.visit-later:hover {
-  border-color: #a85f49;
-  background: #fff9f6;
+.venue-map-link:hover {
+  text-decoration: underline;
 }
 
-.visit-later.is-saved {
-  border-color: #c6dccb;
-  background: #edf6ef;
-  color: #276749;
-}
-
-.visit-later svg {
-  width: 15px;
-  height: 15px;
+.venue-map-link svg {
+  width: 14px;
+  height: 14px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.venue-card-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 7px;
+}
+
+.venue-card-icon-button {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 250, 247, 0.7);
+  border-radius: 50%;
+  background: rgba(255, 250, 247, 0.12);
+  color: #fffaf7;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.venue-card-icon-button:hover {
+  border-color: #fff;
+  background: rgba(255, 250, 247, 0.24);
+}
+
+.venue-card-icon-button.is-saved {
+  border-color: #fff5f1;
+  background: #fff5f1;
+  color: #9b5945;
+}
+
+.venue-card-icon-button svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.venue-share-feedback {
+  display: block;
+  min-height: 0;
+  color: #fffaf7;
+  font-size: 10px;
+}
+
+.venue-share-feedback:not(:empty) {
+  margin-top: 5px;
 }
 
 .explore-empty {
@@ -1021,10 +1078,13 @@ select {
     font-size: 8px;
   }
 
-  .visit-later {
-    min-height: 33px;
-    padding: 5px;
-    font-size: 10px;
+  .venue-card-footer {
+    margin-top: 9px;
+  }
+
+  .venue-card-icon-button {
+    width: 31px;
+    height: 31px;
   }
 
   .venue-photo-dots {
@@ -1065,7 +1125,7 @@ select {
   .venue-card,
   .venue-card-image,
   .explore-chip,
-  .visit-later {
+  .venue-card-icon-button {
     transition: none;
   }
 

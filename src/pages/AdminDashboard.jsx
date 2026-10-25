@@ -63,6 +63,7 @@ const blankVenue = {
   parkingAvailable: "",
   reservationRequired: "",
   photos: [],
+  shortDescription: "",
   venueDescription: "",
   hostComotExperience: "",
 };
@@ -410,6 +411,7 @@ function ReviewDialog({ venue, onClose, onStatusChange, onPhotosChange }) {
     ["Reservation required", titleCase(venue.reservationRequired)],
     ["Host a COMOT experience", titleCase(venue.hostComotExperience)],
     ["Photos", venue.photos, "photos"],
+    ["One-line description", venue.shortDescription],
     ["Venue description", venue.venueDescription, "wide"],
   ];
 
@@ -734,6 +736,16 @@ function AddVenueDialog({ onClose, onAdd }) {
                   multiple
                   onChange={(event) =>
                     updateField("photos", Array.from(event.target.files || []))
+                  }
+                  style={formInputStyle}
+                />
+              </Field>
+              <Field label="One-line description">
+                <input
+                  maxLength={120}
+                  value={venue.shortDescription}
+                  onChange={(event) =>
+                    updateField("shortDescription", event.target.value)
                   }
                   style={formInputStyle}
                 />
