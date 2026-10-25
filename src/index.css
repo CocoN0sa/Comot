@@ -475,7 +475,7 @@ button.explore-location[aria-expanded="true"] {
 
 .explore-search-wrap {
   max-width: 1180px;
-  height: 40px;
+  height: 36px;
   margin: 0 auto;
   padding: 0 14px;
   display: flex;
@@ -1197,11 +1197,11 @@ button.explore-location[aria-expanded="true"] {
   }
 
   .explore-search-wrap {
-    height: 38px;
+    height: 36px;
   }
 
   .explore-search-wrap input {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .explore-content {
