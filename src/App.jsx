@@ -8,27 +8,44 @@ import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import ListYourVenue from "./pages/ListYourVenue";
 import AdminDashboard from "./pages/AdminDashboard";
+import { hasRegisteredAccount } from "./utils/account";
+
+function getInitialPage() {
+  if (window.location.pathname.replace(/\/$/, "") === "/admin") return "admin";
+  if (new URLSearchParams(window.location.search).has("venue")) {
+    return hasRegisteredAccount() ? "explore" : "getstarted";
+  }
+  return "home";
+}
 
 export default function App() {
-  const [active, setActive] = useState(() =>
-    window.location.pathname.replace(/\/$/, "") === "/admin" ? "admin" : "home",
-  );
+  const [active, setActive] = useState(getInitialPage);
 
   useEffect(() => {
-    const syncRoute = () =>
-      setActive(
-        window.location.pathname.replace(/\/$/, "") === "/admin"
-          ? "admin"
-          : "home",
-      );
+    const syncRoute = () => setActive(getInitialPage());
     window.addEventListener("popstate", syncRoute);
     return () => window.removeEventListener("popstate", syncRoute);
   }, []);
 
   const navigate = (page) => {
-    const nextPath = page === "admin" ? "/admin" : "/";
-    if (window.location.pathname !== nextPath) {
-      window.history.pushState({}, "", nextPath);
+    const nextUrl = new URL(
+      page === "admin" ? "/admin" : "/",
+      window.location.origin,
+    );
+    const sharedVenueId = new URLSearchParams(window.location.search).get(
+      "venue",
+    );
+    if (
+      ["explore", "getstarted", "login"].includes(page) &&
+      sharedVenueId
+    ) {
+      nextUrl.searchParams.set("venue", sharedVenueId);
+    }
+    if (
+      window.location.pathname !== nextUrl.pathname ||
+      window.location.search !== nextUrl.search
+    ) {
+      window.history.pushState({}, "", nextUrl);
     }
     setActive(page);
   };

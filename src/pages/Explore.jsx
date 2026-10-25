@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import TopNav from "../components/TopNav";
 import { readVenueSubmissions } from "../utils/venueSubmissions";
+import {
+  availableLocations,
+  signupLocationStorageKey,
+} from "../utils/locations";
 
 const vibeFilters = [
   "Quiet",
@@ -17,6 +21,15 @@ const budgetFilters = ["Budget", "Mid", "Premium"];
 const updateStorageKey = "comot_venue_submissions_updated";
 const savedStorageKey = "comot_saved_venue_ids";
 
+function readSelectedLocation() {
+  try {
+    const location = window.localStorage.getItem(signupLocationStorageKey);
+    return availableLocations.includes(location) ? location : "Abuja";
+  } catch {
+    return "Abuja";
+  }
+}
+
 export default function Explore({ onNavigate }) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,8 +37,60 @@ export default function Explore({ onNavigate }) {
   const [selectedType, setSelectedType] = useState("All venues");
   const [selectedVibe, setSelectedVibe] = useState("");
   const [selectedBudget, setSelectedBudget] = useState("");
+  const [openFilter, setOpenFilter] = useState("");
   const [savedIds, setSavedIds] = useState(readSavedIds);
   const [expandedGallery, setExpandedGallery] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(readSelectedLocation);
+  const [isLocationMenuOpen, setIsLocationMenuOpen] = useState(false);
+  const locationSelectorRef = useRef(null);
+  const filterMenuRef = useRef(null);
+  const sharedVenueId = new URLSearchParams(window.location.search).get(
+    "venue",
+  );
+
+  useEffect(() => {
+    const closeLocationMenu = (event) => {
+      if (!locationSelectorRef.current?.contains(event.target)) {
+        setIsLocationMenuOpen(false);
+      }
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setIsLocationMenuOpen(false);
+    };
+    document.addEventListener("mousedown", closeLocationMenu);
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("mousedown", closeLocationMenu);
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  useEffect(() => {
+    const closeFilterMenu = (event) => {
+      if (!filterMenuRef.current?.contains(event.target)) {
+        setOpenFilter("");
+      }
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setOpenFilter("");
+    };
+    document.addEventListener("mousedown", closeFilterMenu);
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("mousedown", closeFilterMenu);
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  useEffect(() => {
+    const syncSelectedLocation = (event) => {
+      if (event.key === signupLocationStorageKey || event.key === null) {
+        setSelectedLocation(readSelectedLocation());
+      }
+    };
+    window.addEventListener("storage", syncSelectedLocation);
+    return () => window.removeEventListener("storage", syncSelectedLocation);
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -54,6 +119,14 @@ export default function Explore({ onNavigate }) {
       window.removeEventListener("storage", handleStorage);
     };
   }, []);
+
+  useEffect(() => {
+    if (isLoading || selectedLocation !== "Abuja" || !sharedVenueId) return;
+    const targetCard = document.getElementById(`venue-${sharedVenueId}`);
+    if (!targetCard) return;
+    targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    targetCard.focus({ preventScroll: true });
+  }, [isLoading, selectedLocation, sharedVenueId, venues]);
 
   useEffect(() => {
     if (!expandedGallery) return undefined;
@@ -123,22 +196,93 @@ export default function Explore({ onNavigate }) {
       <header className="explore-header">
         <TopNav active="explore" onNavigate={onNavigate} />
         <div className="explore-header-inner">
-          <h1>Explore Abuja</h1>
+          <h1>Explore {selectedLocation}</h1>
           <div className="explore-intro-row">
             <p className="explore-intro">
               Find a place for the kind of day you have in mind.
             </p>
-            <span className="explore-location">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
-                <circle cx="12" cy="10" r="2.3" />
-              </svg>
-              Abuja, Nigeria
-            </span>
+            <div className="explore-location-selector" ref={locationSelectorRef}>
+              <button
+                type="button"
+                className="explore-location"
+                aria-haspopup="listbox"
+                aria-expanded={isLocationMenuOpen}
+                onClick={() => setIsLocationMenuOpen((open) => !open)}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+                  <circle cx="12" cy="10" r="2.3" />
+                </svg>
+                {selectedLocation}, Nigeria
+                <svg
+                  className="explore-location-chevron"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="m7 10 5 5 5-5" />
+                </svg>
+              </button>
+              {isLocationMenuOpen && (
+                <div
+                  className="explore-location-menu"
+                  role="listbox"
+                  aria-label="Choose a location"
+                >
+                  {availableLocations.map((location) => (
+                    <button
+                      key={location}
+                      type="button"
+                      role="option"
+                      aria-selected={selectedLocation === location}
+                      className={
+                        selectedLocation === location
+                          ? "explore-location-option is-selected"
+                          : "explore-location-option"
+                      }
+                      onClick={() => {
+                        setSelectedLocation(location);
+                        setIsLocationMenuOpen(false);
+                      }}
+                    >
+                      {location}
+                      {location !== "Abuja" && (
+                        <span className="location-coming-soon">Coming Soon</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
 
+      {selectedLocation !== "Abuja" ? (
+        <main className="explore-coming-soon" aria-live="polite">
+          <div className="explore-coming-soon-card">
+            <span className="explore-coming-soon-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 22s8-7.2 8-13a8 8 0 1 0-16 0c0 5.8 8 13 8 13Z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+            </span>
+            <p className="explore-coming-soon-eyebrow">COMOT is on the way</p>
+            <h2>{selectedLocation} is coming soon</h2>
+            <p>
+              We’re not exploring {selectedLocation} just yet. Choose Abuja to
+              discover places available now.
+            </p>
+            <button
+              type="button"
+              className="explore-coming-soon-action"
+              onClick={() => setSelectedLocation("Abuja")}
+            >
+              Explore Abuja
+            </button>
+          </div>
+        </main>
+      ) : (
+        <>
       <div className="explore-search-band">
         <div className="explore-search-wrap">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -166,116 +310,71 @@ export default function Explore({ onNavigate }) {
 
       <main className="explore-content">
         <section className="explore-filters" aria-label="Venue filters">
-          <div className="explore-filter-line">
-            <span className="explore-filter-title">Category</span>
-            <div
-              className="explore-chip-scroll"
-              role="group"
-              aria-label="Filter by venue type"
-            >
-              {venueTypes.map((type) => (
-                <button
-                  type="button"
-                  key={type}
-                  className={
-                    selectedType === type
-                      ? "explore-chip is-selected"
-                      : "explore-chip"
-                  }
-                  aria-pressed={selectedType === type}
-                  onClick={() => setSelectedType(type)}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
+          <div className="explore-filter-buttons" ref={filterMenuRef}>
+            <ExploreFilter
+              label="Category"
+              value={selectedType === "All venues" ? "" : selectedType}
+              options={venueTypes
+                .filter((type) => type !== "All venues")
+                .map((type) => ({ label: type, value: type }))}
+              isOpen={openFilter === "category"}
+              onToggle={() =>
+                setOpenFilter((current) =>
+                  current === "category" ? "" : "category",
+                )
+              }
+              onSelect={(value) => {
+                setSelectedType((current) => (current === value ? "All venues" : value));
+                setOpenFilter("");
+              }}
+            />
+            <ExploreFilter
+              label="Vibe"
+              value={selectedVibe}
+              options={vibeFilters.map((vibe) => ({
+                label: vibe,
+                value: vibe,
+              }))}
+              isOpen={openFilter === "vibe"}
+              onToggle={() =>
+                setOpenFilter((current) => (current === "vibe" ? "" : "vibe"))
+              }
+              onSelect={(value) => {
+                setSelectedVibe((current) => (current === value ? "" : value));
+                setOpenFilter("");
+              }}
+            />
+            <ExploreFilter
+              label="Budget"
+              value={selectedBudget}
+              options={budgetFilters.map((budget) => ({
+                label: budget,
+                value: budget,
+              }))}
+              isOpen={openFilter === "budget"}
+              onToggle={() =>
+                setOpenFilter((current) =>
+                  current === "budget" ? "" : "budget",
+                )
+              }
+              onSelect={(value) => {
+                setSelectedBudget((current) => (current === value ? "" : value));
+                setOpenFilter("");
+              }}
+            />
           </div>
-
-          <div className="explore-filter-line">
-            <span className="explore-filter-title">Vibe</span>
-            <div
-              className="explore-chip-scroll"
-              role="group"
-              aria-label="Filter by vibe"
+          {(search ||
+            selectedVibe ||
+            selectedBudget ||
+            selectedType !== "All venues") && (
+            <button
+              type="button"
+              className="explore-clear"
+              onClick={clearFilters}
             >
-              <button
-                type="button"
-                className={
-                  !selectedVibe ? "explore-chip is-selected" : "explore-chip"
-                }
-                aria-pressed={!selectedVibe}
-                onClick={() => setSelectedVibe("")}
-              >
-                Any vibe
-              </button>
-              {vibeFilters.map((vibe) => (
-                <button
-                  type="button"
-                  key={vibe}
-                  className={
-                    selectedVibe === vibe
-                      ? "explore-chip is-selected"
-                      : "explore-chip"
-                  }
-                  aria-pressed={selectedVibe === vibe}
-                  onClick={() =>
-                    setSelectedVibe(selectedVibe === vibe ? "" : vibe)
-                  }
-                >
-                  {vibe}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="explore-filter-line explore-budget-line">
-            <span className="explore-filter-title">Budget</span>
-            <div
-              className="explore-chip-scroll"
-              role="group"
-              aria-label="Filter by budget"
-            >
-              <button
-                type="button"
-                className={
-                  !selectedBudget ? "explore-chip is-selected" : "explore-chip"
-                }
-                aria-pressed={!selectedBudget}
-                onClick={() => setSelectedBudget("")}
-              >
-                Any price
-              </button>
-              {budgetFilters.map((budget) => (
-                <button
-                  type="button"
-                  key={budget}
-                  className={
-                    selectedBudget === budget
-                      ? "explore-chip is-selected"
-                      : "explore-chip"
-                  }
-                  aria-pressed={selectedBudget === budget}
-                  onClick={() =>
-                    setSelectedBudget(selectedBudget === budget ? "" : budget)
-                  }
-                >
-                  {budget}
-                </button>
-              ))}
-            </div>
-            {(search ||
-              selectedVibe ||
-              selectedBudget ||
-              selectedType !== "All venues") && (
-              <button
-                type="button"
-                className="explore-clear"
-                onClick={clearFilters}
-              >
-                Clear filters
-              </button>
-            )}
-          </div>
+              Clear filters
+            </button>
+          )}
         </section>
 
         <div className="explore-results-heading">
@@ -304,6 +403,7 @@ export default function Explore({ onNavigate }) {
               <VenueCard
                 key={venue.id}
                 venue={venue}
+                isShared={venue.id === sharedVenueId}
                 isSaved={savedIds.includes(venue.id)}
                 onToggleSaved={() => toggleSaved(venue.id)}
                 onExpand={(images, index) =>
@@ -345,8 +445,10 @@ export default function Explore({ onNavigate }) {
           </div>
         )}
       </main>
+        </>
+      )}
 
-      {expandedGallery && (
+      {selectedLocation === "Abuja" && expandedGallery && (
         <ImageViewer
           title={expandedGallery.title}
           images={expandedGallery.images}
@@ -361,7 +463,46 @@ export default function Explore({ onNavigate }) {
   );
 }
 
-function VenueCard({ venue, isSaved, onToggleSaved, onExpand }) {
+function ExploreFilter({ label, value, options, isOpen, onToggle, onSelect }) {
+  return (
+    <div className="explore-filter">
+      <button
+        type="button"
+        className={value ? "explore-filter-button is-active" : "explore-filter-button"}
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+        onClick={onToggle}
+      >
+        <span>{value || label}</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m7 10 5 5 5-5" />
+        </svg>
+      </button>
+      {isOpen && (
+        <div className="explore-filter-menu" role="menu" aria-label={label}>
+          {options.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              role="menuitemradio"
+              aria-checked={value === option.value}
+              className={
+                value === option.value
+                  ? "explore-filter-option is-selected"
+                  : "explore-filter-option"
+              }
+              onClick={() => onSelect(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand }) {
   const [images, setImages] = useState([]);
   const [imageIndex, setImageIndex] = useState(0);
   const [shareMessage, setShareMessage] = useState("");
@@ -387,13 +528,15 @@ function VenueCard({ venue, isSaved, onToggleSaved, onExpand }) {
   }, [images]);
 
   const shareVenue = async () => {
-    const shareUrl = mapsUrl || window.location.href;
+    const shareUrl = new URL(window.location.href);
+    shareUrl.searchParams.set("venue", venue.id);
+    shareUrl.hash = "";
     const shareData = {
       title: venue.venueName || "COMOT venue",
       text:
         description ||
         `Explore ${venue.venueName || "this venue"} in ${venue.neighbourhood || "Abuja"}.`,
-      url: shareUrl,
+      url: shareUrl.href,
     };
 
     if (typeof navigator.share === "function") {
@@ -419,7 +562,11 @@ function VenueCard({ venue, isSaved, onToggleSaved, onExpand }) {
   };
 
   return (
-    <article className="venue-card">
+    <article
+      id={`venue-${venue.id}`}
+      className={isShared ? "venue-card is-shared" : "venue-card"}
+      tabIndex={isShared ? -1 : undefined}
+    >
       <div className="venue-card-media">
         {images.length ? (
           <>
@@ -482,9 +629,13 @@ function VenueCard({ venue, isSaved, onToggleSaved, onExpand }) {
           <div>
             <h3>{venue.venueName || "Untitled venue"}</h3>
             <p className="venue-location">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
-                <circle cx="12" cy="10" r="2.3" />
+              <svg
+                className="venue-location-pin"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="7.5" r="5" />
+                <path d="M12 12.5V22" />
               </svg>
               {venue.neighbourhood || venue.fullAddress || "Abuja"}
             </p>

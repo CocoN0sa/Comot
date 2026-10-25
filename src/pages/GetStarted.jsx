@@ -1,5 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Logo from "../assets/images/comot logo.png";
+import {
+  availableLocations,
+  signupLocationStorageKey,
+} from "../utils/locations";
+import { accountExistsStorageKey } from "../utils/account";
 
 export default function GetStarted({ onNavigate }) {
   const [step, setStep] = useState(1);
@@ -65,6 +70,16 @@ export default function GetStarted({ onNavigate }) {
         setError("Passwords do not match");
         return;
       }
+      try {
+        window.localStorage.setItem(
+          signupLocationStorageKey,
+          formData.location,
+        );
+        window.localStorage.setItem(accountExistsStorageKey, "true");
+      } catch {
+        setError("Your account could not be saved. Please try again.");
+        return;
+      }
       setStep(4);
     }
   };
@@ -103,10 +118,10 @@ export default function GetStarted({ onNavigate }) {
 
   const locations = [
     { value: "", label: "Select your city" },
-    { value: "Abuja", label: "Abuja" },
-    { value: "Lagos", label: "Lagos" },
-    { value: "Port Harcourt", label: "Port Harcourt" },
-    { value: "Benin City", label: "Benin City" },
+    ...availableLocations.map((location) => ({
+      value: location,
+      label: location,
+    })),
   ];
 
   const handleLocationSelect = (value) => {

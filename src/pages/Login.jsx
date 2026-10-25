@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/images/comot logo.png";
+import { accountExistsStorageKey } from "../utils/account";
 
 export default function Login({ onNavigate }) {
   const [step, setStep] = useState(1);
@@ -46,6 +47,12 @@ export default function Login({ onNavigate }) {
     e.preventDefault();
     if (!formData.email || !formData.password) {
       setError("Please fill in all fields");
+      return;
+    }
+    try {
+      window.localStorage.setItem(accountExistsStorageKey, "true");
+    } catch {
+      setError("Your account could not be verified. Please try again.");
       return;
     }
     setStep(2);
