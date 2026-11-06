@@ -368,8 +368,21 @@
 
 .experience-admin-add-dialog form {
   display: grid;
-  gap: 15px;
+  gap: 18px;
   padding: 22px 24px;
+}
+
+.experience-admin-add-section {
+  display: grid;
+  gap: 12px;
+}
+
+.experience-admin-add-section > h3 {
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ebe8e1;
+  color: #263b5b;
+  font-size: 15px;
 }
 
 .experience-admin-add-dialog form > label,
@@ -405,6 +418,107 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+}
+
+.experience-admin-form-full {
+  grid-column: 1 / -1;
+}
+
+.experience-admin-add-dialog label small,
+.experience-admin-add-section small {
+  color: #6f7882;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.experience-admin-form-options {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.experience-admin-form-options legend,
+.experience-admin-form-age > span {
+  margin-bottom: 8px;
+  color: #263b5b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.experience-admin-radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.experience-admin-form-grid .experience-admin-radio-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid #dfe3e9;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.experience-admin-radio-row input,
+.experience-admin-checkbox input {
+  width: auto;
+  min-height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  accent-color: #263b5b;
+}
+
+.experience-admin-form-age {
+  display: grid;
+  gap: 8px;
+}
+
+.experience-admin-form-age .experience-admin-form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.experience-admin-prefix-input {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #dfe3e9;
+  border-radius: 6px;
+}
+
+.experience-admin-prefix-input > span {
+  padding: 0 0 0 11px;
+  color: #697586;
+  font-weight: 500;
+}
+
+.experience-admin-add-dialog .experience-admin-prefix-input input {
+  border: 0;
+}
+
+.experience-admin-add-dialog .experience-admin-prefix-input input:focus {
+  outline: 0;
+}
+
+.experience-admin-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #263b5b;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.experience-admin-checkbox input {
+  flex: 0 0 auto;
+  margin-top: 2px;
 }
 
 .experience-admin-form-error {
@@ -445,6 +559,14 @@
   .experience-admin-details,
   .experience-admin-form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .experience-admin-form-grid .experience-admin-form-full {
+    grid-column: auto;
+  }
+
+  .experience-admin-form-age .experience-admin-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .experience-admin-dialog > header,
