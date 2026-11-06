@@ -1029,9 +1029,15 @@
     margin-bottom: 6px;
   }
 
-  .experience-page--form .experience-form-header .experience-eyebrow,
+  .experience-page--form .experience-form-header .experience-eyebrow {
+    margin-bottom: 2px;
+    font-size: 0.58rem;
+  }
+
   .experience-page--form .experience-form-header > p:last-child {
-    display: none;
+    margin-top: 3px;
+    font-size: 0.66rem;
+    line-height: 1.2;
   }
 
   .experience-page--form .experience-form-header h2 {
