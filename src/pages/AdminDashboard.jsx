@@ -5,6 +5,7 @@ import {
   readVenueSubmissions,
   writeVenueSubmissions,
 } from "../utils/venueSubmissions";
+import ExperienceOperations from "./ExperienceOperations";
 
 const venueTypes = [
   "Restaurant",
@@ -69,6 +70,7 @@ const blankVenue = {
 };
 
 export default function AdminDashboard({ onNavigate }) {
+  const [activeOperations, setActiveOperations] = useState("venues");
   const [submissions, setSubmissions] = useState([]);
   const [filter, setFilter] = useState("pending");
   const [search, setSearch] = useState("");
@@ -188,6 +190,31 @@ export default function AdminDashboard({ onNavigate }) {
       </header>
 
       <main style={mainStyle}>
+        <div style={operationSwitcherStyle} role="tablist" aria-label="Admin operations">
+          {[
+            ["venues", "Venue Operations"],
+            ["experiences", "Experience Operations"],
+          ].map(([value, label]) => (
+            <button
+              key={value}
+              type="button"
+              role="tab"
+              aria-selected={activeOperations === value}
+              onClick={() => setActiveOperations(value)}
+              style={
+                activeOperations === value
+                  ? operationTabActiveStyle
+                  : operationTabStyle
+              }
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        {activeOperations === "experiences" ? (
+          <ExperienceOperations />
+        ) : (
+          <>
         <div style={titleRowStyle}>
           <div>
             <p style={eyebrowStyle}>VENUE OPERATIONS</p>
@@ -368,9 +395,11 @@ export default function AdminDashboard({ onNavigate }) {
             </table>
           </div>
         </section>
+          </>
+        )}
       </main>
 
-      {selectedVenue && (
+      {activeOperations === "venues" && selectedVenue && (
         <ReviewDialog
           venue={selectedVenue}
           onClose={() => setSelectedId(null)}
@@ -378,7 +407,7 @@ export default function AdminDashboard({ onNavigate }) {
           onPhotosChange={(files) => updatePhotos(selectedVenue.id, files)}
         />
       )}
-      {showAddVenue && (
+      {activeOperations === "venues" && showAddVenue && (
         <AddVenueDialog
           onClose={() => setShowAddVenue(false)}
           onAdd={addVenue}
@@ -951,6 +980,29 @@ function photoList(value) {
       )
     : [];
 }
+
+const operationSwitcherStyle = {
+  display: "flex",
+  gap: 6,
+  marginBottom: 22,
+  paddingBottom: 10,
+  borderBottom: "1px solid #dedbd3",
+};
+const operationTabStyle = {
+  padding: "10px 14px",
+  border: 0,
+  borderRadius: 6,
+  background: "transparent",
+  color: "#68737d",
+  fontSize: 13,
+  fontWeight: 700,
+  cursor: "pointer",
+};
+const operationTabActiveStyle = {
+  ...operationTabStyle,
+  background: "#263b5b",
+  color: "#fff",
+};
 
 const pageStyle = {
   minHeight: "100vh",

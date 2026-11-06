@@ -9,9 +9,13 @@ import Login from "./pages/Login";
 import ListYourVenue from "./pages/ListYourVenue";
 import AdminDashboard from "./pages/AdminDashboard";
 import { hasRegisteredAccount } from "./utils/account";
+import { experienceHostSteps } from "./utils/experienceRoutes";
 
 function getInitialPage() {
-  if (window.location.pathname.replace(/\/$/, "") === "/admin") return "admin";
+  const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+  const hostStep = experienceHostSteps.find((item) => item.path === pathname);
+  if (hostStep) return hostStep.page;
+  if (pathname === "/admin") return "admin";
   if (new URLSearchParams(window.location.search).has("venue")) {
     return hasRegisteredAccount() ? "explore" : "getstarted";
   }
@@ -28,10 +32,14 @@ export default function App() {
   }, []);
 
   const navigate = (page) => {
-    const nextUrl = new URL(
-      page === "admin" ? "/admin" : "/",
-      window.location.origin,
-    );
+    const hostStep = experienceHostSteps.find((item) => item.page === page);
+    const nextPath =
+      hostStep
+        ? hostStep.path
+        : page === "admin"
+          ? "/admin"
+          : "/";
+    const nextUrl = new URL(nextPath, window.location.origin);
     const sharedVenueId = new URLSearchParams(window.location.search).get(
       "venue",
     );
@@ -51,11 +59,21 @@ export default function App() {
   };
 
   const showFab = ["explore", "experience", "profile"].includes(active);
+  const experienceStep = experienceHostSteps.findIndex(
+    (item) => item.page === active,
+  );
 
   function renderPage() {
     if (active === "home") return <Home onNavigate={navigate} />;
     if (active === "explore") return <Explore onNavigate={navigate} />;
-    if (active === "experience") return <Experience onNavigate={navigate} />;
+    if (active === "experience" || experienceStep !== -1) {
+      return (
+        <Experience
+          onNavigate={navigate}
+          step={experienceStep === -1 ? null : experienceStep}
+        />
+      );
+    }
     if (active === "getstarted") return <GetStarted onNavigate={navigate} />;
     if (active === "login") return <Login onNavigate={navigate} />;
     if (active === "listvenue") return <ListYourVenue onNavigate={navigate} />;

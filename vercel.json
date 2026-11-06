@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/experience/host/:path*",
+      "destination": "/"
+    },
+    {
       "source": "/admin",
       "destination": "/"
     }
