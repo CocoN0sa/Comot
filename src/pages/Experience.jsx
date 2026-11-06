@@ -496,7 +496,9 @@ export default function Experience({ onNavigate, step = null }) {
   }
 
   return (
-    <div className="simple-page experience-page">
+    <div
+      className={`simple-page experience-page${step !== null ? " experience-page--form" : ""}`}
+    >
       <div className="simple-page-inner">
         <TopNav active="experience" onNavigate={onNavigate} />
         <main>

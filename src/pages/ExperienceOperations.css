@@ -418,6 +418,12 @@
 }
 
 @media (max-width: 640px) {
+  .admin-dashboard input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+  .admin-dashboard textarea,
+  .admin-dashboard select {
+    font-size: 16px !important;
+  }
+
   .experience-operations-header {
     align-items: flex-start;
     flex-direction: column;

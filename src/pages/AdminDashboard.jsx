@@ -171,7 +171,7 @@ export default function AdminDashboard({ onNavigate }) {
   };
 
   return (
-    <div style={pageStyle}>
+    <div className="admin-dashboard" style={pageStyle}>
       <header style={headerStyle}>
         <div style={headerInnerStyle}>
           <div style={brandStyle}>
