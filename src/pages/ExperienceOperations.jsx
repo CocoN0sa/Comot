@@ -8,6 +8,7 @@ import {
 import "./ExperienceOperations.css";
 
 const filters = ["all", "pending", "approved", "declined", "deleted"];
+const emptyPhotos = [];
 const categories = [
   "Outdoor / Nature",
   "Food and Drinks",
@@ -111,22 +112,48 @@ function ExperienceStatus({ status }) {
   );
 }
 
-function ReviewCoverPhoto({ blob }) {
-  const [src, setSrc] = useState("");
-
+function ReviewPhotos({ photos }) {
+  const [photoSources, setPhotoSources] = useState([]);
   useEffect(() => {
-    const objectUrl = URL.createObjectURL(blob);
-    setSrc(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [blob]);
+    const sources = photos.map((photo) => ({
+      name: photo.name || "",
+      src: photo.blob ? URL.createObjectURL(photo.blob) : "",
+    }));
+    setPhotoSources(sources);
+    return () =>
+      sources.forEach(({ src }) => {
+        if (src) URL.revokeObjectURL(src);
+      });
+  }, [photos]);
 
-  return src ? (
-    <img
-      className="experience-admin-review-image"
-      src={src}
-      alt="Experience cover"
-    />
-  ) : null;
+  if (!photos.length) return null;
+
+  return (
+    <section className="experience-admin-review-photos" aria-label="Uploaded photos">
+      <h3>Uploaded photos ({photos.length})</h3>
+      <div>
+        {photos.map((photo, index) => (
+          <figure key={`${photo.name || "photo"}-${index}`}>
+            {photoSources[index]?.src ? (
+              <img src={photoSources[index].src} alt={photo.name || `Experience photo ${index + 1}`} />
+            ) : (
+              <div className="experience-admin-review-photo-missing">
+                Photo preview unavailable
+              </div>
+            )}
+            <figcaption>
+              {index === 0 ? "Cover photo" : `Additional photo ${index}`}
+              {photo.name &&
+              photo.name !==
+                (index === 0 ? "Cover photo" : `Additional photo ${index}`)
+                ? ` · ${photo.name}`
+                : ""}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default function ExperienceOperations() {
@@ -406,16 +433,34 @@ export default function ExperienceOperations() {
 }
 
 function ExperienceReviewDialog({ experience, onClose, onStatusChange }) {
+  const duration =
+    experience.duration === "Other"
+      ? experience.customDuration
+      : experience.duration;
+  const neighbourhood =
+    experience.neighbourhood === "Other — specify"
+      ? experience.customNeighbourhood
+      : experience.neighbourhood;
+  const groupSize =
+    experience.groupSizeType === "unlimited" ||
+    experience.groupSize === "Unlimited spots"
+      ? "Unlimited spots"
+      : experience.groupSize
+        ? `${String(experience.groupSize).replace(/\s*spots?$/i, "")} spots`
+        : "Not provided";
+  const confirmationValue = (value) =>
+    value === true || value === "on" ? "Confirmed" : "Not confirmed";
   const details = [
+    ["Experience name", experience.experienceName],
     ["Description", experience.description],
     ["Category", experience.category],
-    ["Group size", experience.groupSize],
+    ["Group size", groupSize],
     ["Gender composition", experience.genderComposition],
     ["Date and time", [experience.date, experience.startTime].filter(Boolean).join(" · ")],
-    ["Duration", experience.duration],
+    ["Duration", duration],
     ["Venue", experience.venueName],
     ["Address", experience.venueAddress],
-    ["Area", experience.neighbourhood],
+    ["Area", neighbourhood],
     ["Maps link", experience.mapsLink],
     [
       "Commitment fee",
@@ -429,8 +474,10 @@ function ExperienceReviewDialog({ experience, onClose, onStatusChange }) {
     ["Age range", [experience.minimumAge, experience.maximumAge].filter(Boolean).join(" to ")],
     ["Host", experience.hostName],
     ["Host bio", experience.hostBio],
-    ["Instagram", experience.instagramHandle ? `@${experience.instagramHandle}` : ""],
+    ["Instagram", experience.instagramHandle ? `@${experience.instagramHandle.replace(/^@/, "")}` : ""],
     ["WhatsApp", experience.hostPhone],
+    ["Community guidelines", confirmationValue(experience.guidelinesAgreement)],
+    ["Cancellation policy", confirmationValue(experience.cancellationAgreement)],
   ];
 
   return (
@@ -452,9 +499,7 @@ function ExperienceReviewDialog({ experience, onClose, onStatusChange }) {
           </div>
           <button type="button" onClick={onClose} aria-label="Close review">×</button>
         </header>
-        {experience.photos?.[0]?.blob && (
-          <ReviewCoverPhoto blob={experience.photos[0].blob} />
-        )}
+        <ReviewPhotos photos={experience.photos || emptyPhotos} />
         <div className="experience-admin-details">
           {details.map(([label, value]) => (
             <div key={label}>

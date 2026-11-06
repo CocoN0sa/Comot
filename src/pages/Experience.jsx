@@ -254,7 +254,7 @@ function ExperienceCard({ experience }) {
         <p className="experience-event-meta">
           {experienceDate}
           {experience.startTime ? ` · ${experience.startTime}` : ""}
-          {experience.duration ? ` · ${experience.duration}` : ""}
+          {duration ? ` · ${duration}` : ""}
         </p>
         <p className="experience-event-location">
           {[experience.venueName, neighbourhood]
@@ -703,18 +703,27 @@ export default function Experience({ onNavigate, step = null }) {
       className={`simple-page experience-page${step !== null ? " experience-page--form" : ""}`}
     >
       <div className="simple-page-inner">
-        <TopNav active="experience" onNavigate={onNavigate} />
+        {step === null && (
+          <div className="experience-nav-band">
+            <TopNav active="experience" onNavigate={onNavigate} />
+            <section
+              className="experience-hero"
+              aria-labelledby="experience-title"
+            >
+              <h1 id="experience-title">Curated Outings</h1>
+              <p>
+                Discover plans worth showing up for, come as you are, or create
+                an experience of your own.
+              </p>
+            </section>
+          </div>
+        )}
+        {step !== null && (
+          <TopNav active="experience" onNavigate={onNavigate} />
+        )}
         <main>
           {step === null ? (
             <>
-              <section className="experience-hero" aria-labelledby="experience-title">
-                <h1 id="experience-title">Curated Outings</h1>
-                <p>
-                  Discover plans worth showing up for, come as you are, or
-                  create an experience of your own.
-                </p>
-              </section>
-
               <section
                 className="experience-approved-section"
                 aria-labelledby="approved-experiences-title"

@@ -1,18 +1,31 @@
-.experience-page {
+.simple-page.experience-page {
   min-height: 100vh;
   min-height: 100dvh;
-  background: #f7f5ef;
+  background: #f7f2e8;
   color: #263b5b;
+}
+
+.experience-nav-band {
+  width: 100vw;
+  box-sizing: border-box;
+  margin-left: calc(50% - 50vw);
+  margin-top: -18px;
+  padding: 18px max(28px, calc((100vw - 1064px) / 2)) 0;
+  background: #fff;
+}
+
+.experience-nav-band .top-nav {
+  margin-bottom: 8px;
+}
+
+.experience-nav-band .experience-hero {
+  padding: 12px 0 16px;
 }
 
 .experience-page .simple-page-inner {
   max-width: 1120px;
   padding: 18px 28px 80px;
   box-sizing: border-box;
-}
-
-.experience-page .top-nav {
-  margin-bottom: 30px;
 }
 
 .experience-page--form .simple-page-inner {
@@ -235,7 +248,7 @@
 }
 
 .experience-approved-section {
-  margin: 0 0 56px;
+  margin: 24px 0 56px;
 }
 
 .experience-approved-heading {
@@ -1032,6 +1045,19 @@
 
   .experience-page .simple-page-inner {
     padding: 14px 18px 56px;
+  }
+
+  .experience-nav-band {
+    margin-top: -14px;
+    padding: 14px 18px 0;
+  }
+
+  .experience-nav-band .top-nav {
+    margin-bottom: 4px;
+  }
+
+  .experience-nav-band .experience-hero {
+    padding: 10px 0 14px;
   }
 
   .experience-page--form .simple-page-inner {
