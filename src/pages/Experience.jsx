@@ -104,6 +104,9 @@ function FormField({ label, hint, children, className = "" }) {
 
 function ExperienceCard({ experience }) {
   const [photoSources, setPhotoSources] = useState([]);
+  const [imageIndex, setImageIndex] = useState(0);
+  const [isMediaPaused, setIsMediaPaused] = useState(false);
+  const [isPageVisible, setIsPageVisible] = useState(() => !document.hidden);
 
   useEffect(() => {
     const sources = (experience.photos || []).map((photo) => ({
@@ -111,11 +114,39 @@ function ExperienceCard({ experience }) {
       src: photo.blob ? URL.createObjectURL(photo.blob) : "",
     }));
     setPhotoSources(sources);
+    setImageIndex(0);
     return () =>
       sources.forEach(({ src }) => {
         if (src) URL.revokeObjectURL(src);
       });
   }, [experience.photos]);
+
+  useEffect(() => {
+    const updateVisibility = () => setIsPageVisible(!document.hidden);
+    document.addEventListener("visibilitychange", updateVisibility);
+    return () =>
+      document.removeEventListener("visibilitychange", updateVisibility);
+  }, []);
+
+  const availablePhotos = photoSources.filter((photo) => photo.src);
+
+  useEffect(() => {
+    if (
+      availablePhotos.length < 2 ||
+      isMediaPaused ||
+      !isPageVisible ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return undefined;
+    }
+
+    const delay = imageIndex === 0 ? 6500 : 3000;
+    const timeout = window.setTimeout(
+      () => setImageIndex((current) => (current + 1) % availablePhotos.length),
+      delay,
+    );
+    return () => window.clearTimeout(timeout);
+  }, [availablePhotos.length, imageIndex, isMediaPaused, isPageVisible]);
 
   const experienceDate = experience.date
     ? new Date(`${experience.date}T00:00:00Z`).toLocaleDateString(undefined, {
@@ -145,13 +176,38 @@ function ExperienceCard({ experience }) {
   const instagramHandle = experience.instagramHandle
     ? `@${experience.instagramHandle.replace(/^@/, "")}`
     : "";
-  const coverImage = photoSources[0]?.src;
+  const activePhoto = availablePhotos[imageIndex];
+  const handleMediaBlur = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setIsMediaPaused(false);
+    }
+  };
 
   return (
     <article className="experience-event-card">
-      <div className="experience-event-media">
-        {coverImage ? (
-          <img src={coverImage} alt={experience.experienceName || "Experience"} />
+      <div
+        className="experience-event-media"
+        role={availablePhotos.length > 1 ? "group" : undefined}
+        onMouseEnter={() => setIsMediaPaused(true)}
+        onMouseLeave={() => setIsMediaPaused(false)}
+        onFocusCapture={() => setIsMediaPaused(true)}
+        onBlurCapture={handleMediaBlur}
+        aria-label={
+          availablePhotos.length > 1
+            ? `${availablePhotos.length} photos of ${experience.experienceName || "this experience"}`
+            : undefined
+        }
+      >
+        {activePhoto ? (
+          <img
+            key={activePhoto.src}
+            src={activePhoto.src}
+            alt={
+              activePhoto.name ||
+              experience.experienceName ||
+              "Experience"
+            }
+          />
         ) : (
           <div className="experience-event-placeholder" aria-hidden="true">
             <span>COMOT</span>
@@ -159,6 +215,28 @@ function ExperienceCard({ experience }) {
         )}
         {experience.category && (
           <span className="experience-event-category">{experience.category}</span>
+        )}
+        {availablePhotos.length > 1 && (
+          <div
+            className="experience-event-photo-dots"
+            role="group"
+            aria-label="Choose experience photo"
+          >
+            {availablePhotos.map((photo, index) => (
+              <button
+                key={`${photo.name}-${index}`}
+                type="button"
+                className={
+                  index === imageIndex
+                    ? "experience-event-photo-dot is-active"
+                    : "experience-event-photo-dot"
+                }
+                aria-label={`Show photo ${index + 1} of ${availablePhotos.length}`}
+                aria-pressed={index === imageIndex}
+                onClick={() => setImageIndex(index)}
+              />
+            ))}
+          </div>
         )}
       </div>
       <div className="experience-event-body">
@@ -284,18 +362,16 @@ function ExperienceCard({ experience }) {
                 </div>
               )}
             </dl>
-            {photoSources.length > 1 && (
+            {availablePhotos.length > 1 && (
               <div className="experience-event-gallery" aria-label="More experience photos">
-                {photoSources.slice(1).map(({ name, src }, index) =>
-                  src ? (
-                    <img
-                      key={`${name}-${index}`}
-                      src={src}
-                      alt={name || `Additional experience photo ${index + 1}`}
-                      loading="lazy"
-                    />
-                  ) : null,
-                )}
+                {availablePhotos.slice(1).map(({ name, src }, index) => (
+                  <img
+                    key={`${name}-${index}`}
+                    src={src}
+                    alt={name || `Additional experience photo ${index + 1}`}
+                    loading="lazy"
+                  />
+                ))}
               </div>
             )}
           </div>
