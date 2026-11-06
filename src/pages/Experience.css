@@ -397,6 +397,78 @@
   font-size: 0.9rem;
 }
 
+.experience-event-details {
+  margin-top: 12px;
+  border-top: 1px solid rgba(255, 250, 247, 0.3);
+}
+
+.experience-event-details summary {
+  padding: 11px 0 2px;
+  color: #fffaf7;
+  font-size: 0.74rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.experience-event-details summary:focus-visible {
+  outline: 2px solid #fffaf7;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.experience-event-details-content {
+  padding-top: 12px;
+}
+
+.experience-event-details dl {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.experience-event-details dl > div {
+  min-width: 0;
+}
+
+.experience-event-details dt {
+  margin-bottom: 3px;
+  color: rgba(255, 250, 247, 0.72);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.experience-event-details dd {
+  margin: 0;
+  color: #fffaf7;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.experience-event-details a {
+  color: #fffaf7;
+  font-weight: 800;
+  text-underline-offset: 2px;
+}
+
+.experience-event-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.experience-event-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
 .experience-host-card {
   display: flex;
   align-items: center;

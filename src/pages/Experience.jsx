@@ -103,25 +103,49 @@ function FormField({ label, hint, children, className = "" }) {
 }
 
 function ExperienceCard({ experience }) {
-  const [coverImage, setCoverImage] = useState("");
+  const [photoSources, setPhotoSources] = useState([]);
 
   useEffect(() => {
-    const cover = experience.photos?.[0];
-    if (!cover?.blob) {
-      setCoverImage("");
-      return undefined;
-    }
-    const objectUrl = URL.createObjectURL(cover.blob);
-    setCoverImage(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
+    const sources = (experience.photos || []).map((photo) => ({
+      name: photo.name || "",
+      src: photo.blob ? URL.createObjectURL(photo.blob) : "",
+    }));
+    setPhotoSources(sources);
+    return () =>
+      sources.forEach(({ src }) => {
+        if (src) URL.revokeObjectURL(src);
+      });
   }, [experience.photos]);
 
   const experienceDate = experience.date
-    ? new Intl.DateTimeFormat(undefined, {
+    ? new Date(`${experience.date}T00:00:00Z`).toLocaleDateString(undefined, {
         dateStyle: "medium",
         timeZone: "UTC",
-      }).format(new Date(`${experience.date}T00:00:00Z`))
+      })
     : "";
+  const duration =
+    experience.duration === "Other"
+      ? experience.customDuration
+      : experience.duration;
+  const neighbourhood =
+    experience.neighbourhood === "Other — specify"
+      ? experience.customNeighbourhood
+      : experience.neighbourhood;
+  const groupSize =
+    experience.groupSizeType === "unlimited" ||
+    experience.groupSize === "Unlimited spots"
+      ? "Unlimited spots"
+      : experience.groupSize
+        ? `${experience.groupSize} spots`
+        : "Limited spots";
+  const ageRange =
+    experience.minimumAge || experience.maximumAge
+      ? `${experience.minimumAge || "18"}–${experience.maximumAge || "60"}`
+      : "";
+  const instagramHandle = experience.instagramHandle
+    ? `@${experience.instagramHandle.replace(/^@/, "")}`
+    : "";
+  const coverImage = photoSources[0]?.src;
 
   return (
     <article className="experience-event-card">
@@ -155,24 +179,127 @@ function ExperienceCard({ experience }) {
           {experience.duration ? ` · ${experience.duration}` : ""}
         </p>
         <p className="experience-event-location">
-          {[experience.venueName, experience.neighbourhood]
+          {[experience.venueName, neighbourhood]
             .filter(Boolean)
             .join(" · ") || "Location to be announced"}
         </p>
         <div className="experience-event-footer">
-          <span>
-            {experience.groupSizeType === "unlimited"
-              ? "Unlimited spots"
-              : experience.groupSize
-                ? `${experience.groupSize} spots`
-                : "Limited spots"}
-          </span>
+          <span>{groupSize}</span>
           <strong>
             {Number(experience.commitmentFee) > 0
               ? `₦${Number(experience.commitmentFee).toLocaleString()}`
               : "Free"}
           </strong>
         </div>
+        <details className="experience-event-details">
+          <summary>View full experience details</summary>
+          <div className="experience-event-details-content">
+            <dl>
+              <div>
+                <dt>About this experience</dt>
+                <dd>{experience.description || "Not provided"}</dd>
+              </div>
+              <div>
+                <dt>Who can attend</dt>
+                <dd>{experience.genderComposition || "Mixed"}</dd>
+              </div>
+              <div>
+                <dt>When</dt>
+                <dd>
+                  {[experienceDate, experience.startTime, duration]
+                    .filter(Boolean)
+                    .join(" · ") || "Date and time to be announced"}
+                </dd>
+              </div>
+              <div>
+                <dt>Venue</dt>
+                <dd>{experience.venueName || "Not provided"}</dd>
+              </div>
+              <div>
+                <dt>Address</dt>
+                <dd>{experience.venueAddress || "Not provided"}</dd>
+              </div>
+              <div>
+                <dt>Area</dt>
+                <dd>{neighbourhood || "Not provided"}</dd>
+              </div>
+              {experience.mapsLink && (
+                <div>
+                  <dt>Map</dt>
+                  <dd>
+                    <a href={experience.mapsLink} target="_blank" rel="noreferrer">
+                      Open venue in Google Maps
+                    </a>
+                  </dd>
+                </div>
+              )}
+              <div>
+                <dt>Spots</dt>
+                <dd>{groupSize}</dd>
+              </div>
+              <div>
+                <dt>Commitment fee</dt>
+                <dd>
+                  {Number(experience.commitmentFee) > 0
+                    ? `₦${Number(experience.commitmentFee).toLocaleString()}`
+                    : "Free"}
+                </dd>
+              </div>
+              <div>
+                <dt>Included in the fee</dt>
+                <dd>{experience.feeIncludes || "Not provided"}</dd>
+              </div>
+              {experience.dressCode && (
+                <div>
+                  <dt>Dress code</dt>
+                  <dd>{experience.dressCode}</dd>
+                </div>
+              )}
+              {experience.whatToBring && (
+                <div>
+                  <dt>What to bring</dt>
+                  <dd>{experience.whatToBring}</dd>
+                </div>
+              )}
+              {ageRange && (
+                <div>
+                  <dt>Suitable ages</dt>
+                  <dd>{ageRange}</dd>
+                </div>
+              )}
+              <div>
+                <dt>Hosted by</dt>
+                <dd>{experience.hostName || "Comot"}</dd>
+              </div>
+              {experience.hostBio && (
+                <div>
+                  <dt>About the host</dt>
+                  <dd>{experience.hostBio}</dd>
+                </div>
+              )}
+              {instagramHandle && (
+                <div>
+                  <dt>Instagram</dt>
+                  <dd>{instagramHandle}</dd>
+                </div>
+              )}
+            </dl>
+            {photoSources.length > 1 && (
+              <div className="experience-event-gallery" aria-label="More experience photos">
+                {photoSources.slice(1).map(({ name, src }, index) =>
+                  src ? (
+                    <img
+                      key={`${name}-${index}`}
+                      src={src}
+                      alt={name || `Additional experience photo ${index + 1}`}
+                      loading="lazy"
+                    />
+                  ) : null,
+                )}
+              </div>
+            )}
+          </div>
+        </details>
       </div>
     </article>
   );
