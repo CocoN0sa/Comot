@@ -406,6 +406,7 @@ export default function Explore({ onNavigate }) {
                 isShared={venue.id === sharedVenueId}
                 isSaved={savedIds.includes(venue.id)}
                 onToggleSaved={() => toggleSaved(venue.id)}
+                onOpen={() => onNavigate("venue", venue.id)}
                 onExpand={(images, index) =>
                   setExpandedGallery({ title: venue.venueName, images, index })
                 }
@@ -502,9 +503,8 @@ function ExploreFilter({ label, value, options, isOpen, onToggle, onSelect }) {
   );
 }
 
-function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand }) {
+function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand, onOpen }) {
   const [images, setImages] = useState([]);
-  const [imageIndex, setImageIndex] = useState(0);
   const [shareMessage, setShareMessage] = useState("");
   const mapsUrl = getGoogleMapsUrl(venue.googleMapsLink);
   const description =
@@ -515,22 +515,12 @@ function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand }) {
       .filter((photo) => photo?.blob instanceof Blob)
       .map((photo) => URL.createObjectURL(photo.blob));
     setImages(urls);
-    setImageIndex(0);
     return () => urls.forEach((url) => URL.revokeObjectURL(url));
   }, [venue.photos]);
 
-  useEffect(() => {
-    if (images.length < 2) return undefined;
-    const timer = window.setInterval(() => {
-      setImageIndex((current) => (current + 1) % images.length);
-    }, 3600);
-    return () => window.clearInterval(timer);
-  }, [images]);
-
   const shareVenue = async () => {
-    const shareUrl = new URL(window.location.href);
-    shareUrl.searchParams.set("venue", venue.id);
-    shareUrl.hash = "";
+    const shareUrl = new URL(window.location.origin);
+    shareUrl.pathname = `/venue/${encodeURIComponent(venue.id)}`;
     const shareData = {
       title: venue.venueName || "COMOT venue",
       text:
@@ -565,52 +555,44 @@ function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand }) {
     <article
       id={`venue-${venue.id}`}
       className={isShared ? "venue-card is-shared" : "venue-card"}
-      tabIndex={isShared ? -1 : undefined}
+      tabIndex={0}
+      role="link"
+      aria-label={`View ${venue.venueName || "this venue"}`}
+      onClick={(event) => {
+        if (!event.target.closest("button, a")) onOpen();
+      }}
+      onKeyDown={(event) => {
+        if (
+          event.target === event.currentTarget &&
+          (event.key === "Enter" || event.key === " ")
+        ) {
+          event.preventDefault();
+          onOpen();
+        }
+      }}
     >
-      <div className="venue-card-media">
+      <div
+        className={`venue-card-media venue-card-gallery gallery-count-${Math.min(images.length, 5)}`}
+      >
         {images.length ? (
-          <>
+          images.map((image, index) => (
             <button
               type="button"
+              key={image}
               className="venue-photo-trigger"
-              onClick={() => onExpand(images, imageIndex)}
-              aria-label={`Expand photos for ${venue.venueName}`}
+              onClick={(event) => {
+                event.stopPropagation();
+                onExpand(images, index);
+              }}
+              aria-label={`View photo ${index + 1} of ${venue.venueName}`}
             >
               <img
-                key={images[imageIndex]}
-                src={images[imageIndex]}
-                alt={`${venue.venueName} photo ${imageIndex + 1} of ${images.length}`}
+                src={image}
+                alt={`${venue.venueName} photo ${index + 1} of ${images.length}`}
                 className="venue-card-image"
               />
-              <span className="venue-expand-hint">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5" />
-                </svg>
-                View photos
-              </span>
             </button>
-            {images.length > 1 && (
-              <div
-                className="venue-photo-dots"
-                aria-label={`${images.length} photos`}
-              >
-                {images.map((image, index) => (
-                  <button
-                    key={image}
-                    type="button"
-                    aria-label={`Show photo ${index + 1}`}
-                    aria-pressed={imageIndex === index}
-                    className={
-                      imageIndex === index
-                        ? "venue-photo-dot is-active"
-                        : "venue-photo-dot"
-                    }
-                    onClick={() => setImageIndex(index)}
-                  />
-                ))}
-              </div>
-            )}
-          </>
+          ))
         ) : (
           <div className="venue-photo-placeholder">
             <svg viewBox="0 0 48 48" aria-hidden="true">

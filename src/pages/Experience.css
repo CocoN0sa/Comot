@@ -294,6 +294,7 @@
 
 .experience-event-card {
   min-width: 0;
+  cursor: pointer;
   overflow: hidden;
   border: 1px solid #b96854;
   border-radius: 22px;
@@ -394,7 +395,7 @@
   border-radius: 999px;
   background: rgba(255, 250, 247, 0.95);
   color: #8f4f3e;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -415,18 +416,18 @@
 .experience-event-title-row h3 {
   margin: 0;
   color: #fffaf7;
-  font-size: 1rem;
+  font-size: 22px;
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
 
 .experience-event-audience {
   flex: 0 0 auto;
-  padding: 4px 7px;
+  padding: 5px 9px;
   border-radius: 999px;
   background: #fff5f1;
   color: #8f4f3e;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -434,9 +435,9 @@
   display: -webkit-box;
   margin: 9px 0 0;
   overflow: hidden;
-  color: rgba(255, 250, 247, 0.9);
-  font-size: 11px;
-  line-height: 1.4;
+  color: rgba(255, 250, 247, 0.95);
+  font-size: 16px;
+  line-height: 1.45;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -444,8 +445,8 @@
 .experience-event-meta,
 .experience-event-location {
   margin: 9px 0 0;
-  color: rgba(255, 250, 247, 0.9);
-  font-size: 11px;
+  color: rgba(255, 250, 247, 0.95);
+  font-size: 16px;
 }
 
 .experience-event-location {
@@ -463,11 +464,11 @@
   padding-top: 11px;
   border-top: 1px solid rgba(255, 250, 247, 0.3);
   color: #fffaf7;
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .experience-event-footer strong {
-  font-size: 12px;
+  font-size: 17px;
 }
 
 .experience-event-details {
@@ -478,7 +479,7 @@
 .experience-event-details summary {
   padding: 11px 0 2px;
   color: #fffaf7;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 800;
   cursor: pointer;
 }
@@ -503,19 +504,20 @@
   min-width: 0;
 }
 
+.experience-event-details dt,
+.experience-event-details dd {
+  color: #fffaf7;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
 .experience-event-details dt {
-  margin-bottom: 3px;
-  color: rgba(255, 250, 247, 0.72);
-  font-size: 9px;
+  margin-bottom: 4px;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .experience-event-details dd {
   margin: 0;
-  color: #fffaf7;
-  font-size: 11px;
   line-height: 1.45;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
@@ -1192,12 +1194,32 @@
   }
 
   .experience-event-title-row h3 {
-    font-size: 14px;
+    font-size: 22px;
   }
 
   .experience-event-category,
   .experience-event-audience {
-    font-size: 8px;
+    font-size: 12px;
+  }
+
+  .experience-event-description,
+  .experience-event-meta,
+  .experience-event-location {
+    font-size: 16px;
+  }
+
+  .experience-event-footer {
+    font-size: 15px;
+  }
+
+  .experience-event-footer strong {
+    font-size: 17px;
+  }
+
+  .experience-event-details summary,
+  .experience-event-details dt,
+  .experience-event-details dd {
+    font-size: 16px;
   }
 
   .experience-success h1 {

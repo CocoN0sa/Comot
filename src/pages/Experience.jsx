@@ -102,7 +102,7 @@ function FormField({ label, hint, children, className = "" }) {
   );
 }
 
-function ExperienceCard({ experience }) {
+function ExperienceCard({ experience, onNavigate }) {
   const [photoSources, setPhotoSources] = useState([]);
   const [imageIndex, setImageIndex] = useState(0);
   const [isMediaPaused, setIsMediaPaused] = useState(false);
@@ -184,7 +184,26 @@ function ExperienceCard({ experience }) {
   };
 
   return (
-    <article className="experience-event-card">
+    <article
+      className="experience-event-card"
+      role="link"
+      tabIndex={0}
+      aria-label={`View ${experience.experienceName || "this experience"}`}
+      onClick={(event) => {
+        if (!event.target.closest("button, a, details, summary")) {
+          onNavigate("experience-detail", experience.id);
+        }
+      }}
+      onKeyDown={(event) => {
+        if (
+          event.target === event.currentTarget &&
+          (event.key === "Enter" || event.key === " ")
+        ) {
+          event.preventDefault();
+          onNavigate("experience-detail", experience.id);
+        }
+      }}
+    >
       <div
         className="experience-event-media"
         role={availablePhotos.length > 1 ? "group" : undefined}
@@ -362,18 +381,6 @@ function ExperienceCard({ experience }) {
                 </div>
               )}
             </dl>
-            {availablePhotos.length > 1 && (
-              <div className="experience-event-gallery" aria-label="More experience photos">
-                {availablePhotos.slice(1).map(({ name, src }, index) => (
-                  <img
-                    key={`${name}-${index}`}
-                    src={src}
-                    alt={name || `Additional experience photo ${index + 1}`}
-                    loading="lazy"
-                  />
-                ))}
-              </div>
-            )}
           </div>
         </details>
       </div>
@@ -755,6 +762,7 @@ export default function Experience({ onNavigate, step = null }) {
                       <ExperienceCard
                         key={experience.id}
                         experience={experience}
+                        onNavigate={onNavigate}
                       />
                     ))}
                   </div>

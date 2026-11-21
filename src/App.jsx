@@ -8,6 +8,8 @@ import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import ListYourVenue from "./pages/ListYourVenue";
 import AdminDashboard from "./pages/AdminDashboard";
+import VenueDetail from "./pages/VenueDetail";
+import ExperienceDetail from "./pages/ExperienceDetail";
 import { hasRegisteredAccount } from "./utils/account";
 import { experienceHostSteps } from "./utils/experienceRoutes";
 
@@ -16,6 +18,8 @@ function getInitialPage() {
   const hostStep = experienceHostSteps.find((item) => item.path === pathname);
   if (hostStep) return hostStep.page;
   if (pathname === "/admin") return "admin";
+  if (pathname.startsWith("/venue/")) return "venue";
+  if (pathname.startsWith("/experience/") && !pathname.startsWith("/experience/host/")) return "experience-detail";
   if (new URLSearchParams(window.location.search).has("venue")) {
     return hasRegisteredAccount() ? "explore" : "getstarted";
   }
@@ -31,14 +35,18 @@ export default function App() {
     return () => window.removeEventListener("popstate", syncRoute);
   }, []);
 
-  const navigate = (page) => {
+  const navigate = (page, itemId) => {
     const hostStep = experienceHostSteps.find((item) => item.page === page);
     const nextPath =
       hostStep
         ? hostStep.path
         : page === "admin"
           ? "/admin"
-          : "/";
+          : page === "venue" && itemId
+            ? `/venue/${encodeURIComponent(itemId)}`
+            : page === "experience-detail" && itemId
+              ? `/experience/${encodeURIComponent(itemId)}`
+              : "/";
     const nextUrl = new URL(nextPath, window.location.origin);
     const sharedVenueId = new URLSearchParams(window.location.search).get(
       "venue",
@@ -66,6 +74,8 @@ export default function App() {
   function renderPage() {
     if (active === "home") return <Home onNavigate={navigate} />;
     if (active === "explore") return <Explore onNavigate={navigate} />;
+    if (active === "venue") return <VenueDetail onNavigate={navigate} />;
+    if (active === "experience-detail") return <ExperienceDetail onNavigate={navigate} />;
     if (active === "experience" || experienceStep !== -1) {
       return (
         <Experience
