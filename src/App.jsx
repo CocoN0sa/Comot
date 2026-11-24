@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Fab from "./components/Fab";
+import BottomNav from "./components/BottomNav";
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
 import Experience from "./pages/Experience";
@@ -66,7 +66,7 @@ export default function App() {
     setActive(page);
   };
 
-  const showFab = ["explore", "experience", "profile"].includes(active);
+  const showBottomNav = ["explore", "experience", "profile"].includes(active);
   const experienceStep = experienceHostSteps.findIndex(
     (item) => item.page === active,
   );
@@ -93,14 +93,16 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen flex flex-col"
+      className={`app-shell min-h-screen flex flex-col${showBottomNav ? " has-bottom-nav" : ""}`}
       style={{ background: "#f7f2e8" }}
     >
       <main className="flex-1">
         <div className="mx-auto w-full">{renderPage()}</div>
       </main>
 
-      {showFab && <Fab onClick={() => console.log("FAB clicked")} />}
+      {showBottomNav && (
+        <BottomNav active={active} onChange={(page) => navigate(page)} />
+      )}
     </div>
   );
 }

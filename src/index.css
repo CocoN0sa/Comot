@@ -123,6 +123,100 @@ select {
   font: inherit;
 }
 
+.app-shell.has-bottom-nav > main {
+  box-sizing: border-box;
+  padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+}
+
+.bottom-nav {
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(38, 59, 91, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -8px 28px rgba(38, 59, 91, 0.08);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.bottom-nav-inner {
+  display: grid;
+  width: min(100%, 560px);
+  min-height: 56px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 auto;
+}
+
+.bottom-nav-button {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: #788294;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.bottom-nav-button:hover {
+  background: #f7f2e8;
+  color: #263b5b;
+}
+
+.bottom-nav-button.is-active {
+  background: #f8eee9;
+  color: #a45f4c;
+}
+
+.bottom-nav-button:active {
+  transform: scale(0.97);
+}
+
+.bottom-nav-button:focus-visible {
+  outline: 2px solid #a45f4c;
+  outline-offset: 2px;
+}
+
+.bottom-nav-icon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+}
+
+.bottom-nav-icon svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.bottom-nav-button.is-active .bottom-nav-icon svg {
+  stroke-width: 2.1;
+}
+
+.nav-label {
+  overflow: hidden;
+  max-width: 100%;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Floating action button styles */
 .fab {
   position: fixed;
