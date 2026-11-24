@@ -896,7 +896,7 @@ button.explore-location[aria-expanded="true"] {
 .venue-card-heading h3 {
   margin: 0;
   color: #fffaf7;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.25;
   overflow-wrap: anywhere;
 }
@@ -907,7 +907,7 @@ button.explore-location[aria-expanded="true"] {
   align-items: center;
   gap: 5px;
   color: rgba(255, 250, 247, 0.88);
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .venue-location svg {
@@ -931,7 +931,7 @@ button.explore-location[aria-expanded="true"] {
   margin: 7px 0 0;
   overflow: hidden;
   color: rgba(255, 250, 247, 0.95);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.45;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -970,7 +970,7 @@ button.explore-location[aria-expanded="true"] {
   border-radius: 999px;
   background: #fff5f1;
   color: #8f4f3e;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -989,7 +989,7 @@ button.explore-location[aria-expanded="true"] {
   align-items: center;
   gap: 5px;
   color: #fffaf7;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -1327,13 +1327,13 @@ button.explore-location[aria-expanded="true"] {
   }
 
   .venue-card-heading h3 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .venue-location,
   .venue-short-description,
   .venue-map-link {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .venue-budget {
