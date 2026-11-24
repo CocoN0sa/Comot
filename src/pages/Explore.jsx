@@ -39,7 +39,6 @@ export default function Explore({ onNavigate }) {
   const [selectedBudget, setSelectedBudget] = useState("");
   const [openFilter, setOpenFilter] = useState("");
   const [savedIds, setSavedIds] = useState(readSavedIds);
-  const [expandedGallery, setExpandedGallery] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(readSelectedLocation);
   const [isLocationMenuOpen, setIsLocationMenuOpen] = useState(false);
   const locationSelectorRef = useRef(null);
@@ -127,28 +126,6 @@ export default function Explore({ onNavigate }) {
     targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
     targetCard.focus({ preventScroll: true });
   }, [isLoading, selectedLocation, sharedVenueId, venues]);
-
-  useEffect(() => {
-    if (!expandedGallery) return undefined;
-    const closeOnEscape = (event) => {
-      if (event.key === "Escape") setExpandedGallery(null);
-      if (event.key === "ArrowRight") {
-        setExpandedGallery((current) => ({
-          ...current,
-          index: (current.index + 1) % current.images.length,
-        }));
-      }
-      if (event.key === "ArrowLeft") {
-        setExpandedGallery((current) => ({
-          ...current,
-          index:
-            (current.index - 1 + current.images.length) % current.images.length,
-        }));
-      }
-    };
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [expandedGallery]);
 
   const venueTypes = [
     "All venues",
@@ -407,9 +384,6 @@ export default function Explore({ onNavigate }) {
                 isSaved={savedIds.includes(venue.id)}
                 onToggleSaved={() => toggleSaved(venue.id)}
                 onOpen={() => onNavigate("venue", venue.id)}
-                onExpand={(images, index) =>
-                  setExpandedGallery({ title: venue.venueName, images, index })
-                }
               />
             ))}
           </div>
@@ -449,17 +423,6 @@ export default function Explore({ onNavigate }) {
         </>
       )}
 
-      {selectedLocation === "Abuja" && expandedGallery && (
-        <ImageViewer
-          title={expandedGallery.title}
-          images={expandedGallery.images}
-          index={expandedGallery.index}
-          onIndexChange={(index) =>
-            setExpandedGallery((current) => ({ ...current, index }))
-          }
-          onClose={() => setExpandedGallery(null)}
-        />
-      )}
     </div>
   );
 }
@@ -503,8 +466,11 @@ function ExploreFilter({ label, value, options, isOpen, onToggle, onSelect }) {
   );
 }
 
-function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand, onOpen }) {
+function VenueCard({ venue, isSaved, isShared, onToggleSaved, onOpen }) {
   const [images, setImages] = useState([]);
+  const [imageIndex, setImageIndex] = useState(0);
+  const [isMediaPaused, setIsMediaPaused] = useState(false);
+  const [isPageVisible, setIsPageVisible] = useState(() => !document.hidden);
   const [shareMessage, setShareMessage] = useState("");
   const mapsUrl = getGoogleMapsUrl(venue.googleMapsLink);
   const description =
@@ -515,8 +481,40 @@ function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand, onOpen }
       .filter((photo) => photo?.blob instanceof Blob)
       .map((photo) => URL.createObjectURL(photo.blob));
     setImages(urls);
+    setImageIndex(0);
     return () => urls.forEach((url) => URL.revokeObjectURL(url));
   }, [venue.photos]);
+
+  useEffect(() => {
+    const updateVisibility = () => setIsPageVisible(!document.hidden);
+    document.addEventListener("visibilitychange", updateVisibility);
+    return () =>
+      document.removeEventListener("visibilitychange", updateVisibility);
+  }, []);
+
+  useEffect(() => {
+    if (
+      images.length < 2 ||
+      isMediaPaused ||
+      !isPageVisible ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return undefined;
+    }
+
+    const delay = imageIndex === 0 ? 6500 : 3000;
+    const timeout = window.setTimeout(
+      () => setImageIndex((current) => (current + 1) % images.length),
+      delay,
+    );
+    return () => window.clearTimeout(timeout);
+  }, [images.length, imageIndex, isMediaPaused, isPageVisible]);
+
+  const handleMediaBlur = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setIsMediaPaused(false);
+    }
+  };
 
   const shareVenue = async () => {
     const shareUrl = new URL(window.location.origin);
@@ -572,27 +570,25 @@ function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand, onOpen }
       }}
     >
       <div
-        className={`venue-card-media venue-card-gallery gallery-count-${Math.min(images.length, 5)}`}
+        className="venue-card-media"
+        role={images.length > 1 ? "group" : undefined}
+        onMouseEnter={() => setIsMediaPaused(true)}
+        onMouseLeave={() => setIsMediaPaused(false)}
+        onFocusCapture={() => setIsMediaPaused(true)}
+        onBlurCapture={handleMediaBlur}
+        aria-label={
+          images.length > 1
+            ? `${images.length} photos of ${venue.venueName || "this venue"}`
+            : undefined
+        }
       >
         {images.length ? (
-          images.map((image, index) => (
-            <button
-              type="button"
-              key={image}
-              className="venue-photo-trigger"
-              onClick={(event) => {
-                event.stopPropagation();
-                onExpand(images, index);
-              }}
-              aria-label={`View photo ${index + 1} of ${venue.venueName}`}
-            >
-              <img
-                src={image}
-                alt={`${venue.venueName} photo ${index + 1} of ${images.length}`}
-                className="venue-card-image"
-              />
-            </button>
-          ))
+          <img
+            key={images[imageIndex]}
+            src={images[imageIndex]}
+            alt={`${venue.venueName || "Venue"} photo ${imageIndex + 1} of ${images.length}`}
+            className="venue-card-image"
+          />
         ) : (
           <div className="venue-photo-placeholder">
             <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -604,6 +600,24 @@ function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand, onOpen }
           </div>
         )}
         <span className="venue-type-badge">{venue.venueType || "Venue"}</span>
+        {images.length > 1 && (
+          <div className="venue-photo-dots" role="group" aria-label="Choose venue photo">
+            {images.map((image, index) => (
+              <button
+                key={`${image}-${index}`}
+                type="button"
+                className={
+                  index === imageIndex
+                    ? "venue-photo-dot is-active"
+                    : "venue-photo-dot"
+                }
+                aria-label={`Show photo ${index + 1} of ${images.length}`}
+                aria-pressed={index === imageIndex}
+                onClick={() => setImageIndex(index)}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="venue-card-body">
@@ -699,65 +713,6 @@ function VenueCard({ venue, isSaved, isShared, onToggleSaved, onExpand, onOpen }
         </span>
       </div>
     </article>
-  );
-}
-
-function ImageViewer({ title, images, index, onIndexChange, onClose }) {
-  if (!images.length) return null;
-  const goTo = (step) =>
-    onIndexChange((index + step + images.length) % images.length);
-
-  return (
-    <div className="image-viewer" role="presentation" onClick={onClose}>
-      <button
-        type="button"
-        className="image-viewer-close"
-        onClick={onClose}
-        aria-label="Close photo preview"
-      >
-        ×
-      </button>
-      {images.length > 1 && (
-        <button
-          type="button"
-          className="image-viewer-arrow is-previous"
-          onClick={(event) => {
-            event.stopPropagation();
-            goTo(-1);
-          }}
-          aria-label="Previous photo"
-        >
-          ‹
-        </button>
-      )}
-      <img
-        src={images[index]}
-        alt={`${title}, photo ${index + 1} of ${images.length}`}
-        onClick={(event) => event.stopPropagation()}
-      />
-      <div
-        className="image-viewer-caption"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <strong>{title}</strong>
-        <span>
-          {index + 1} / {images.length}
-        </span>
-      </div>
-      {images.length > 1 && (
-        <button
-          type="button"
-          className="image-viewer-arrow is-next"
-          onClick={(event) => {
-            event.stopPropagation();
-            goTo(1);
-          }}
-          aria-label="Next photo"
-        >
-          ›
-        </button>
-      )}
-    </div>
   );
 }
 
