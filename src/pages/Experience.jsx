@@ -542,8 +542,24 @@ export default function Experience({ onNavigate, step = null }) {
   const stepRefs = useRef([]);
 
   useEffect(() => {
-    if (step !== null) window.scrollTo({ top: 0, behavior: "smooth" });
+    if (step !== null) {
+      stepRefs.current[step]?.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, [step]);
+
+  useEffect(() => {
+    if (step === null || submitted) return undefined;
+
+    const bodyOverflow = document.body.style.overflow;
+    const rootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = bodyOverflow;
+      document.documentElement.style.overflow = rootOverflow;
+    };
+  }, [step, submitted]);
 
   useEffect(() => {
     let isMounted = true;
