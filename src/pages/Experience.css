@@ -13,7 +13,7 @@
   box-sizing: border-box;
   margin-left: 0;
   margin-top: 0;
-  padding: 18px 0 0;
+  padding: 0;
   background: #fff;
   border-bottom: 1px solid #e2ddd4;
   box-shadow: 0 2px 5px rgba(38, 59, 91, 0.035);
@@ -1113,7 +1113,7 @@
 
   .experience-nav-band {
     margin-top: 0;
-    padding: 14px 0 0;
+    padding: 0;
   }
 
   .experience-nav-band .top-nav {
