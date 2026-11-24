@@ -473,6 +473,50 @@
   font-size: 16px;
 }
 
+.experience-event-register {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.experience-event-register-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #fffaf7;
+  color: #8f4f3e;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.experience-event-register-button:hover {
+  transform: translateY(-1px);
+  background: #fff;
+}
+
+.experience-event-register-button:focus-visible {
+  outline: 3px solid rgba(255, 250, 247, 0.75);
+  outline-offset: 3px;
+}
+
+.experience-event-register-notice {
+  margin: 0;
+  color: #fffaf7;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .experience-event-details {
   margin-top: 12px;
   border-top: 1px solid rgba(255, 250, 247, 0.3);
@@ -1318,7 +1362,8 @@
   .experience-primary-button,
   .experience-choice,
   .experience-event-media img,
-  .experience-event-photo-dot {
+  .experience-event-photo-dot,
+  .experience-event-register-button {
     transition: none;
     animation: none;
   }

@@ -107,6 +107,7 @@ function ExperienceCard({ experience, onNavigate }) {
   const [imageIndex, setImageIndex] = useState(0);
   const [isMediaPaused, setIsMediaPaused] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(() => !document.hidden);
+  const [showRegistrationNotice, setShowRegistrationNotice] = useState(false);
 
   useEffect(() => {
     const sources = (experience.photos || []).map((photo) => ({
@@ -287,6 +288,21 @@ function ExperienceCard({ experience, onNavigate }) {
               ? `₦${Number(experience.commitmentFee).toLocaleString()}`
               : "Free"}
           </strong>
+        </div>
+        <div className="experience-event-register">
+          <button
+            type="button"
+            className="experience-event-register-button"
+            onClick={() => setShowRegistrationNotice(true)}
+          >
+            Register
+            <span aria-hidden="true">→</span>
+          </button>
+          {showRegistrationNotice && (
+            <p className="experience-event-register-notice" role="status">
+              Registration will be available soon.
+            </p>
+          )}
         </div>
         <details className="experience-event-details">
           <summary>View full experience details</summary>
