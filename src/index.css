@@ -125,7 +125,7 @@ select {
 
 .app-shell.has-bottom-nav > main {
   box-sizing: border-box;
-  padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
 }
 
 .bottom-nav {
@@ -134,7 +134,7 @@ select {
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+  padding: 5px 16px calc(5px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid rgba(38, 59, 91, 0.1);
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 -8px 28px rgba(38, 59, 91, 0.08);
@@ -145,7 +145,7 @@ select {
 .bottom-nav-inner {
   display: grid;
   width: min(100%, 560px);
-  min-height: 56px;
+  min-height: 48px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   margin: 0 auto;
@@ -158,8 +158,8 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 5px 8px;
+  gap: 2px;
+  padding: 3px 8px;
   border: 0;
   border-radius: 14px;
   background: transparent;
@@ -192,8 +192,8 @@ select {
 
 .bottom-nav-icon {
   display: grid;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   place-items: center;
 }
 
@@ -210,7 +210,7 @@ select {
 .nav-label {
   overflow: hidden;
   max-width: 100%;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   line-height: 1.2;
   text-overflow: ellipsis;
